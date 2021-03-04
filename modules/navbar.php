@@ -39,26 +39,31 @@
             <div class="navbar-nav">
 
                 <div class="dropdown ml-2">
+
                     <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                         My Account
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
                         <a class="dropdown-item" href="my-account.php">
                             <i class="fa fa-user mr-2" aria-hidden="true"></i>
                             My Profile
                         </a>
+
                         <a class="dropdown-item" href="my-account.php">
                             <i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i>
                             My Orders
                         </a>
+
                         <div class="dropdown-divider"></div>
+
                         <div class="ml-2 mr-2">
-                            <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
-                                Login
+                            <button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                Logout
                             </button>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -71,6 +76,10 @@
                     </button>
 
                 </a>
+
+                <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                    Login
+                </button>
 
             </div>
 
