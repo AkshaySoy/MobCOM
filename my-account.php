@@ -9,6 +9,8 @@
 
     ?>
 
+    <!-- CHANGE -->
+
 </head>
 
 <body class="bg-light">
