@@ -58,6 +58,7 @@
                             <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                 Login
                             </button>
+                            
                         </div>
                     </div>
                 </div>
