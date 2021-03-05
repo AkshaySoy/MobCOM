@@ -24,7 +24,10 @@ MobCOM is an e-commerce website dealing specifically with cell phones. Nearly ev
 XAMPP for hosting the website locally.
 
 ## Made By
-Ramdayal Munda, Sonu Parmanik, Akshay Soy, Pankaj Mahato
+Ramdayal Munda https://github.com/RDayalMunda
+Akshay Soy https://github.com/AkshaySoy
+Sonu Parmanik
+Pankaj Mahato
 
 
 
