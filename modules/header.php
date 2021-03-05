@@ -16,6 +16,6 @@
 
 <?php
 
-require('modules/connect.php');
+require('modules/config.php');
 
 ?>

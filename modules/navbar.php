@@ -25,11 +25,11 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form action='product-list.php' class="form-inline my-2 my-lg-0" id='search_bar' method='GET'>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name='search_text' id='search_text'>
                     <div class="input-group-append">
-                        <button class="btn btn-light" type="submit" id="button-addon2">
+                        <button class="btn btn-light" type="submit" name='search_submit'>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -165,3 +165,13 @@ require('modules/login.php')
 </div>
 
 <!-- Login Modal End -->
+
+<?php
+//to retieve the keyword
+if (isset($_GET['search_text'])){
+    echo "<script>
+    document.getElementById('search_text').value = '$_GET[search_text]';
+    </script>";
+}
+
+?>
