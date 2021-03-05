@@ -4,7 +4,7 @@ MobCOM is an e-commerce website dealing specifically with cell phones. Nearly ev
 
 ## Steps to run the website on your system :
 1) Download or clone the repository.
-2) Place 'MobCOM' folder in htdocs of your XAMPP installtion.
+2) Place 'MobCOM' folder in htdocs of your XAMPP installation.
 3) Open phpMyAdmin and create a database 'mobcom'.
 4) Import 'mobcom.sql' in the database 'mobcom'. 
 5) Open the website by typing 'localhost/mobCOM'
