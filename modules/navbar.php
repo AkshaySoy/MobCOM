@@ -111,7 +111,7 @@ require('modules/login.php')
 
             <div class="modal-body">
 
-                <form action="#" method="#POST">
+                <form action="#" method="POST">
 
                     <div class="form-group">
                         <label for="email">
