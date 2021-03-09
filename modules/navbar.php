@@ -89,6 +89,47 @@
 
 </div>
 
+<?php
+
+require('modules/login.php');
+
+if ($error != "") {
+    echo "
+        <div class='container-fluid'>
+
+            <div class='alert alert-success alert-dismissible fade show my-3' role='alert'>
+            $error
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+            </div>
+
+        </div>
+
+    ";
+} else {
+    echo "
+            <div class='alert alert-success' role='alert'>
+            Hello ! <b>{$_SESSION['user_first_name']} {$_SESSION['user_last_name']}</b>. Your login is successfull. <a href='index.php' class='alert-link'>Click here</a> to continue.
+            </div>
+        ";
+}
+
+?>
+
+
+<div class="container-fluid">
+
+    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+        Hello <strong>User Name</strong> ! You have successfully logged in.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+
+</div>
+
 <!-- Login Modal Start -->
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -104,7 +145,7 @@
 
             <div class="modal-body">
 
-                <form>
+                <form action="" method="POST">
 
                     <!-- Input Start -->
 
@@ -136,14 +177,6 @@
                         </div>
                     </div>
 
-                    <!-- Show Password Script Start-->
-
-                    <script>
-
-                    </script>
-
-                    <!-- Show Password Script End -->
-
                     <div class="form-check mt-0">
                         <input class="form-check-input showPwd" type="checkbox" onclick="showpassword()">
                         <label class="form-check-label" for="userPwdInput">
@@ -171,56 +204,9 @@
 
 <!-- Login Modal End -->
 
-<!-- Login Script Start -->
-
-
-<script>
-    $(document).on('click', '#login', function() {
-
-        var userEmail = $("#userEmail").val() || 0;
-        var userPwd = $("#userPwd").val() || 0;
-
-        if (!userEmail) {
-            alert('Please enter your registered email id.')
-        }
-
-        if (!userPwd) {
-            alert('Please enter your password.')
-        }
-
-        var userObj = {
-
-            userEmail: userEmail,
-            userPwd: userPwd
-
-        }
-
-        $.ajax({
-            url: 'modules/login.php',
-            type: 'POST',
-            data: {
-                userObj: JSON.stringify(userObj)
-            },
-
-            success: function(res) {
-                console.log(res)
-                if (res.trim() == 'success') {
-                    alert('You have successfully logged in');
-                    window.location.reload();
-                } else {
-                    alert(res);
-                }
-            }
-        })
-
-    })
-</script>
-
-<!-- Login Script End -->
-
 <?php
 //to retieve the keyword
-if (isset($_GET['search_text'])){
+if (isset($_GET['search_text'])) {
     echo "<script>
     document.getElementById('search_text').value = '$_GET[search_text]';
     document.getElementById('searching').value = '$_GET[search_text]';
