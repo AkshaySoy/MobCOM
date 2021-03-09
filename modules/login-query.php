@@ -1,16 +1,11 @@
 <?php
 
-require_once('header.php');
-
 $error = "";
 
-if (isset($_POST['userObj'])) {
+if (isset($_POST['loginBtn'])) {
 
-	$userObj = $_POST['userObj'];
-	$userObj = json_decode(stripslashes($userObj));
-
-	$userEmail = addslashes(htmlspecialchars(strip_tags($userEmail->userEmail)));
-	$userPwd   = addslashes(htmlspecialchars(strip_tags($userPwd->userPwd)));
+	$userEmail = $_POST['userEmail'] ? addslashes($_POST['userEmail']) : exit('Invalid email');
+	$userPwd   = $_POST['userPwd'] ? addslashes($_POST['userPwd']) : exit('Invalid password');
 
 	$query = "SELECT * FROM `user_master` WHERE `user_email`='$userEmail'";
 	$res   = mysqli_query($conn, $query);
