@@ -1,4 +1,4 @@
-<div class="tab-pane fade show active" id="my-settings" role="tabpanel">
+<div class="tab-pane fade show" id="my-settings" role="tabpanel">
 
     <div class="card card-mycart mb-3">
 

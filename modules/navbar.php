@@ -60,7 +60,7 @@
                         <div class="dropdown-divider"></div>
 
                         <div class="ml-2 mr-2">
-                            <button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button class="btn btn-danger btn-block" type="button">
                                 Logout
                             </button>
 
@@ -89,13 +89,6 @@
 
 </div>
 
-<?php
-
-require('modules/login.php')
-
-?>
-
-
 <!-- Login Modal Start -->
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -111,7 +104,9 @@ require('modules/login.php')
 
             <div class="modal-body">
 
-                <form action="#" method="POST">
+                <form>
+
+                    <!-- Input Start -->
 
                     <div class="form-group">
                         <label for="email">
@@ -123,7 +118,7 @@ require('modules/login.php')
                                     <i class="fa fa-at" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="text" name="userEmailInput" class="form-control" placeholder="Enter Email">
+                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email">
                         </div>
                     </div>
 
@@ -137,9 +132,17 @@ require('modules/login.php')
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="password" name="userPwdInput" id="userPwdInput" class="form-control" placeholder="Enter Password">
+                            <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Enter Password">
                         </div>
                     </div>
+
+                    <!-- Show Password Script Start-->
+
+                    <script>
+
+                    </script>
+
+                    <!-- Show Password Script End -->
 
                     <div class="form-check mt-0">
                         <input class="form-check-input showPwd" type="checkbox" onclick="showpassword()">
@@ -148,13 +151,15 @@ require('modules/login.php')
                         </label>
                     </div>
 
-                    <button type="submit" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
+                    <button type="button" id="login" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
 
                     <p class="text-muted text-center p-2">New User ?
-                        <a href="register.php" class="card-link text-primary">Register Here</a>
+                        <a href="signup.php" class="card-link text-primary">Register Here</a>
                     </p>
 
                 </form>
+
+                <!-- Input End -->
 
             </div>
 
@@ -166,12 +171,58 @@ require('modules/login.php')
 
 <!-- Login Modal End -->
 
+<!-- Login Script Start -->
+
+
+<script>
+    $(document).on('click', '#login', function() {
+
+        var userEmail = $("#userEmail").val() || 0;
+        var userPwd = $("#userPwd").val() || 0;
+
+        if (!userEmail) {
+            alert('Please enter your registered email id.')
+        }
+
+        if (!userPwd) {
+            alert('Please enter your password.')
+        }
+
+        var userObj = {
+
+            userEmail: userEmail,
+            userPwd: userPwd
+
+        }
+
+        $.ajax({
+            url: 'modules/login.php',
+            type: 'POST',
+            data: {
+                userObj: JSON.stringify(userObj)
+            },
+
+            success: function(res) {
+                console.log(res)
+                if (res.trim() == 'success') {
+                    alert('You have successfully logged in');
+                    window.location.reload();
+                } else {
+                    alert(res);
+                }
+            }
+        })
+
+    })
+</script>
+
+<!-- Login Script End -->
+
 <?php
 //to retieve the keyword
-if (isset($_GET['search_text'])){
+if (isset($_GET['search_text'])) {
     echo "<script>
     document.getElementById('search_text').value = '$_GET[search_text]';
     </script>";
 }
-
 ?>

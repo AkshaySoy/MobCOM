@@ -39,22 +39,67 @@
                     </h4>
                 </header>
 
+                <?php
+
+                require('modules/signup-query.php');
+
+                if (!empty($error)) {
+                    echo "
+
+                        <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                                <span class='sr-only'>Close</span>
+                            </button>
+                            <i class='fa fa-info-circle' aria-hidden='true'></i>
+                            $error
+                        </div>
+
+                    ";
+                }
+
+                if (!empty($success)) {
+                    echo "
+
+                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                                <span class='sr-only'>Close</span>
+                            </button>
+                            <i class='fa fa-info-circle' aria-hidden='true'></i>
+                            $success <a class='alert-link' href='index.php'>Click Here</a> to continue.
+                        </div>
+
+                    ";
+                }
+
+                ?>
+
                 <!-- Form Start -->
 
-                <form>
+                <form action="" method="POST" class="needs-validation" novalidate>
 
                     <!-- Name -->
 
                     <div class="form-row">
 
                         <div class="col form-group">
-                            <label>First name</label>
-                            <input type="text" class="form-control" placeholder="" id="">
+                            <label for="validationDefault01">First name</label>
+                            <input type="text" class="form-control" placeholder="Enter your first name" name="firstName" id="validationDefault01" value="<?php echo $firstName;?>" required>
+                            <div class="invalid-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please enter your first name
+                            </div>
                         </div>
+
 
                         <div class="col form-group">
                             <label>Last name</label>
-                            <input type="text" class="form-control" placeholder="" id="">
+                            <input type="text" class="form-control" placeholder="Enter you last name" name="lastName" id="lastName" value="<?php echo $lastName;?>" required>
+                            <div class="invalid-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please enter your last name
+                            </div>
                         </div>
 
                     </div>
@@ -63,7 +108,11 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" placeholder="">
+                        <input type="email" class="form-control" placeholder="Enter your email id" name="email" id="email" value="<?php echo $email;?>" required>
+                        <div class="invalid-feedback">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            Please enter a valid email id
+                        </div>
                         <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
 
@@ -76,27 +125,40 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">+91</span>
                             </div>
-                            <input type="number" class="form-control" placeholder="" id="">
+                            <input type="tel" class="form-control" placeholder="Enter a valid phone number" maxlength="10" name="phoneNumber"  id="phoneNumber" onkeyup='checkPhoneNumber();' value="<?php echo $phoneNumber;?>" required>
+                            <div class="invalid-feedback" id="phoneNumber-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please enter phone number
+                            </div>
                         </div>
 
                     </div>
 
                     <!-- Gender -->
 
-                    <div class="form-group">
+                    <div class="form-group my-1">
 
                         <label class="custom-control custom-radio custom-control-inline">
-                            <input class="custom-control-input" checked="" type="radio" name="gender" value="Male">
+                            <input class="custom-control-input" type="radio" name="gender" id="male" value="Male" required>
                             <span class="custom-control-label"> Male </span>
                         </label>
+
                         <label class="custom-control custom-radio custom-control-inline">
-                            <input class="custom-control-input" type="radio" name="gender" value="Female">
+                            <input class="custom-control-input" type="radio" name="gender" id="female" value="Female" required>
                             <span class="custom-control-label"> Female </span>
                         </label>
+
                         <label class="custom-control custom-radio custom-control-inline">
-                            <input class="custom-control-input" type="radio" name="gender" value="Others">
+                            <input class="custom-control-input" type="radio" name="gender" id="others" value="Others" required>
                             <span class="custom-control-label"> Others </span>
+
+                            <span class="invalid-feedback ml-2">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please select your gender
+                            </span>
+
                         </label>
+
 
                     </div>
 
@@ -104,9 +166,10 @@
 
                     <div class="mb-3">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" id="" placeholder="1234 Main St" required>
+                        <input type="text" class="form-control" name="address1" placeholder="1234 Main St" id="address1" value="<?php echo $address1;?>" required>
                         <div class="invalid-feedback">
-                            Please enter your address.
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            Please enter your address
                         </div>
                     </div>
 
@@ -114,7 +177,8 @@
 
                     <div class="mb-3">
                         <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="" placeholder="Apartment or suite">
+                        <input type="text" class="form-control" name="address2" placeholder="Apartment or suite" value="<?php echo $address2;?>">
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="row">
@@ -123,12 +187,13 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="state">State</label>
-                            <select class="custom-select d-block w-100" id="state" required>
+                            <select class="custom-select d-block w-100" name="state" id="state" required>
                                 <option value="">Choose...</option>
                                 <option>Jharkhand</option>
                             </select>
                             <div class="invalid-feedback">
-                                Please select a valid state.
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please select your state
                             </div>
                         </div>
 
@@ -136,12 +201,13 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="city">City</label>
-                            <select class="custom-select d-block w-100" id="city" required>
+                            <select class="custom-select d-block w-100" id="city" name="city" required>
                                 <option value="">Choose...</option>
                                 <option>Jamshedpur</option>
                             </select>
                             <div class="invalid-feedback">
-                                Please provide a valid city.
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please select a valid city
                             </div>
                         </div>
 
@@ -149,9 +215,10 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="pincode">Pin Code</label>
-                            <input type="text" class="form-control" id="pincode" placeholder="833201" required>
+                            <input type="text" class="form-control" name="pincode" placeholder="833201" id="pincode" value="<?php echo $pincode;?>" required>
                             <div class="invalid-feedback">
-                                Pin Code required.
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please enter your pincode
                             </div>
                         </div>
 
@@ -162,29 +229,71 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
+
                             <label>Create password</label>
-                            <input class="form-control" type="password" required>
+                            <input type="password" class="form-control" id="password" name="password" onkeyup='checkPwd();' required>
+                            <div class="invalid-feedback" id="pwd-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please enter a password
+                            </div>
+                            <div class="invalid-feedback" id="pwd-feedback"></div>
+
                         </div>
+
                         <div class="form-group col-md-6">
+
                             <label>Repeat password</label>
-                            <input class="form-control" type="password" required>
+                            <input type="password" class="form-control" id="confirm_password" onkeyup='checkPwd();'>
+                            <div class="invalid-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                Please re-enter the password
+                            </div>
+                            <div class="invalid-feedback" id="confirmPwd-feedback"></div>
                         </div>
 
                     </div>
 
                     <div class="form-group">
-                        <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked="">
+                        <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" required>
                             <div class="custom-control-label"> I agree with the
-                                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">terms and contitions</a>
+                                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Terms and Contitions</a>.
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                You must agree before registering
                             </div>
                         </label>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Sign Up </button>
+                        <button type="submit" name="SubmitBtn" class="btn btn-primary btn-block"> Sign Up </button>
                     </div>
 
                 </form>
+
+                <!-- Script for Bootstrap form validation -->
+
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
 
                 <!-- Form End -->
 
@@ -197,76 +306,6 @@
         </p>
 
     </div>
-
-    <!-- Login Modal Start -->
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form action="#" method="#POST">
-
-                        <div class="form-group">
-                            <label for="email">
-                                <p class="font-weight-bold mb-0">Email</p>
-                            </label>
-                            <div class="input-group mt-0">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="fa fa-at" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <input type="text" name="userNameInput" class="form-control" placeholder="Enter Email">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">
-                                <p class="font-weight-bold mb-0">Password</p>
-                            </label>
-                            <div class="input-group mt-0">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <i class="fa fa-lock" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <input type="password" name="userPwdInput" id="userPwdInput" class="form-control" placeholder="Enter Password">
-                            </div>
-                        </div>
-
-                        <div class="form-check mt-0">
-                            <input class="form-check-input showPwd" type="checkbox" onclick="showpassword()">
-                            <label class="form-check-label" for="userPwdInput">
-                                Show Password
-                            </label>
-                        </div>
-
-                        <button type="submit" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
-
-                        <p class="text-muted text-center p-2">New User ?
-                            <a href="register.php" class="card-link text-primary">Register Here</a>
-                        </p>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Login Modal End -->
 
     <!-- Main Content End -->
 
