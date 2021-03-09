@@ -220,9 +220,12 @@
 
 <?php
 //to retieve the keyword
-if (isset($_GET['search_text'])) {
+if (isset($_GET['search_text'])){
     echo "<script>
     document.getElementById('search_text').value = '$_GET[search_text]';
+    document.getElementById('searching').value = '$_GET[search_text]';
     </script>";
+
+    $query = "SELECT * FROM 'mobcom' WHERE 'name' = '$_GET[search_text]';";
 }
 ?>
