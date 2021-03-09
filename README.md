@@ -27,7 +27,7 @@ XAMPP for hosting the website locally.
 1) Ramdayal Munda https://github.com/RDayalMunda
 2) Akshay Soy https://github.com/AkshaySoy
 3) Sonu Parmanik
-4) Pankaj Mahato
+4) Pankaj Mahato https://github.com/Svmpankaj
 
 
 
