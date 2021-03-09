@@ -3,18 +3,11 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <?php
 
-    <!-- Bootstrap 4 CSS -->
+    require('modules/header.php');
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/customCSS.css">
-
-    <!-- Font Awesome CDN -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    ?>
 
 </head>
 
@@ -22,84 +15,11 @@
 
     <!-- Navbar Start -->
 
-    <div class="container-fluid sticky-top p-0">
+    <?php
 
-        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-            <a class="navbar-brand" href="#">
-                <i class="fa fa-mobile" aria-hidden="true"></i>
-                <span id="brand-name">MobCOM®</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    require('modules/navbar.php');
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Best Sellers</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Top Deals</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">New Releases</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-light" type="submit" id="button-addon2">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="navbar-nav">
-
-                    <div class="dropdown ml-2">
-                        <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
-                            My Account
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">
-                                <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                                My Profile
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i>
-                                My Orders
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="ml-2 mr-2">
-                                <button class="btn btn-primary btn-block" type="button" data-toggle="modal"
-                                    data-target="#exampleModalCenter">
-                                    Login
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-success ml-2" type="button">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Cart <span class="badge badge-light">2</span>
-                    </button>
-
-                </div>
-
-            </div>
-
-        </nav>
-
-    </div>
+    ?>
 
     <!-- Navbar End -->
 
@@ -129,8 +49,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName">First name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value=""
-                                        required>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -138,8 +57,7 @@
 
                                 <div class="col-md-6 mb-3">
                                     <label for="lastName">Last name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value=""
-                                        required>
+                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                                     <div class="invalid-feedback">
                                         Valid last name is required.
                                     </div>
@@ -148,8 +66,7 @@
 
                             <div class="mb-3">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="1234 Main St"
-                                    required>
+                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -225,8 +142,7 @@
                         </h5>
 
                         <ul class="list-group list-group-flush">
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Subtotal
                                 <span>₹ 17,249</span>
                             </li>
@@ -234,9 +150,8 @@
                                 Shipping
                                 <span class="text-success">Free</span>
                             </li>
-                            
-                            <li
-                                class="list-group-item d-flex justify-content-between align-items-center px-0">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
 
                                 <div>
                                     <strong>Total Amount (Including GST)</strong>
