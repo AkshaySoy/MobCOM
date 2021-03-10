@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Search Products";
     require('modules/header.php');
 
     //filter test

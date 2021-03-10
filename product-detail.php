@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Samsung Galaxy A21";
     require('modules/header.php');
 
     ?>

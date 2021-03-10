@@ -10,9 +10,9 @@
                 <div class="text">
                     <h5 class="font-weight-bold p-0 m-0">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                        User Name
+                        <?php echo "{$_SESSION['first_name']} {$_SESSION['last_name']}"; ?>
                         <br>
-                        <small class="text-muted"> useremail@hotmail.com </small>
+                        <small class="text-muted"> <?php echo "{$_SESSION['user_email']}"; ?> </small>
                     </h5>
 
                 </div>
@@ -22,7 +22,7 @@
                 <i class="fa fa-map-marker"></i>
                 <strong> My Address </strong>
                 <br>
-                User Address
+                <?php echo "{$_SESSION['user_address_1']}"; ?>
             </p>
 
             <!-- Order Status Start -->

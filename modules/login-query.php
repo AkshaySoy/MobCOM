@@ -19,6 +19,10 @@ if (isset($_POST['loginBtn'])) {
 			$_SESSION['user_id'] = $row->user_id;
 			$_SESSION['first_name'] = $row->first_name;
 			$_SESSION['last_name'] = $row->last_name;
+			$_SESSION['user_email'] = $row->user_email;
+			$_SESSION['user_phone'] = $row->user_phone;
+			$_SESSION['user_address_1'] = $row->user_address_1;
+			$_SESSION['user_address_2'] = $row->user_address_2;
 		} else {
 			$error = "Invalid Credentials!";
 		}

@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | My Account";
     require('modules/header.php');
 
     ?>
@@ -51,7 +52,7 @@
                     <a class="list-group-item list-group-item-action" data-toggle="list" href="#my-settings" role="tab">
                         Settings
                     </a>
-                    <a class="list-group-item list-group-item-action" href="#">
+                    <a class="list-group-item list-group-item-action" href="logout.php">
                         Log out
                     </a>
 

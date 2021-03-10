@@ -7,7 +7,7 @@ require_once('config.php');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>MobCOM</title>
+<title><?php echo "$title";?></title>
 
 <!-- Bootstrap 4 CSS -->
 

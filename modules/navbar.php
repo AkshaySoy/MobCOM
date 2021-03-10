@@ -1,3 +1,9 @@
+<?php
+
+require('modules/login-query.php');
+
+?>
+
 <div class="container-fluid sticky-top p-0">
 
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
@@ -36,50 +42,72 @@
                 </div>
             </form>
 
+
             <div class="navbar-nav">
 
-                <div class="dropdown ml-2">
+                <?php
 
-                    <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        My Account
-                    </button>
+                if (isset($_SESSION['login_status'])) {
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    echo "
 
-                        <a class="dropdown-item" href="my-account.php">
-                            <i class="fa fa-user mr-2" aria-hidden="true"></i>
-                            My Profile
-                        </a>
+                            <div class='dropdown ml-2'>
 
-                        <a class="dropdown-item" href="my-account.php">
-                            <i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i>
-                            My Orders
-                        </a>
+                                <button class='btn btn-dark btn-block dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                    <i class='fa fa-user-circle' aria-hidden='true'></i>
+                                    My Account
+                                </button>
 
-                        <div class="dropdown-divider"></div>
+                                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
 
-                        <div class="ml-2 mr-2">
-                            <button class="btn btn-danger btn-block" type="button">
-                                Logout
+                                    <a class='dropdown-item' href='my-account.php'>
+                                        <i class='fa fa-user mr-2' aria-hidden='true'></i>
+                                        My Profile
+                                    </a>
+
+                                    <a class='dropdown-item' href='my-account.php'>
+                                        <i class='fa fa-shopping-cart mr-1' aria-hidden='true'></i>
+                                        My Orders
+                                    </a>
+
+                                    <div class='dropdown-divider'></div>
+
+                                    <a href='logout.php'>
+
+                                        <div class='ml-2 mr-2'>
+                                            <button class='btn btn-danger btn-block' type='button'>
+                                                Logout
+                                            </button>
+                                        </div>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            <a href='shopping-cart.php'>
+
+                                <button class='btn btn-success ml-2' type='button'>
+                                    <i class='fa fa-shopping-cart' aria-hidden='true'></i>
+                                    Cart <span class='badge badge-light'>0</span>
+                                </button>
+
+                            </a>
+                            
+                        ";
+                } else {
+
+                    echo "
+
+                            <button class='btn btn-primary btn-block ml-2' type='button' data-toggle='modal' data-target='#exampleModalCenter'>
+                                Login
                             </button>
+                        
+                        ";
+                }
 
-                        </div>
-                    </div>
-                </div>
-
-                <a href="shopping-cart.php">
-
-                    <button class="btn btn-success ml-2" type="button">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Cart <span class="badge badge-light">0</span>
-                    </button>
-
-                </a>
-
-                <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModalCenter">
-                    Login
-                </button>
+                ?>
 
             </div>
 
@@ -91,17 +119,15 @@
 
 <?php
 
-require('modules/login.php');
-
 if ($error != "") {
     echo "
         <div class='container-fluid'>
 
-            <div class='alert alert-success alert-dismissible fade show my-3' role='alert'>
-            $error
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-            </button>
+            <div class='alert alert-danger alert-dismissible fade show my-3' role='alert'>
+                $error
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
             </div>
 
         </div>
@@ -109,26 +135,21 @@ if ($error != "") {
     ";
 } else {
     echo "
-            <div class='alert alert-success' role='alert'>
-            Hello ! <b>{$_SESSION['user_first_name']} {$_SESSION['user_last_name']}</b>. Your login is successfull. <a href='index.php' class='alert-link'>Click here</a> to continue.
+            <div class='container-fluid'>
+
+                <div class='alert alert-success alert-dismissible fade show my-3' role='alert'>
+                Hello ! <b>{$_SESSION['first_name']} {$_SESSION['last_name']}</b>. Welcome to MobCOM. <a href='index.php' class='alert-link'>Click here</a> to continue. 
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+
             </div>
+
         ";
 }
 
 ?>
-
-
-<div class="container-fluid">
-
-    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
-        Hello <strong>User Name</strong> ! You have successfully logged in.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-
-
-</div>
 
 <!-- Login Modal Start -->
 
@@ -159,7 +180,7 @@ if ($error != "") {
                                     <i class="fa fa-at" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email">
+                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email" required>
                         </div>
                     </div>
 
@@ -173,7 +194,7 @@ if ($error != "") {
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Enter Password">
+                            <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Enter Password" required>
                         </div>
                     </div>
 
@@ -184,7 +205,7 @@ if ($error != "") {
                         </label>
                     </div>
 
-                    <button type="button" id="login" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
+                    <button type="submit" id="login" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
 
                     <p class="text-muted text-center p-2">New User ?
                         <a href="signup.php" class="card-link text-primary">Register Here</a>

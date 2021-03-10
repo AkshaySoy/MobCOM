@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Buy mobiles at the best price !";
     require('modules/header.php');
 
     ?>
