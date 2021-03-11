@@ -62,459 +62,464 @@
 
     <!-- Main Content Start -->
 
-    <h3 class="font-weight-bold mt-4 ml-3 mb-2">Newly Added</h3>
-
-    <!-- Newly Added Section Start -->
-
     <div class="container-fluid">
 
-        <div class="row">
 
-            <!-- Product Card Start -->
+        <h3 class="font-weight-bold mt-4 ml-3 mb-2">Newly Added</h3>
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+        <!-- Newly Added Section Start -->
 
-                <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
+        <div class="container-fluid">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+            <div class="row">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                <!-- Product Card Start -->
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+
+                    <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
+
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
+
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
+                <!-- Product Card End -->
+
             </div>
 
-            <!-- Product Card End -->
+            <a class="card-link float-right" href="#">
+                View More
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
 
         </div>
 
-        <a class="card-link float-right" href="#">
-            View More
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </a>
+        <!-- Newly Added Section End -->
 
-    </div>
+        <!-- Top Deals Start -->
 
-    <!-- Newly Added Section End -->
+        <h3 class="font-weight-bold mt-4 ml-3">Top Deals</h3>
 
-    <!-- Top Deals Start -->
+        <div class="container-fluid">
 
-    <h3 class="font-weight-bold mt-4 ml-3">Top Deals</h3>
+            <div class="row">
 
-    <div class="container-fluid">
+                <!-- Product Card Start -->
 
-        <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-            <!-- Product Card Start -->
+                    <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                        <img class="card-img-top p-2" src="images/phone_images/7.jpg" alt="samsung_galaxy_a31_front">
 
-                <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Apple Watch (Gen3)</h5>
+                            </a>
 
-                    <img class="card-img-top p-2" src="images/phone_images/7.jpg" alt="samsung_galaxy_a31_front">
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Apple Watch (Gen3)</h5>
-                        </a>
+                            <p class="card-text font-weight-bold mb-0">₹ 14,999</p>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 14,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
-            </div>
-
-            <!-- Product Card End -->
+                <!-- Product Card End -->
 
 
-            <!-- Product Card Start -->
+                <!-- Product Card Start -->
 
-            <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
 
-                <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
+                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
 
-                    <img class="card-img-top p-2" src="images/phone_images/10.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/phone_images/10.jpg" alt="samsung_galaxy_a31_front">
 
-                    <div class="card-body d-flex flex-column">
-                        <a href="#" style="text-decoration: none;">
-                            <h5 class="card-title">Samsung Galaxy M31</h5>
-                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="#" style="text-decoration: none;">
+                                <h5 class="card-title">Samsung Galaxy M31</h5>
+                            </a>
 
-                        <div class="mb-1">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="mb-1">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
+
+                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
+
                         </div>
-
-                        <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                        <a href="#" class="btn btn-danger mt-3">Buy Now</a>
 
                     </div>
 
                 </div>
 
+                <!-- Product Card End -->
+
             </div>
 
-            <!-- Product Card End -->
+            <a class="card-link float-right" href="#">
+                View More
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
 
         </div>
 
-        <a class="card-link float-right" href="#">
-            View More
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </a>
+        <!-- Top Deals End -->
 
-    </div>
+        <!-- Shop By Brand Section Start -->
 
-    <!-- Top Deals End -->
+        <h3 class="font-weight-bold mt-4 ml-3">Shop By Brand</h3>
 
-    <!-- Shop By Brand Section Start -->
+        <div class="container-fluid">
 
-    <h3 class="font-weight-bold mt-4 ml-3">Shop By Brand</h3>
+            <div class="row">
 
-    <div class="container-fluid">
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-        <div class="row">
+                    <a href="#">
+                        <img src="images/brand_images/apple.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/apple.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/asus.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/asus.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/nokia.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/nokia.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/one-plus.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/one-plus.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/oppo.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/oppo.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/xiaomi.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/xiaomi.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/realme.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                </div>
 
-                <a href="#">
-                    <img src="images/brand_images/realme.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-            </div>
+                    <a href="#">
+                        <img src="images/brand_images/honor.svg" alt="one_plus" height="100px" width="100px">
+                    </a>
 
-            <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                <a href="#">
-                    <img src="images/brand_images/honor.svg" alt="one_plus" height="100px" width="100px">
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+        <!-- Shop By Brand Section End -->
 
-    <!-- Shop By Brand Section End -->
+    </div>
 
     <!-- Main Content End -->
 

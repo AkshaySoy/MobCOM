@@ -4,7 +4,7 @@ require('modules/login-query.php');
 
 ?>
 
-<div class="container-fluid sticky-top p-0">
+<div class="sticky-top p-0">
 
     <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
         <a class="navbar-brand" href="index.php">

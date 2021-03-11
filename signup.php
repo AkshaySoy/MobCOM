@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Signup";
     require('modules/header.php');
 
     ?>
