@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 06:18 AM
+-- Generation Time: Mar 16, 2021 at 06:38 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `mobcom`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brand_master`
+--
+
+CREATE TABLE `brand_master` (
+  `brand_id` int(11) NOT NULL,
+  `brand_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -148,6 +159,12 @@ INSERT INTO `user_master` (`user_id`, `first_name`, `last_name`, `user_email`, `
 --
 
 --
+-- Indexes for table `brand_master`
+--
+ALTER TABLE `brand_master`
+  ADD PRIMARY KEY (`brand_id`);
+
+--
 -- Indexes for table `order_master`
 --
 ALTER TABLE `order_master`
@@ -175,6 +192,12 @@ ALTER TABLE `user_master`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `brand_master`
+--
+ALTER TABLE `brand_master`
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_master`
