@@ -54,7 +54,7 @@
 
                     <div class="main-image">
 
-                        <img class="detail-img my-3" id="main-image" src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
+                        <img class="detail-img my-3" id="main-image" src="images/samsung/A21s/1.jpg">
 
                     </div>
 
@@ -62,11 +62,11 @@
 
                     <div class="thumbnail-image text-center mb-3">
 
-                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg'" src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
+                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/samsung/A21s/1.jpg'" src="images/samsung/A21s/1.jpg">
 
-                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-back.jpeg'" src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-back.jpeg">
+                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/samsung/A21s/2.jpg'" src="images/samsung/A21s/2.jpg">
 
-                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-side.jpeg'" src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-side.jpeg">
+                        <img class="img-thumbnail thumb-img mx-2 p-2" onmouseover="document.getElementById('main-image').src='images/samsung/A21s/4.jpg'" src="images/samsung/A21s/4.jpg">
 
                     </div>
 

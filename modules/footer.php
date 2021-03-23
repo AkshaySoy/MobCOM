@@ -1,8 +1,8 @@
 <!-- Footer Start -->
 
-<footer class="container-fluid text-center text-muted mt-5 p-2" id="footer">
+<div class="container-fluid text-center text-muted mt-3" id="footer">
 
-    <div class="mt-2 mb-5">
+    <div class="my-5">
         <hr>
         <p class="m-0">Copyright <span class="fa fa-copyright"></span> Project RAPS</p>
         <a href="#" class="m-0 card-link text-muted"><small> Privacy Policy | </small></a>
@@ -10,7 +10,7 @@
         <p class="m-2"><span class="fa fa-mobile"></span></p>
     </div>
 
-</footer>
+</div>
 
 <!-- Footer End -->
 

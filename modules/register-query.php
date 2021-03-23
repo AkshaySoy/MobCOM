@@ -19,7 +19,7 @@ if (isset($_POST['SubmitBtn'])) {
     $city = addslashes($_POST['city']);
     $pincode = addslashes($_POST['pincode']) ? addslashes($_POST['pincode']) : exit('Invalid pincode');
     $password = addslashes($_POST['password']);
-    $dateAdded = date('r', time());
+    $dateAdded = date('y-m-d H:i:s', time());
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 

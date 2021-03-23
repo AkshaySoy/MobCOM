@@ -62,8 +62,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid">
-
+    <div class="container-fluid min-vh-100">
 
         <h3 class="font-weight-bold mt-4 ml-3 mb-2">Newly Added</h3>
 
@@ -79,7 +78,7 @@
 
                     <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
 
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
+                        <img class="card-img-top p-2" src="images/samsung/A21s/1.jpg" alt="samsung_galaxy_a31_front">
 
                         <div class="card-body d-flex flex-column">
                             <a href="#" style="text-decoration: none;">

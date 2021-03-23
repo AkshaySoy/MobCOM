@@ -6,7 +6,7 @@ require('modules/login-query.php');
 
 <div class="sticky-top p-0">
 
-    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow" id="navbar">
         <a class="navbar-brand" href="index.php">
             <i class="fa fa-mobile" aria-hidden="true"></i>
             <span id="brand-name">MobCOM®</span>
@@ -51,7 +51,7 @@ require('modules/login-query.php');
 
                     echo "
 
-                            <div class='dropdown ml-2'>
+                        <div class='dropdown ml-2'>
 
                                 <button class='btn btn-dark btn-block dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                     <i class='fa fa-user-circle' aria-hidden='true'></i>
@@ -84,27 +84,30 @@ require('modules/login-query.php');
 
                                 </div>
 
-                            </div>
+                        </div>
 
-                            <a href='shopping-cart.php'>
+                        <a href='shopping-cart.php'>
 
                                 <button class='btn btn-success ml-2' type='button'>
                                     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
                                     Cart <span class='badge badge-light'>0</span>
                                 </button>
 
-                            </a>
+                        </a>
                             
-                        ";
+                    ";
                 } else {
 
-                    echo "
+                    echo "        
+                        <a href='login-register.php'>
 
-                            <button class='btn btn-primary btn-block ml-2' type='button' data-toggle='modal' data-target='#exampleModalCenter'>
-                                Login
+                            <button class='btn btn-primary btn-block ml-2' type='button'>
+                                    Login
                             </button>
-                        
-                        ";
+                            
+                        </a>
+
+                    ";
                 }
 
                 ?>
@@ -117,113 +120,32 @@ require('modules/login-query.php');
 
 </div>
 
+
+
 <?php
 
-if ($error != "") {
+if (isset($_SESSION['login_message'])) {
     echo "
+
         <div class='container-fluid'>
 
-            <div class='alert alert-danger alert-dismissible fade show my-3' role='alert'>
-                $error
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-            </div>
+        <div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+                <span class='sr-only'>Close</span>
+            </button>
+            <i class='fa fa-info-circle' aria-hidden='true'></i>
+                Hello ! <strong> {$_SESSION['first_name']} {$_SESSION['last_name']}</strong>. Welcome to MobCOM.
+        </div>
 
         </div>
 
+
     ";
-} else {
-    echo "
-            <div class='container-fluid'>
-
-                <div class='alert alert-success alert-dismissible fade show my-3' role='alert'>
-                Hello ! <b>{$_SESSION['first_name']} {$_SESSION['last_name']}</b>. Welcome to MobCOM. <a href='index.php' class='alert-link'>Click here</a> to continue. 
-                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>
-
-            </div>
-
-        ";
+    unset($_SESSION['login_message']);
 }
 
 ?>
-
-<!-- Login Modal Start -->
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-                <form action="" method="POST">
-
-                    <!-- Input Start -->
-
-                    <div class="form-group">
-                        <label for="email">
-                            <p class="font-weight-bold mb-0">Email</p>
-                        </label>
-                        <div class="input-group mt-0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fa fa-at" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">
-                            <p class="font-weight-bold mb-0">Password</p>
-                        </label>
-                        <div class="input-group mt-0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Enter Password" required>
-                        </div>
-                    </div>
-
-                    <div class="form-check mt-0">
-                        <input class="form-check-input showPwd" type="checkbox" onclick="showpassword()">
-                        <label class="form-check-label" for="userPwdInput">
-                            Show Password
-                        </label>
-                    </div>
-
-                    <button type="submit" id="login" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
-
-                    <p class="text-muted text-center p-2">New User ?
-                        <a href="signup.php" class="card-link text-primary">Register Here</a>
-                    </p>
-
-                </form>
-
-                <!-- Input End -->
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- Login Modal End -->
 
 <?php
 //to retieve the keyword
