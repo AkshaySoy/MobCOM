@@ -1,12 +1,15 @@
 <!-- Footer Start -->
 
-<div class="container-fluid text-center text-muted mt-3" id="footer">
+<div class="container-fluid text-center text-muted mt-4" id="footer">
 
-    <div class="my-5">
-        <hr>
-        <p class="m-0">Copyright <span class="fa fa-copyright"></span> Project RAPS</p>
-        <a href="#" class="m-0 card-link text-muted"><small> Privacy Policy | </small></a>
-        <a href="#" class="m-0 card-link text-muted"><small> Terms & Conditions </small></a>
+    <div class="py-1">
+        <p class="m-0 pt-3">Copyright <span class="fa fa-copyright"></span> Project RAPS</p>
+        <p class="m-0 text-muted">
+            <small> Made by </small>
+        </p>
+        <p class="m-0 text-muted">
+            <small>Ramdayal Munda, Akshay Soy, Pankaj Mahato & Sonu Parmanik</small>
+        </p>
         <p class="m-2"><span class="fa fa-mobile"></span></p>
     </div>
 

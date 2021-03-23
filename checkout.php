@@ -25,7 +25,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid my-3 py-2">
+    <div class="container-fluid my-3 py-2 min-vh-100">
 
         <div class="row">
 

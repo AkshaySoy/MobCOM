@@ -111,7 +111,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid">
+    <div class="container-fluid min-vh-100">
 
         <div class="row">
 
@@ -670,7 +670,7 @@
 </body>
 
 <?php
-include "modules/retrieval.php"
+include ('modules/retrieval.php');
 ?>
 
 </html>
