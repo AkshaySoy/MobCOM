@@ -99,7 +99,7 @@ require('modules/login-query.php');
                 } else {
 
                     echo "        
-                        <a href='login-register.php'>
+                        <a href='login.php'>
 
                             <button class='btn btn-primary btn-block ml-2' type='button'>
                                     Login
