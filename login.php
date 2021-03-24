@@ -25,11 +25,13 @@
 
     </div>
 
+    </div>
+
     <!-- Main Content Start -->
 
     <div class="container-fluid min-vh-100">
 
-        <div class="card mx-auto shadow" style="max-width:600px; margin-top:25px;">
+        <div class="card mx-auto shadow" style="max-width:750px;">
 
             <div class="card-body">
 
@@ -76,7 +78,7 @@
                                     <i class="fa fa-at" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email" required>
+                            <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email id
                             </div>

@@ -120,8 +120,6 @@ require('modules/login-query.php');
 
 </div>
 
-
-
 <?php
 
 if (isset($_SESSION['login_message'])) {

@@ -29,7 +29,7 @@
 
     <div class="container-fluid min-vh-100">
 
-        <div class="card mx-auto shadow mt-2" style="max-width:750px; margin-top:25px;">
+        <div class="card mx-auto shadow" style="max-width:750px;">
 
             <div class="card-body">
 
