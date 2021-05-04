@@ -27,11 +27,28 @@
 
             <!-- Order Status Start -->
 
+            <!-- Order Query -->
+
+            <?php
+
+            $activeUser = $_SESSION['user_id'];
+
+            $query = "SELECT * FROM order_master WHERE user_id = $activeUser";
+
+            $res = mysqli_query($conn, $query);
+
+            if ($res) {
+                $num = mysqli_num_rows($res);
+                mysqli_free_result($res);
+            }
+
+            ?>
+
             <div class="card-group mb-2">
 
                 <div class="card bg-light">
                     <div class="p-3">
-                        <h4 class="title">38</h4>
+                        <h4 class="title"><?php echo $num ?></h4>
                         <span>Orders</span>
                     </div>
                 </div>
@@ -74,96 +91,61 @@
 
             <div class="row">
 
-                <!-- Order Detail Start -->
+                <?php
 
-                <div class="col-md-6">
+                if($num == 0) {
+                    
+                    echo "
+                  
+                        <div class='container-fluid'>
 
-                    <div class="product-detail-small mb-3">
-
-                        <div class="border text-center">
-                            <img class="product-detail-small-img"
-                                src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
-                        </div>
-
-                        <div class="product-detail-small-info">
-
-                            <div class="text-muted">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                12.09.2019
+                            <div class='alert alert-danger' role='alert'>
+                                <i class='fa fa-info-circle' aria-hidden='true'></i>
+                                No Recent Orders
                             </div>
 
-                            <p>Samsung Galaxy A21s (Silver, 128 GB)
-                                <br>
-                                <span class="text-success">Order Confirmed</span>
-                            </p>
-
                         </div>
 
-                    </div>
+                    ";
 
-                </div>
+                } else {
 
-                <!-- Order Detail End -->
+                    echo "
 
-                <!-- Order Detail Start -->
+                        <div class='col-md-6'>
 
-                <div class="col-md-6">
+                            <div class='product-detail-small mb-3'>
 
-                    <div class="product-detail-small mb-3">
+                                <div class='border text-center'>
+                                    <img class='product-detail-small-img' src='images/samsung/A21s/1.jpg'>
+                                </div>
 
-                        <div class="border text-center">
-                            <img class="product-detail-small-img"
-                                src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
-                        </div>
+                                <div class='product-detail-small-info'>
 
-                        <div class="product-detail-small-info">
+                                    <div class='text-muted'>
+                                        <i class='fa fa-calendar' aria-hidden='true'></i>
+                                        12.09.2019
+                                    </div>
 
-                            <div class="text-muted">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                12.09.2019
+                                    <p>Samsung Galaxy A21s (Silver, 128 GB)
+                                        <br>
+                                        <span class='text-success'>Order Confirmed</span>
+                                    </p>
+
+                                </div>
+
                             </div>
 
-                            <p>Samsung Galaxy A21s (Silver, 128 GB)
-                                <br>
-                                <span class="text-success">Shipped</span>
-                            </p>
-
                         </div>
 
-                    </div>
+                    ";
 
-                </div>
+                }
 
-                <!-- Order Detail End -->
+                ?>
 
                 <!-- Order Detail Start -->
 
-                <div class="col-md-6">
-
-                    <div class="product-detail-small mb-3">
-
-                        <div class="border text-center">
-                            <img class="product-detail-small-img"
-                                src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
-                        </div>
-
-                        <div class="product-detail-small-info">
-
-                            <div class="text-muted">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                12.09.2019
-                            </div>
-
-                            <p>Samsung Galaxy A21s (Silver, 128 GB)
-                                <br>
-                                <span class="text-success">Shipped</span>
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
 
                 <!-- Order Detail End -->
 

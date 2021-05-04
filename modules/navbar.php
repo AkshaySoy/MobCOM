@@ -7,56 +7,69 @@ require('modules/login-query.php');
 <div class="sticky-top p-0">
 
     <nav class="navbar navbar-expand-lg navbar-dark shadow" id="navbar">
-        <a class="navbar-brand" href="index.php">
-            <i class="fa fa-mobile" aria-hidden="true"></i>
-            <span id="brand-name">MobCOM®</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Best Sellers</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Top Deals</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">New Releases</a>
-                </li>
-            </ul>
+        <div class="container">
 
-            <form action='product-list.php' class="form-inline my-2 my-lg-0" id='search_bar' method='GET'>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name='search_text' id='search_text'>
-                    <div class="input-group-append">
-                        <button class="btn btn-light" type="submit" name='search_submit'>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
+            <a class="navbar-brand" href="index.php">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                <span id="brand-name">MobCOM®</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Best Sellers</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Top Deals</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">New Releases</a>
+                    </li>
+                </ul>
+
+                <form action='product-list.php' class="form-inline mx-1" id='search_bar' method='GET'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name='search_text' id='search_text'>
+                        <div class="input-group-append">
+                            <button class="btn btn-light" type="submit" name='search_submit'>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
+                <div class="navbar-nav">
 
-            <div class="navbar-nav">
+                    <?php
 
-                <?php
+                    if (isset($_SESSION['login_status'])) {
 
-                if (isset($_SESSION['login_status'])) {
+                        $activeUser = $_SESSION['user_id'];
 
-                    echo "
+                        $query = "SELECT * FROM shopping_cart_master WHERE user_id = $activeUser";
 
-                        <div class='dropdown ml-2'>
+                        $res = mysqli_query($conn, $query);
 
-                                <button class='btn btn-dark btn-block dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        if ($res) {
+                            $num = mysqli_num_rows($res);
+                            mysqli_free_result($res);
+                        }
+
+                        echo "
+
+                        <li class='nav-item dropdown mx-1'>
+
+                                <a class='nav-link dropdown-toggle' id='navbarDropdown' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                     <i class='fa fa-user-circle' aria-hidden='true'></i>
                                     My Account
-                                </button>
+                                </a>
 
                                 <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
 
@@ -84,37 +97,40 @@ require('modules/login-query.php');
 
                                 </div>
 
-                        </div>
+                        </li>
 
                         <a href='shopping-cart.php'>
 
-                                <button class='btn btn-success ml-2' type='button'>
+                                <button class='btn btn-success mx-1' type='button'>
                                     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-                                    Cart <span class='badge badge-light'>0</span>
+                                    Cart <span class='badge badge-light'>$num</span>
                                 </button>
 
                         </a>
                             
                     ";
-                } else {
+                    } else {
 
-                    echo "        
-                        <a href='login.php'>
+                        echo "        
+                        <a href='login.php' class='mx-1'>
 
-                            <button class='btn btn-primary btn-block ml-2' type='button'>
+                            <button class='btn btn-primary btn-block my-2 my-lg-0' type='button'>
                                     Login
                             </button>
                             
                         </a>
 
                     ";
-                }
+                    }
 
-                ?>
+                    ?>
+
+                </div>
 
             </div>
 
         </div>
+
 
     </nav>
 
