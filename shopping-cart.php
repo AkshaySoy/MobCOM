@@ -5,13 +5,14 @@
 
     <?php
 
+    $title = "MobCOM | My Shopping Cart";
     require('modules/header.php');
 
     ?>
 
 </head>
 
-<body class="bg-light">
+<body class="bg-light ">
 
 
     <!-- Navbar Start -->
@@ -26,7 +27,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid my-3 py-2">
+    <div class="container-fluid my-3 py-2 min-vh-100">
 
         <div class="row">
 

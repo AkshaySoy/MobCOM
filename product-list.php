@@ -8,13 +8,107 @@
     $title = "MobCOM | Search Products";
     require('modules/header.php');
 
+    //filter test
+    if (isset($_GET['filter_submit'])) {
+        echo "filtering : ";
+
+        //search string
+        echo $_GET['searching'];
+
+        //price filter checking
+        if (isset($_GET['price'])) {
+            echo "<br>";
+            $filter_price = $_GET['price'];
+            for ($i = 0; $i < count($filter_price); $i++) {
+                echo $filter_price[$i] . " ";
+            }
+        }
+        //brand filter checking
+        if (isset($_GET['brand'])) {
+            echo "<br>";
+            $filter_brand = $_GET['brand'];
+            for ($i = 0; $i < count($filter_brand); $i++) {
+                echo $filter_brand[$i] . " ";
+            }
+        }
+        //ram filter checking
+        if (isset($_GET['ram'])) {
+            echo "<br>";
+            $filter_ram = $_GET['ram'];
+            for ($i = 0; $i < count($filter_ram); $i++) {
+                echo $filter_ram[$i] . " ";
+            }
+        }
+        //storage filter checking
+        if (isset($_GET['storage'])) {
+            echo "<br>";
+            $filter_storage = $_GET['storage'];
+            for ($i = 0; $i < count($filter_storage); $i++) {
+                echo $filter_storage[$i] . " ";
+            }
+        }
+        //battery filter checking
+        if (isset($_GET['battery'])) {
+            echo "<br>";
+            $filter_battery = $_GET['battery'];
+            for ($i = 0; $i < count($filter_battery); $i++) {
+                echo $filter_battery[$i] . " ";
+            }
+        }
+        //primary/back camera filter checking
+        if (isset($_GET['pcamera'])) {
+            echo "<br>";
+            $filter_pcamera = $_GET['pcamera'];
+            for ($i = 0; $i < count($filter_pcamera); $i++) {
+                echo $filter_pcamera[$i] . " ";
+            }
+        }
+        //secondary/front camera filter checking
+        if (isset($_GET['scamera'])) {
+            echo "<br>";
+            $filter_scamera = $_GET['scamera'];
+            for ($i = 0; $i < count($filter_scamera); $i++) {
+                echo $filter_scamera[$i] . " ";
+            }
+        }
+    } else {
+        echo "searching : ". $_GET['search_text']. "";
+    }
+
+    //this is query generation from whatever data is given
+    $server = 'localhost';
+    $username = 'root';
+    $password = '';
+    $db = 'mobcom';
+    $con = mysqli_connect($server, $username, $password, $db);
+    if ($con){
+        $query = "SELECT * FROM `product_master`";
+        echo "<br>DB Connected " . $query;
+        if ( $result = $con -> query($query) ){
+            if ($result->num_rows > 0) {
+                // output data of each row
+                echo "<br>data fetched: ";
+                /*
+                while($row = $result->fetch_assoc()) {
+                  echo $row["product_id"] . " : ". $row["model_name"]. "<br>";
+                }
+                */
+              } else {
+                echo "0 results";
+              }
+        }
+        else{ echo "<h2>Not Executed</h2>";}
+    }
+    else{die('Connection Failed '. mysqli_connect_error());}
     
+    //close the connection
+    $con->close()
     ?>
 
 </head>
 
 <body class="bg-light">
-<input type='text' name='searching' id='searching' form='filters_form' placeholder='nothing' hidden>
+    <input type='text' name='searching' id='searching' form='filters_form' placeholder='nothing' hidden>
     <!-- Navbar Start -->
 
     <?php
@@ -42,7 +136,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid">
+    <div class="container-fluid min-vh-100">
 
         <div class="row">
 
@@ -62,7 +156,7 @@
                         <!-- Filter Form Start -->
 
                         <form method="GET" id='filters_form'>
-                        
+
                             <!-- Filter Price Start -->
 
                             <div class="title">
@@ -555,294 +649,6 @@
 
                 <!-- Product Card End -->
 
-                <!-- Product Card Start -->
-
-                <div class="card card-product-list mx-2 my-3 p-3">
-
-                    <div class="row no-gutters">
-
-                        <div class="col-md-3 mb-2">
-                            <a href="#">
-                                <img class="product-img" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="info-main">
-                                <a class="card-link" href="#">
-                                    <h5 class="font-weight-bold">Samsung Galaxy M31 (Fusion Black, 64 GB) </h5>
-                                </a>
-
-                                <div class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </div>
-
-                                <div>
-                                    <ul class="px-2 mx-3">
-                                        <li>6 GB RAM | 64 GB ROM | Expandable Upto 512 GB</li>
-                                        <li>6.4 inch Full HD+ Display</li>
-                                        <li>64 MP + 8 MP + 5 MP + 5 MP | 32 MP Front Camera</li>
-                                        <li>6000 mAh Battery</li>
-                                        <li>Samsun Exynos 9 Octa 9611 Processor</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                            <div class="info-price pl-4 mr-4">
-
-                                <h3 class="font-weight-bold">₹ 17,249</h3>
-
-                                <span class="badge badge-pill badge-danger verify-pill p-2">
-                                    MobCOM Verified
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span>
-
-                                <p class="text-muted my-2">No Cost EMI</p>
-                                <p class="text-muted my-2">Upto <b>₹ 6,950</b> Off on Exchange</p>
-
-                                <button type="button" class="btn btn-outline-secondary btn-block mt-4">
-                                    View More
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-                <!-- Product Card Start -->
-
-                <div class="card card-product-list mx-2 my-3 p-3">
-
-                    <div class="row no-gutters">
-
-                        <div class="col-md-3 mb-2">
-                            <a href="#">
-                                <img class="product-img" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="info-main">
-                                <a class="card-link" href="#">
-                                    <h5 class="font-weight-bold">Samsung Galaxy M31 (Fusion Black, 64 GB) </h5>
-                                </a>
-
-                                <div class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </div>
-
-                                <div>
-                                    <ul class="px-2 mx-3">
-                                        <li>6 GB RAM | 64 GB ROM | Expandable Upto 512 GB</li>
-                                        <li>6.4 inch Full HD+ Display</li>
-                                        <li>64 MP + 8 MP + 5 MP + 5 MP | 32 MP Front Camera</li>
-                                        <li>6000 mAh Battery</li>
-                                        <li>Samsun Exynos 9 Octa 9611 Processor</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                            <div class="info-price pl-4 mr-4">
-
-                                <h3 class="font-weight-bold">₹ 17,249</h3>
-
-                                <span class="badge badge-pill badge-danger verify-pill p-2">
-                                    MobCOM Verified
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span>
-
-                                <p class="text-muted my-2">No Cost EMI</p>
-                                <p class="text-muted my-2">Upto <b>₹ 6,950</b> Off on Exchange</p>
-
-                                <button type="button" class="btn btn-outline-secondary btn-block mt-4">
-                                    View More
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-                <!-- Product Card Start -->
-
-                <div class="card card-product-list mx-2 my-3 p-3">
-
-                    <div class="row no-gutters">
-
-                        <div class="col-md-3 mb-2">
-                            <a href="#">
-                                <img class="product-img" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="info-main">
-                                <a class="card-link" href="#">
-                                    <h5 class="font-weight-bold">Samsung Galaxy M31 (Fusion Black, 64 GB) </h5>
-                                </a>
-
-                                <div class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </div>
-
-                                <div>
-                                    <ul class="px-2 mx-3">
-                                        <li>6 GB RAM | 64 GB ROM | Expandable Upto 512 GB</li>
-                                        <li>6.4 inch Full HD+ Display</li>
-                                        <li>64 MP + 8 MP + 5 MP + 5 MP | 32 MP Front Camera</li>
-                                        <li>6000 mAh Battery</li>
-                                        <li>Samsun Exynos 9 Octa 9611 Processor</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                            <div class="info-price pl-4 mr-4">
-
-                                <h3 class="font-weight-bold">₹ 17,249</h3>
-
-                                <span class="badge badge-pill badge-danger verify-pill p-2">
-                                    MobCOM Verified
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span>
-
-                                <p class="text-muted my-2">No Cost EMI</p>
-                                <p class="text-muted my-2">Upto <b>₹ 6,950</b> Off on Exchange</p>
-
-                                <button type="button" class="btn btn-outline-secondary btn-block mt-4">
-                                    View More
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-                <!-- Product Card Start -->
-
-                <div class="card card-product-list mx-2 my-3 p-3">
-
-                    <div class="row no-gutters">
-
-                        <div class="col-md-3 mb-2">
-                            <a href="#">
-                                <img class="product-img" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="info-main">
-                                <a class="card-link" href="#">
-                                    <h5 class="font-weight-bold">Samsung Galaxy M31 (Fusion Black, 64 GB) </h5>
-                                </a>
-
-                                <div class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </div>
-
-                                <div>
-                                    <ul class="px-2 mx-3">
-                                        <li>6 GB RAM | 64 GB ROM | Expandable Upto 512 GB</li>
-                                        <li>6.4 inch Full HD+ Display</li>
-                                        <li>64 MP + 8 MP + 5 MP + 5 MP | 32 MP Front Camera</li>
-                                        <li>6000 mAh Battery</li>
-                                        <li>Samsun Exynos 9 Octa 9611 Processor</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                            <div class="info-price pl-4 mr-4">
-
-                                <h3 class="font-weight-bold">₹ 17,249</h3>
-
-                                <span class="badge badge-pill badge-danger verify-pill p-2">
-                                    MobCOM Verified
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span>
-
-                                <p class="text-muted my-2">No Cost EMI</p>
-                                <p class="text-muted my-2">Upto <b>₹ 6,950</b> Off on Exchange</p>
-
-                                <button type="button" class="btn btn-outline-secondary btn-block mt-4">
-                                    View More
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
                 <!-- Pagination Start -->
 
                 <nav aria-label="Page navigation sample">
@@ -889,6 +695,7 @@
 </body>
 
 <?php
-    include "modules/retrieval.php"
+include ('modules/retrieval.php');
 ?>
+
 </html>

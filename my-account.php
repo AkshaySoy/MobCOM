@@ -33,7 +33,7 @@
 
     <!-- Main Content Start -->
 
-    <div class="container-fluid my-3">
+    <div class="container-fluid my-3 min-vh-100">
 
         <div class="row">
 

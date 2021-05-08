@@ -6,57 +6,70 @@ require('modules/login-query.php');
 
 <div class="sticky-top p-0">
 
-    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-        <a class="navbar-brand" href="index.php">
-            <i class="fa fa-mobile" aria-hidden="true"></i>
-            <span id="brand-name">MobCOM®</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow" id="navbar">
 
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Best Sellers</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Top Deals</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">New Releases</a>
-                </li>
-            </ul>
+        <div class="container">
 
-            <form action='product-list.php' class="form-inline my-2 my-lg-0" id='search_bar' method='GET'>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name='search_text' id='search_text'>
-                    <div class="input-group-append">
-                        <button class="btn btn-light" type="submit" name='search_submit'>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
+            <a class="navbar-brand" href="index.php">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                <span id="brand-name">MobCOM®</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Best Sellers</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Top Deals</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">New Releases</a>
+                    </li>
+                </ul>
+
+                <form action='product-list.php' class="form-inline mx-1" id='search_bar' method='GET'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name='search_text' id='search_text'>
+                        <div class="input-group-append">
+                            <button class="btn btn-light" type="submit" name='search_submit'>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
+                <div class="navbar-nav">
 
-            <div class="navbar-nav">
+                    <?php
 
-                <?php
+                    if (isset($_SESSION['login_status'])) {
 
-                if (isset($_SESSION['login_status'])) {
+                        $activeUser = $_SESSION['user_id'];
 
-                    echo "
+                        $query = "SELECT * FROM shopping_cart_master WHERE user_id = $activeUser";
 
-                            <div class='dropdown ml-2'>
+                        $res = mysqli_query($conn, $query);
 
-                                <button class='btn btn-dark btn-block dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        if ($res) {
+                            $num = mysqli_num_rows($res);
+                            mysqli_free_result($res);
+                        }
+
+                        echo "
+
+                        <li class='nav-item dropdown mx-1'>
+
+                                <a class='nav-link dropdown-toggle' id='navbarDropdown' href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                                     <i class='fa fa-user-circle' aria-hidden='true'></i>
                                     My Account
-                                </button>
+                                </a>
 
                                 <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
 
@@ -84,34 +97,40 @@ require('modules/login-query.php');
 
                                 </div>
 
-                            </div>
+                        </li>
 
-                            <a href='shopping-cart.php'>
+                        <a href='shopping-cart.php'>
 
-                                <button class='btn btn-success ml-2' type='button'>
+                                <button class='btn btn-success mx-1' type='button'>
                                     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-                                    Cart <span class='badge badge-light'>0</span>
+                                    Cart <span class='badge badge-light'>$num</span>
                                 </button>
 
-                            </a>
+                        </a>
                             
-                        ";
-                } else {
+                    ";
+                    } else {
 
-                    echo "
+                        echo "        
+                        <a href='login.php' class='mx-1'>
 
-                            <button class='btn btn-primary btn-block ml-2' type='button' data-toggle='modal' data-target='#exampleModalCenter'>
-                                Login
+                            <button class='btn btn-primary btn-block my-2 my-lg-0' type='button'>
+                                    Login
                             </button>
-                        
-                        ";
-                }
+                            
+                        </a>
 
-                ?>
+                    ";
+                    }
+
+                    ?>
+
+                </div>
 
             </div>
 
         </div>
+
 
     </nav>
 
@@ -119,111 +138,28 @@ require('modules/login-query.php');
 
 <?php
 
-if ($error != "") {
+if (isset($_SESSION['login_message'])) {
     echo "
+
         <div class='container-fluid'>
 
-            <div class='alert alert-danger alert-dismissible fade show my-3' role='alert'>
-                $error
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-            </div>
+        <div class='alert alert-success alert-dismissible fade show mt-3' role='alert'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+                <span class='sr-only'>Close</span>
+            </button>
+            <i class='fa fa-info-circle' aria-hidden='true'></i>
+                Hello ! <strong> {$_SESSION['first_name']} {$_SESSION['last_name']}</strong>. Welcome to MobCOM.
+        </div>
 
         </div>
 
+
     ";
-} else {
-    echo "
-            <div class='container-fluid'>
-
-                <div class='alert alert-success alert-dismissible fade show my-3' role='alert'>
-                Hello ! <b>{$_SESSION['first_name']} {$_SESSION['last_name']}</b>. Welcome to MobCOM. <a href='index.php' class='alert-link'>Click here</a> to continue. 
-                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>
-
-            </div>
-
-        ";
+    unset($_SESSION['login_message']);
 }
 
 ?>
-
-<!-- Login Modal Start -->
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-                <form action="" method="POST">
-
-                    <!-- Input Start -->
-
-                    <div class="form-group">
-                        <label for="email">
-                            <p class="font-weight-bold mb-0">Email</p>
-                        </label>
-                        <div class="input-group mt-0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fa fa-at" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="userEmail" name="userEmail" class="form-control" placeholder="Enter Email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">
-                            <p class="font-weight-bold mb-0">Password</p>
-                        </label>
-                        <div class="input-group mt-0">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Enter Password" required>
-                        </div>
-                    </div>
-
-                    <div class="form-check mt-0">
-                        <input class="form-check-input showPwd" type="checkbox" onclick="showpassword()">
-                        <label class="form-check-label" for="userPwdInput">
-                            Show Password
-                        </label>
-                    </div>
-
-                    <button type="submit" id="login" name="loginBtn" class="btn btn-primary btn-block mt-3">Login</button>
-
-                    <p class="text-muted text-center p-2">New User ?
-                        <a href="signup.php" class="card-link text-primary">Register Here</a>
-                    </p>
-
-                </form>
-
-                <!-- Input End -->
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- Login Modal End -->
 
 <?php
 //to retieve the keyword

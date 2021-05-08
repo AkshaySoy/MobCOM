@@ -1,7 +1,14 @@
 <?php
 
 session_start();
-session_destroy();
-header('location: index.php');
 
-?>
+if (session_destroy()) {
+
+    unset($_SESSION['logout_message']);
+    header('location: index.php');
+    
+}
+
+
+
+
