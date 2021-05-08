@@ -7,72 +7,76 @@
 
     $title = "MobCOM | Search Products";
     require('modules/header.php');
-
+    require('query-generators.php');
+    $query = "SELECT * FROM `product_master`";
     //filter test
     if (isset($_GET['filter_submit'])) {
-        echo "filtering : ";
+        echo "filtering : " . $_GET['searching'];
 
-        //search string
-        echo $_GET['searching'];
+        $filter_search = $_GET['searching']; //get string
+        $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
 
         //price filter checking
         if (isset($_GET['price'])) {
-            echo "<br>";
+            echo "<br>filter_price : ";
             $filter_price = $_GET['price'];
+            $query = $query . " AND " . GQ_priceArray($filter_price);
             for ($i = 0; $i < count($filter_price); $i++) {
-                echo $filter_price[$i] . " ";
+                echo $filter_price[$i] . " , ";
             }
         }
         //brand filter checking
         if (isset($_GET['brand'])) {
-            echo "<br>";
+            echo "<br>filter_brand : ";
             $filter_brand = $_GET['brand'];
             for ($i = 0; $i < count($filter_brand); $i++) {
-                echo $filter_brand[$i] . " ";
+                echo $filter_brand[$i] . " , ";
             }
         }
         //ram filter checking
         if (isset($_GET['ram'])) {
-            echo "<br>";
+            echo "<br> filter_ram : ";
             $filter_ram = $_GET['ram'];
             for ($i = 0; $i < count($filter_ram); $i++) {
-                echo $filter_ram[$i] . " ";
+                echo $filter_ram[$i] . " , ";
             }
         }
         //storage filter checking
         if (isset($_GET['storage'])) {
-            echo "<br>";
+            echo "<br>filter_storage : ";
             $filter_storage = $_GET['storage'];
             for ($i = 0; $i < count($filter_storage); $i++) {
-                echo $filter_storage[$i] . " ";
+                echo $filter_storage[$i] . " , ";
             }
         }
         //battery filter checking
         if (isset($_GET['battery'])) {
-            echo "<br>";
+            echo "<br>filter_battery : ";
             $filter_battery = $_GET['battery'];
             for ($i = 0; $i < count($filter_battery); $i++) {
-                echo $filter_battery[$i] . " ";
+                echo $filter_battery[$i] . " , ";
             }
         }
         //primary/back camera filter checking
         if (isset($_GET['pcamera'])) {
-            echo "<br>";
+            echo "<br>filter_pcamera : ";
             $filter_pcamera = $_GET['pcamera'];
             for ($i = 0; $i < count($filter_pcamera); $i++) {
-                echo $filter_pcamera[$i] . " ";
+                echo $filter_pcamera[$i] . " , ";
             }
         }
         //secondary/front camera filter checking
         if (isset($_GET['scamera'])) {
-            echo "<br>";
+            echo "<br>filter_scamera : ";
             $filter_scamera = $_GET['scamera'];
             for ($i = 0; $i < count($filter_scamera); $i++) {
-                echo $filter_scamera[$i] . " ";
+                echo $filter_scamera[$i] . " , ";
             }
         }
     } else {
-        echo "searching : ". $_GET['search_text']. "";
+        echo "searching : ". $_GET['search_text'];
+        $filter_search = $_GET['search_text'];
+        $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
     }
 
     //this is query generation from whatever data is given
@@ -82,24 +86,21 @@
     $db = 'mobcom';
     $con = mysqli_connect($server, $username, $password, $db);
     if ($con){
-        $query = "SELECT * FROM `product_master`";
-        echo "<br>DB Connected " . $query;
+        echo "<br>QUERY : " . $query;
         if ( $result = $con -> query($query) ){
             if ($result->num_rows > 0) {
                 // output data of each row
-                echo "<br>data fetched: ";
+                echo "<br>products fetched: " . mysqli_num_rows($result);
                 /*
                 while($row = $result->fetch_assoc()) {
                   echo $row["product_id"] . " : ". $row["model_name"]. "<br>";
                 }
                 */
-              } else {
-                echo "0 results";
-              }
+              } else { echo "<br>no products"; }
         }
-        else{ echo "<h2>Not Executed</h2>";}
+        else{ echo "<h2>QUERY PROBLEM</h2>"; }
     }
-    else{die('Connection Failed '. mysqli_connect_error());}
+    else{ die('Connection Failed '. mysqli_connect_error()); }
     
     //close the connection
     $con->close()
@@ -697,5 +698,6 @@
 <?php
 include ('modules/retrieval.php');
 ?>
+
 
 </html>
