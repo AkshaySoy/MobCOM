@@ -52,6 +52,7 @@
         if (isset($_GET['battery'])) {
             echo "<br>filter_battery : ";
             $filter_battery = $_GET['battery'];
+            $query = $query . " AND " . GQ_batteryArray ( $filter_battery );
             for ($i = 0; $i < count($filter_battery); $i++) {
                 echo $filter_battery[$i] . " , ";
             }

@@ -89,4 +89,21 @@ function GQ_storageArray ( $arr ) {
     return $storage_query;
 }
 
+function GQ_batteryArray ( $arr ) {
+    $battery_query = "( ";
+    for ($i=0 ; $i<count($arr) ; $i++ ){
+        if ( $arr[$i][0] == "<" || $arr[$i][0] == ">" ){         //for smaller or greater
+            $battery_query = $battery_query . " `battery_capacity` " . $arr[$i]; 
+        }
+        else{
+            $battery_query = $battery_query . "( `battery_capacity` BETWEEN " . explode("-", $arr[$i])[0] . " AND " . explode("-", $arr[$i])[1]. " )";
+        }
+        if ($i<count($arr)-1){
+            $battery_query = $battery_query . " OR";
+        }
+    }
+    $battery_query = $battery_query . " )";
+    return $battery_query;
+}
+
 ?>
