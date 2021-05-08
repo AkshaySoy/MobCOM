@@ -7,7 +7,7 @@
 
     $title = "MobCOM | Search Products";
     require('modules/header.php');
-    require('query-generators.php');
+    require('modules/query-generators.php');
     $query = "SELECT * FROM `product_master`";
     //filter test
     if (isset($_GET['filter_submit'])) {
@@ -23,7 +23,6 @@
         }
         //brand filter checking
         if (isset($_GET['brand'])) {
-            echo "<br>filter_brand : ";
             $filter_brand = $_GET['brand'];
             $query = $query . " AND " . GQ_brandArray( $filter_brand );
             for ($i = 0; $i < count($filter_brand); $i++) {
@@ -32,7 +31,6 @@
         }
         //ram filter checking
         if (isset($_GET['ram'])) {
-            echo "<br> filter_ram : ";
             $filter_ram = $_GET['ram'];
             $query = $query . " AND " . GQ_ramArray( $filter_ram );
             for ($i = 0; $i < count($filter_ram); $i++) {
@@ -41,7 +39,6 @@
         }
         //storage filter checking
         if (isset($_GET['storage'])) {
-            echo "<br>filter_storage : ";
             $filter_storage = $_GET['storage'];
             $query = $query . " AND " . GQ_storageArray ( $filter_storage );
             for ($i = 0; $i < count($filter_storage); $i++) {
@@ -50,27 +47,10 @@
         }
         //battery filter checking
         if (isset($_GET['battery'])) {
-            echo "<br>filter_battery : ";
             $filter_battery = $_GET['battery'];
             $query = $query . " AND " . GQ_batteryArray ( $filter_battery );
             for ($i = 0; $i < count($filter_battery); $i++) {
                 echo $filter_battery[$i] . " , ";
-            }
-        }
-        //primary/back camera filter checking
-        if (isset($_GET['pcamera'])) {
-            echo "<br>filter_pcamera : ";
-            $filter_pcamera = $_GET['pcamera'];
-            for ($i = 0; $i < count($filter_pcamera); $i++) {
-                echo $filter_pcamera[$i] . " , ";
-            }
-        }
-        //secondary/front camera filter checking
-        if (isset($_GET['scamera'])) {
-            echo "<br>filter_scamera : ";
-            $filter_scamera = $_GET['scamera'];
-            for ($i = 0; $i < count($filter_scamera); $i++) {
-                echo $filter_scamera[$i] . " , ";
             }
         }
     } else {
@@ -90,13 +70,13 @@
         if ( $result = $con -> query($query) ){
             if ($result->num_rows > 0) {
                 // output data of each row
-                echo "<br>products fetched: " . mysqli_num_rows($result);
+                echo "<br>products fetched: " . mysqli_num_rows($result) . "<br>";
                 /*
                 while($row = $result->fetch_assoc()) {
                   echo $row["product_id"] . " : ". $row["model_name"]. "<br>";
                 }
                 */
-              } else { echo "<br>no products"; }
+              } else { echo "<br>no products<br>"; }
         }
         else{ echo "<h2>QUERY PROBLEM</h2>"; }
     }
@@ -110,6 +90,8 @@
 
 <body class="bg-light">
     <input type='text' name='searching' id='searching' form='filters_form' placeholder='nothing' hidden>
+    <input type='number' name='pageNumber' id='pageNumber' form='filters_form' placeholder='page' value=1>
+    <input  type='submit' id="filter_submit" name='filter_submit' form='filters_form'>
     <!-- Navbar Start -->
 
     <?php
@@ -445,114 +427,9 @@
 
                             <hr class="my-2">
 
-                            <!-- Back Camera Start -->
-
-                            <div class="title">
-
-                                <a href="#" class="card-link text-dark" data-toggle="collapse" data-target="#collapse_6">
-                                    <h6 class="text-dark font-weight-bold">Back Camera
-                                        <i class="icon-control fa fa-caret-down float-right mr-2" aria-hidden="true">
-                                        </i>
-                                    </h6>
-                                </a>
-
-                            </div>
-
-                            <div class="filter-content collapse" id="collapse_6">
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_<2' value="<2">
-                                    <div class="custom-control-label">Below 2 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_3-5' value="3-5">
-                                    <div class="custom-control-label">3-4.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_5-8' value="5-8">
-                                    <div class="custom-control-label">5-7.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_8-12' value="8-12">
-                                    <div class="custom-control-label">8-11.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_12-13' value="12-13">
-                                    <div class="custom-control-label">12-12.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_13-16' value="13-16">
-                                    <div class="custom-control-label">13-15.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_16-21' value="16-21">
-                                    <div class="custom-control-label">16-20.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="pcamera[]" id='pcamera_>21' value=">21">
-                                    <div class="custom-control-label">21 MP & Above</div>
-                                </label>
-
-                            </div>
-
-                            <!-- Back Camera End -->
-
-                            <hr class="my-2">
-
-                            <!-- Front Camera Start -->
-
-                            <div class="title">
-
-                                <a href="#" class="card-link text-dark" data-toggle="collapse" data-target="#collapse_7">
-                                    <h6 class="text-dark font-weight-bold">Front Camera
-                                        <i class="icon-control fa fa-caret-down float-right mr-2" aria-hidden="true">
-                                        </i>
-                                    </h6>
-                                </a>
-
-                            </div>
-
-                            <div class="filter-content collapse" id="collapse_7">
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="scamera[]" id='scamera_<2' value="<2">
-                                    <div class="custom-control-label">0-1.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="scamera[]" id='scamera_12-13' value="12-13">
-                                    <div class="custom-control-label">12-12.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="scamera[]" id='scamera_13-16' value="13-16">
-                                    <div class="custom-control-label">13-15.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="scamera[]" id='scamera_16-21' value="16-21">
-                                    <div class="custom-control-label">16-20.9 MP</div>
-                                </label>
-
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="scamera[]" id='scamera_>21' value=">21">
-                                    <div class="custom-control-label">21 MP & Above</div>
-                                </label>
-
-                            </div>
-
-                            <!-- Front Camera End -->
-
 
                             <div class="mt-3 mb-5">
-                                <button type="submit" class="btn btn-primary float-left" name='filter_submit'>Apply</button>
+                                <button type="button" onclick="paginationFilter(1)" class="btn btn-primary float-left">Apply</button>
                                 <button type="reset" class="btn btn-secondary float-right">
                                     <i class="fa fa-undo" aria-hidden="true"></i>
                                 </button>
@@ -654,19 +531,15 @@
 
                 <nav aria-label="Page navigation sample">
                     <ul class="pagination justify-content-center mx-2 my-2">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a>
+                        <li class="page-item disabled" value='-1'><a class="page-link">Previous</a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a>
+                        <li onclick="paginationFilter(this.value)" class="page-item active" value=1><a class="page-link">1</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a>
+                        <li onclick="paginationFilter(this.value)" class="page-item" value=2><a class="page-link">2</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a>
+                        <li onclick="paginationFilter(this.value)" class="page-item" value=3><a class="page-link">3</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a>
+                        <li class="page-item" value='+1'><a class="page-link">Next</a>
                         </li>
                     </ul>
                 </nav>
@@ -699,5 +572,13 @@
 include ('modules/retrieval.php');
 ?>
 
+<script>
+
+function paginationFilter(value){
+    document.getElementById('pageNumber').value = value;
+    document.getElementById('filter_submit').click();
+}
+
+</script>
 
 </html>

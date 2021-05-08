@@ -55,25 +55,13 @@ if(isset($_GET['filter_submit'])){
         }
         echo "</script>";
     }
-
-    //retrieving primary camera
-    if (isset($_GET['pcamera'])){
-        echo "<script>";
-        for ($i=0; $i<count($filter_pcamera); $i++){
-            echo "document.getElementById('pcamera_$filter_pcamera[$i]').checked = true;";
-        }
-        echo "</script>";
-    }
-
-    //retrieving secondary camera
-    if (isset($_GET['scamera'])){
-        echo "<script>";
-        for ($i=0; $i<count($filter_scamera); $i++){
-            echo "document.getElementById('scamera_$filter_scamera[$i]').checked = true;";
-        }
-        echo "</script>";
-    }
     
+    //retrieving page number
+    if (isset($_GET['pageNumber'])){
+        echo "<script>";
+        echo "document.getElementById('pageNumber').value = " . $_GET['pageNumber'];
+        echo "</script>";
+    }
 }
 
 ?>

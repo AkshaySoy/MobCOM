@@ -1,0 +1,6 @@
+<?php
+
+$itemsPerPage = 5;
+
+
+?>
