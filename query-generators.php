@@ -47,4 +47,16 @@ function GQ_priceArray ( $arr ){
     $price_query = $price_query . " )";
     return $price_query;
 }
+
+function GQ_brandArray ( $arr ) {
+    $brand_query = '( ';
+    for ($i=0 ; $i<count($arr) ; $i++ ){
+        $brand_query = $brand_query . " `brand_name` = '$arr[$i]' ";
+        if ($i<count($arr)-1){
+            $brand_query = $brand_query . " OR";
+        }
+    }
+    $brand_query = $brand_query .' )';
+    return $brand_query;
+}
 ?>

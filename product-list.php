@@ -18,17 +18,14 @@
 
         //price filter checking
         if (isset($_GET['price'])) {
-            echo "<br>filter_price : ";
             $filter_price = $_GET['price'];
             $query = $query . " AND " . GQ_priceArray($filter_price);
-            for ($i = 0; $i < count($filter_price); $i++) {
-                echo $filter_price[$i] . " , ";
-            }
         }
         //brand filter checking
         if (isset($_GET['brand'])) {
             echo "<br>filter_brand : ";
             $filter_brand = $_GET['brand'];
+            $query = $query . " AND " . GQ_brandArray( $filter_brand );
             for ($i = 0; $i < count($filter_brand); $i++) {
                 echo $filter_brand[$i] . " , ";
             }
