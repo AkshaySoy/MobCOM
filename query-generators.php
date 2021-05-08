@@ -71,4 +71,22 @@ function GQ_ramArray ( $arr ) {
     $ram_query = $ram_query . " )";
     return $ram_query;
 }
+
+function GQ_storageArray ( $arr ) {
+    $storage_query = "( ";
+    for ($i=0 ; $i<count($arr) ; $i++ ){
+        if ( $arr[$i][0] == "<" || $arr[$i][0] == ">" ){         //for smaller or greater
+            $storage_query = $storage_query . " `internal_storage` " . $arr[$i]; 
+        }
+        else{
+            $storage_query = $storage_query . "( `internal_storage` BETWEEN " . explode("-", $arr[$i])[0] . " AND " . explode("-", $arr[$i])[1]. " )";
+        }
+        if ($i<count($arr)-1){
+            $storage_query = $storage_query . " OR";
+        }
+    }
+    $storage_query = $storage_query . " )";
+    return $storage_query;
+}
+
 ?>

@@ -43,6 +43,7 @@
         if (isset($_GET['storage'])) {
             echo "<br>filter_storage : ";
             $filter_storage = $_GET['storage'];
+            $query = $query . " AND " . GQ_storageArray ( $filter_storage );
             for ($i = 0; $i < count($filter_storage); $i++) {
                 echo $filter_storage[$i] . " , ";
             }
