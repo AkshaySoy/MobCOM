@@ -34,6 +34,7 @@
         if (isset($_GET['ram'])) {
             echo "<br> filter_ram : ";
             $filter_ram = $_GET['ram'];
+            $query = $query . " AND " . GQ_ramArray( $filter_ram );
             for ($i = 0; $i < count($filter_ram); $i++) {
                 echo $filter_ram[$i] . " , ";
             }

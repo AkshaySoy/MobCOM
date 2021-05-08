@@ -59,4 +59,16 @@ function GQ_brandArray ( $arr ) {
     $brand_query = $brand_query .' )';
     return $brand_query;
 }
+
+function GQ_ramArray ( $arr ) {
+    $ram_query = "( ";
+    for ($i=0 ; $i<count($arr) ; $i++ ){
+        $ram_query = $ram_query . " `ram` " . $arr[$i];
+        if ($i<count($arr)-1){
+            $ram_query = $ram_query . " OR";
+        }
+    }
+    $ram_query = $ram_query . " )";
+    return $ram_query;
+}
 ?>
