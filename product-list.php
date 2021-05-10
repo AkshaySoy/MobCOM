@@ -6,13 +6,15 @@
     <?php
 
     $title = "MobCOM | Search Products";
+    $pageNumber = 1;
+    $total_products = 0;
     require('modules/header.php');
     require('modules/query-generators.php');
     require('modules/displayer.php');
+    require('modules/constants.php');
     $query = "SELECT * FROM `product_master`";
     //filter test
     if (isset($_GET['filter_submit'])) {
-        echo "filtering : " . $_GET['searching'];
 
         $filter_search = $_GET['searching']; //get string
         $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
@@ -26,36 +28,26 @@
         if (isset($_GET['brand'])) {
             $filter_brand = $_GET['brand'];
             $query = $query . " AND " . GQ_brandArray( $filter_brand );
-            for ($i = 0; $i < count($filter_brand); $i++) {
-                echo $filter_brand[$i] . " , ";
-            }
         }
         //ram filter checking
         if (isset($_GET['ram'])) {
             $filter_ram = $_GET['ram'];
             $query = $query . " AND " . GQ_ramArray( $filter_ram );
-            for ($i = 0; $i < count($filter_ram); $i++) {
-                echo $filter_ram[$i] . " , ";
-            }
         }
         //storage filter checking
         if (isset($_GET['storage'])) {
             $filter_storage = $_GET['storage'];
             $query = $query . " AND " . GQ_storageArray ( $filter_storage );
-            for ($i = 0; $i < count($filter_storage); $i++) {
-                echo $filter_storage[$i] . " , ";
-            }
         }
         //battery filter checking
         if (isset($_GET['battery'])) {
             $filter_battery = $_GET['battery'];
             $query = $query . " AND " . GQ_batteryArray ( $filter_battery );
-            for ($i = 0; $i < count($filter_battery); $i++) {
-                echo $filter_battery[$i] . " , ";
-            }
+        }
+        if (isset($_GET['pageNumber'])){
+            $pageNumber = $_GET['pageNumber'];
         }
     } else {
-        echo "searching : ". $_GET['search_text'];
         $filter_search = $_GET['search_text'];
         $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
     }
@@ -66,20 +58,31 @@
     $password = '';
     $db = 'mobcom';
     $con = mysqli_connect($server, $username, $password, $db);
+
+    
     if ($con){
-        echo "<br>QUERY : " . $query;
+        //to get total item in the DB
         if ( $result = $con -> query($query) ){
             if ($result->num_rows > 0) {
-                // output data of each row
-                echo "<br>products fetched: " . mysqli_num_rows($result) . "<br>";
-                /*
-                while($row = $result->fetch_assoc()) {
-                  echo $row["product_id"] . " : ". $row["model_name"]. "<br>";
-                }
-                */
-              } else { echo "<br>no products<br>"; }
+                $total_products = mysqli_num_rows($result);
+            } else { 
+                //echo "<br>no products<br>"; 
+                echo "";
+            }
         }
-        else{ echo "<h2>QUERY PROBLEM</h2>"; }
+        else{ 
+            //echo "<h2>QUERY PROBLEM</h2>"; 
+            echo '';
+        }
+        //to get ppaginated data
+        if ( $result = $con -> query($query . GQ_pageNumber($pageNumber, $itemsPerPage)) ){
+            //echo "<br>This page: " . mysqli_num_rows($result) . "<br>";
+            echo '';
+        }
+        else{ 
+            //echo "<h2>QUERY PROBLEM</h2>";
+            echo '';
+        }
     }
     else{ die('Connection Failed '. mysqli_connect_error()); }
     
@@ -91,8 +94,8 @@
 
 <body class="bg-light">
     <input type='text' name='searching' id='searching' form='filters_form' placeholder='nothing' hidden>
-    <input type='number' name='pageNumber' id='pageNumber' form='filters_form' placeholder='page' value=1>
-    <input  type='submit' id="filter_submit" name='filter_submit' form='filters_form'>
+    <input type='number' name='pageNumber' id='pageNumber' form='filters_form' placeholder='page' value=1 hidden>
+    <input  type='submit' id="filter_submit" name='filter_submit' form='filters_form' hidden>
     <!-- Navbar Start -->
 
     <?php
@@ -453,12 +456,11 @@
             <div class="col-md-10">
 
                 <div class="form-inline">
-                    <strong class="mr-md-auto"><?php echo mysqli_num_rows($result); ?> Products found</strong>
+                    <strong class="mr-md-auto"><?php echo $total_products; ?> Products found</strong>
                 </div>
 
                 <!-- Product Card Start -->
                 <!--    TEMPORARY REFERENCE
-                <div>
                     <div class="card card-product-list mx-2 my-3 p-3">
 
                         <div class="row no-gutters">
@@ -529,9 +531,9 @@
                 -->
                 <!-- Product Card End -->
                 <?php
-                    cardRenderer($result);
+                    cardRenderer($result);  //to display the cards
+                    paginationRenderer($total_products, $itemsPerPage, $pageNumber);    //for pagination
                 ?>
-                </div>
                 <!-- Pagination Start -->
 
                 <nav aria-label="Page navigation sample">

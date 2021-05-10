@@ -21,7 +21,7 @@ function GQ_searchArray ( $arr ){
     else {
         $search_query = "( ";
         for ($i=0 ; $i<count($arr) ; $i++ ){
-            $search_query = $search_query . " CONCAT(`product_desc`, `model_name`, `model_colour`) LIKE '%$arr[$i]%'";
+            $search_query = $search_query . " CONCAT(`brand_name`, `product_desc`, `model_name`, `model_colour`) LIKE '%$arr[$i]%'";
             if ($i<count($arr)-1){
                 $search_query = $search_query . " AND";
             }
@@ -104,6 +104,11 @@ function GQ_batteryArray ( $arr ) {
     }
     $battery_query = $battery_query . " )";
     return $battery_query;
+}
+
+function GQ_pageNumber($pageNumber, $itemsPerPage){
+    $pageNumber = $pageNumber -1;
+    return " LIMIT $itemsPerPage OFFSET $pageNumber";
 }
 
 ?>

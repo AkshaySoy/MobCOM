@@ -1,9 +1,7 @@
 <?php
 
 function cardRenderer ($result){
-    echo "<br>";
     while($row = $result->fetch_assoc()) {
-        //echo $row["product_id"] . " : ". $row["model_name"]. "<br>";
         echo "
             <div class='card card-product-list mx-2 my-3 p-3'>
 
@@ -11,7 +9,7 @@ function cardRenderer ($result){
 
                 <div class='col-md-3 mb-2'>
                     <a href='#'>
-                        <img class='product-img' src='images/phone_images/71Sinqbw35L._SL1500_.jpg'>
+                        <img class='product-img' src='images/$row[brand_name]/$row[model_name]/1.jpg'>
                     </a>
                 </div>
 
@@ -76,5 +74,15 @@ function cardRenderer ($result){
         }
 
 }
+
+
+
+function paginationRenderer($total_products, $itemsPerPage, $pageNumber){
+    $max_pageNumber = ceil($total_products / $itemsPerPage);
+    $pageArray = [$pageNumber];
+
+    echo "<h1>$max_pageNumber $pageNumber $pageArray[0]</h1>";
+}
+
 
 ?>
