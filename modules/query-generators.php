@@ -1,6 +1,6 @@
 <?php
 
-echo "Generator Loaded<br>";
+//echo "Generator Loaded<br>";
 
 function generateArrayFromWords( $words ) {
     $words = explode(" ", $words);
@@ -111,4 +111,8 @@ function GQ_pageNumber($pageNumber, $itemsPerPage){
     return " LIMIT $itemsPerPage OFFSET $pageNumber";
 }
 
+//get details of a specific id
+function GQ_productId($id){
+    return "SELECT * FROM `product_master` WHERE `product_id` = $id";
+}
 ?>

@@ -7,7 +7,26 @@
 
     $title = "MobCOM | Samsung Galaxy A21";
     require('modules/header.php');
+    require('modules/displayer.php');           //for getting the details from the databse
+    require('modules/query-generators.php');    //for getting query
 
+    //DTABASE CONNECTION
+    $server = 'localhost';
+    $username = 'root';
+    $password = '';
+    $db = 'mobcom';
+    $con = mysqli_connect($server, $username, $password, $db);
+    if (isset($_GET['product_id'])){
+        $product_details = $con -> query (GQ_productId($_GET['product_id']));
+        if ($product_details->num_rows > 0) {
+            $row = $product_details->fetch_assoc();
+            displayProductDetails($row);
+        } else { 
+            echo "<br>no products<br>";
+        }
+    }else {
+        echo "<h1>NO DATA TO SEARCH</h1>";
+    }
     ?>
 
 </head>

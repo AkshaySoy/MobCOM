@@ -75,7 +75,8 @@
             echo '';
         }
         //to get ppaginated data
-        if ( $result = $con -> query($query . GQ_pageNumber($pageNumber, $itemsPerPage)) ){
+        if ( $result = $con -> query($query ) ){
+            //. GQ_pageNumber($pageNumber, $itemsPerPage)
             //echo "<br>This page: " . mysqli_num_rows($result) . "<br>";
             echo '';
         }
@@ -112,7 +113,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/mobcom">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Newly Added</li>
             </ol>
         </nav>
