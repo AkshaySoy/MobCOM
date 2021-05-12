@@ -29,8 +29,9 @@
         echo "<script>alert('invalid Link'); window.location.replace('./') </script>";
     }
     if (isset($_SESSION['user_id'])){
+        
         echo "<br>userId: ". $_SESSION['user_id'];
-        echo "<script>var user_id = $_SESSION[user_id]</script>";
+        echo "<script>var user_id = $_SESSION[user_id];</script>";
     }else{echo "<br>userId: not logged in";echo "<script>var user_id = null</script>";}
     if (isset($_SESSION['user_email'])){
         echo "<br>useremail: ". $_SESSION['user_email'];
@@ -534,7 +535,8 @@
 
 <script>
     function addToCart(){
-        if (user_id & product_id){
+        console.log('asdas', user_id, product_id)
+        if (user_id!=null & product_id!=null){
             var xhttp = new XMLHttpRequest();
             let data = `user_id=${user_id}&product_id=${product_id}`;
             console.log('data: ', data)
