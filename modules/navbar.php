@@ -59,6 +59,7 @@ require('modules/login-query.php');
 
                         if ($res) {
                             $num = mysqli_num_rows($res);
+                            $GLOBALS['products_in_cart'] = $num;
                             mysqli_free_result($res);
                         }
 

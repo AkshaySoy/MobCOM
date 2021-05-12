@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <?php
-
+    
     $title = "MobCOM | My Shopping Cart";
     require('modules/header.php');
+    
 
     ?>
 
@@ -20,6 +21,9 @@
     <?php
 
     require('modules/navbar.php');
+    
+    echo "user_id : " . $_SESSION['user_id'];
+    echo "glob cart : " . $GLOBALS['products_in_cart'];
 
     ?>
 
@@ -41,76 +45,76 @@
 
                         <h5 class="font-weight-bold mb-4">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            My Cart (1)
+                            My Cart
                         </h5>
 
                         <!-- Product Start -->
-
-                        <div class="row mb-4">
-
-                            <div class="col-md-5 col-lg-3 col-xl-3 mb-2">
-                                <a href="#">
-                                    <div class="border text-center">
-                                        <img class="img-fluid my-3" width="75px" src="images/phone_images/samsung-galaxy-a21/samsung-galaxy-a21-front.jpeg">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-md-7 col-lg-9 col-xl-9">
-
-                                <div>
-
-                                    <div class="d-flex justify-content-between">
-
-                                        <div>
-
-                                            <a class="card-link text-dark" href="#">
-                                                <h5>Samsung Galaxy A21s (Silver, 128 GB)</h5>
-                                            </a>
-
-                                            <p class="text-success">
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                                In Stock
-                                            </p>
-
-                                            <p class="text-muted">
-
-                                                <i class="fa fa-briefcase" aria-hidden="true"></i>
-                                                Sold By : TrueComRetail
-                                                <br>
-                                                <i class="fa fa-truck" aria-hidden="true"></i>
-                                                Ships in 3-4 business days
-
-                                            </p>
-
-                                        </div>
-
-                                        <div class="mx-3">
-
-                                            <h4>₹ 17,249</h4>
-
-                                            <span class="badge badge-pill badge-danger verify-pill p-2">
-                                                MobCOM Verified
-                                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </span>
-
-                                            <div class="my-3">
-                                                <a href="#" class="card-link text-danger">
-                                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                                    Remove Item
+                        <?php
+                        $sql = "SELECT * FROM shopping_cart_master sc, product_master pm WHERE sc.product_id = pm.product_id";
+                        if ($GLOBALS['con']) {
+                            if ( $result = $GLOBALS['con'] -> query($sql) ){
+                                if ($result->num_rows > 0) {
+                                    $total_products = mysqli_num_rows($result);
+                                    while($row = $result->fetch_assoc()){
+                                    echo "
+                                        <div class='row mb-4'>
+                                            <div class='col-md-5 col-lg-3 col-xl-3 mb-2'>
+                                                <a href='#'>
+                                                    <div class='border text-center'>
+                                                        <img class='img-fluid my-3' width='75px' src='images/$row[brand_name]/$row[model_name]/1.jpg'>
+                                                    </div>
                                                 </a>
                                             </div>
-
-
+                                            <div class='col-md-7 col-lg-9 col-xl-9'>
+                                                <div>
+                                                    <div class='d-flex justify-content-between'>
+                                                        <div>
+                                                            <a class='card-link text-dark' href='#'>
+                                                                <h5>$row[brand_name] $row[model_name] ( $row[model_colour], $row[internal_storage] GB)</h5>
+                                                            </a>
+                                                            <p class='text-success'>
+                                                                <i class='fa fa-check' aria-hidden='true'></i>
+                                                                In Stock
+                                                            </p>
+                                                            <p class='text-muted'>
+                                                                <i class='fa fa-truck' aria-hidden='true'></i>
+                                                                Ships in 3-4 business days
+                                                            </p>
+                                                        </div>
+                                                        <div class='mx-3'>
+                                                            <h4>₹ " . number_format($row['mobile_price'],0,'.',',')."</h4>
+                                                            <span class='badge badge-pill badge-danger verify-pill p-2'>
+                                                                MobCOM Verified
+                                                                <i class='fa fa-check-circle' aria-hidden='true'></i>
+                                                            </span>
+                                                            <div class='my-3'>
+                                                                <a href='#' class='card-link text-danger'>
+                                                                    <i class='fa fa-times' aria-hidden='true'></i>
+                                                                    Remove Item
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <hr class='mb-4'>
 
-                                </div>
-                            </div>
-                        </div>
+                                    ";
+                                }
+                                } else { 
+                                    echo "<br>no products<br>"; 
+                                }
+                            }
+                            else{  
+                                echo '<br> QUERY PROBLEM';
+                            }
+                        }else {
+                            echo "<br>NOT";
+                        }
 
-                        <hr class="mb-4">
-
+                        ?>
+                        
                         <!-- Product End -->
 
                         <div class="alert alert-warning" role="alert">
