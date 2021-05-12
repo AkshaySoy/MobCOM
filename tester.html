@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>head</h1>
+    <p>Click button below</p>
+    <button onclick='test1()'>GEt</button>
+    <input type='number' name='user_id' id='user_id' value=0>
+    <input type='number' name='product_id' id='product_id' value=0>
+    <button onclick="test2(user_id.value, product_id.value)">gter</button>
+    <p id='demo'></p>
+</body>
+</html>
+
+<script>
+async function test1 (){
+    console.log('test1 called')
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "http://localhost:3000/getAllProducts", true);
+    xhttp.send();
+    console.log('test one ended : ', this.responseText)
+}
+async function test2 (user_id, product_id){
+    console.log('test 2 started')
+    var xhttp = new XMLHttpRequest();
+    let data = `user_id=${user_id}&product_id=${product_id}`;
+    let url = `http://localhost:3000/addProductToCart?${data}`;
+    xhttp.open("POST", url, true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    console.log('test 2 ended : ', this.responseText)
+}
+</script>

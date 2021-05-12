@@ -20,12 +20,24 @@
         $product_details = $con -> query (GQ_productId($_GET['product_id']));
         if ($product_details->num_rows > 0) {
             $row = $product_details->fetch_assoc();
+            echo "Product Id : $row[product_id]";
+            echo "<script>var product_id = $row[product_id]</script>";
         } else { 
-            echo "<script>alert('product id invalid.');window.location.replace('./')</script>";
+            echo "<script>var product_id = null;alert('product id invalid.');window.location.replace('./')</script>";
         }
     }else {
         echo "<script>alert('invalid Link'); window.location.replace('./') </script>";
     }
+    if (isset($_SESSION['user_id'])){
+        echo "<br>userId: ". $_SESSION['user_id'];
+        echo "<script>var user_id = $_SESSION[user_id]</script>";
+    }else{echo "<br>userId: not logged in";echo "<script>var user_id = null</script>";}
+    if (isset($_SESSION['user_email'])){
+        echo "<br>useremail: ". $_SESSION['user_email'];
+    }else{echo "<br>useremail: not logged in";}
+    if (isset($_SESSION['login_status'])){
+        echo "<br>status: ". $_SESSION['login_status'];
+    }else{echo "<br>status: not logged in";}
     ?>
 
 </head>
@@ -182,9 +194,9 @@
                                 Buy Now
                             </a>
 
-                            <a href="#" class="btn btn-success">
+                            <a class="btn btn-success" onclick="addToCart()">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Add to Cart
+                                Add To Cart
                             </a>
 
                         </div>
@@ -519,5 +531,28 @@
     <!-- Footer End -->
 
 </body>
+
+<script>
+    function addToCart(){
+        if (user_id & product_id){
+            var xhttp = new XMLHttpRequest();
+            let data = `user_id=${user_id}&product_id=${product_id}`;
+            console.log('data: ', data)
+            let url = `http://localhost:3000/addProductToCart?${data}`;
+            xhttp.open("POST", url, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                    alert(this.responseText)
+                }
+            };
+        }
+        else{
+            alert('not logged in')
+        }
+    }
+</script>
+
 
 </html>
