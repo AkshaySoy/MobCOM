@@ -19,6 +19,7 @@ app.get('/', function(req, res){
 //routes are defined here
 app.get('/getAllProducts', controller.getAllProducts);
 app.post('/addProductToCart', controller.addProductToCart);
+app.post('/removeProductFromCart', controller.removeProductFromCart);
 
 
 

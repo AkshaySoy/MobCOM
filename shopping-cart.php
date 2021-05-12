@@ -22,8 +22,23 @@
 
     require('modules/navbar.php');
     
-    echo "user_id : " . $_SESSION['user_id'];
+    echo "user_id : " . $_SESSION['user_id'] ;
     echo "glob cart : " . $GLOBALS['products_in_cart'];
+    if ($_SESSION['login_status'] == true){
+        echo "
+        <script>
+            var user_id = $_SESSION[user_id]
+        </script>
+        ";
+    }
+    else{
+        echo "
+        <script>
+            var user_id = null;
+            location.replace('./')
+        </script>
+        ";
+    }
 
     ?>
 
@@ -56,12 +71,13 @@
                                 if ($result->num_rows > 0) {
                                     $total_products = mysqli_num_rows($result);
                                     while($row = $result->fetch_assoc()){
-                                    echo "
+
+                                        echo "
                                         <div class='row mb-4'>
                                             <div class='col-md-5 col-lg-3 col-xl-3 mb-2'>
                                                 <a href='#'>
                                                     <div class='border text-center'>
-                                                        <img class='img-fluid my-3' width='75px' src='images/$row[brand_name]/$row[model_name]/1.jpg'>
+                                                        <img class='img-fluid my-3' width='50px' src='images/$row[brand_name]/$row[model_name]/1.jpg'>
                                                     </div>
                                                 </a>
                                             </div>
@@ -88,7 +104,7 @@
                                                                 <i class='fa fa-check-circle' aria-hidden='true'></i>
                                                             </span>
                                                             <div class='my-3'>
-                                                                <a href='#' class='card-link text-danger'>
+                                                                <a onclick='removeItem(this.id)' class='card-link text-danger' id='$row[product_id]_$row[time_stamp]'>
                                                                     <i class='fa fa-times' aria-hidden='true'></i>
                                                                     Remove Item
                                                                 </a>
@@ -192,5 +208,31 @@
     <!-- Footer End -->
 
 </body>
+
+<script>
+
+function removeItem(product_data){
+    let product_id = parseInt(product_data.split('_')[0])
+    let time_stamp = product_data.split('_')[1]
+    console.log('data: ' , user_id, product_id, time_stamp)
+
+    var xhttp = new XMLHttpRequest();
+    let data = `user_id=${user_id}&product_id=${product_id}&time_stamp=${time_stamp}`;
+    console.log('data: ', data)
+    let url = `http://localhost:3000/removeProductFromCart?${data}`;
+    xhttp.open("POST", url, true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+            location.reload()
+        }
+    };
+
+    location.reload()
+}
+
+</script>
+
 
 </html>
