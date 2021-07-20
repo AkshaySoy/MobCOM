@@ -33,13 +33,18 @@ if (isset($_POST['SubmitBtn'])) {
     if (empty($error)) {
 
         $query = "INSERT INTO `user_master` (`user_id`, `first_name`, `last_name`, `user_email`, `user_phone`, `user_gender`, `user_address_1`, `user_address_2`, `state_id`, `city_id`, `user_pincode`, `user_pwd`, `date_added`, `user_status`) 
-                  VALUES (NULL, '$firstName', '$lastName', '$email', '$phoneNumber', '$gender', '$address1', '$address2', '$state', '$city', '$pincode', '$password', '$dateAdded', '1')";
+                  VALUES (NULL, '$firstName', '$lastName', '$email', '$phoneNumber', '$gender', '$address1', '$address2', '$state', '$city', '$pincode', '$password', '$dateAdded', 'inactive')";
         $res = mysqli_query($conn, $query);
 
         if (!$res) {
             $error = "Some error occurred while processing data. Please try again later." . mysqli_error($conn);
         } else {
-            $success = "Registration Successfull !";
+            $success = "Registration Successfull ! Please check your email ID for verification.";
+
+            // User email goes to verify-email.php
+
+            require('modules/verify-email.php');
+
             $firstName = $lastName = $email = $phoneNumber = $gender = "";
             $address1 = $address2 = $state = $city = $pincode = $passwowrd = "";
         }

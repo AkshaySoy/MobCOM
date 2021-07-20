@@ -67,7 +67,7 @@
                                         <span class='sr-only'>Close</span>
                                     </button>
                                     <i class='fa fa-info-circle' aria-hidden='true'></i>
-                                    $success <a class='alert-link' href='login.php'>Click Here</a> to continue.
+                                    $success
                         </div>
 
                     ";
@@ -234,7 +234,7 @@
 
                         <div class="form-group col-md-6">
                             <label>Repeat password</label>
-                            <input type="password" class="form-control" id="confirm_password" onkeyup='checkPwd();'>
+                            <input type="password" class="form-control" id="confirm_password" onkeyup='checkPwd();' required>
                             <div class="invalid-feedback">
                                 Please re-enter the password
                             </div>
