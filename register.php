@@ -224,7 +224,7 @@
                         <div class="form-group col-md-6">
 
                             <label>Create password</label>
-                            <input type="password" class="form-control" id="password" name="password" onkeyup='checkPwd();' required>
+                            <input type="password" class="form-control" id="password" onkeyup='checkPwd();' required>
                             <div class="invalid-feedback" id="pwd-feedback">
                                 Please enter a password
                             </div>
@@ -234,7 +234,7 @@
 
                         <div class="form-group col-md-6">
                             <label>Repeat password</label>
-                            <input type="password" class="form-control" id="confirm_password" onkeyup='checkPwd();' required>
+                            <input type="password" class="form-control" id="confirm_password" name="password" onkeyup='checkPwd();' required>
                             <div class="invalid-feedback">
                                 Please re-enter the password
                             </div>
