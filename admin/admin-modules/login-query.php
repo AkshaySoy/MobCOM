@@ -24,7 +24,7 @@ if (isset($_POST['admin-login'])) {
 			header('location: index.php');
 		} else {
 
-			$error = "Invalid credentials or Account not activated.";
+			$error = "Invalid Credentials";
 		}
 	} else {
 
