@@ -45,6 +45,7 @@
                 <?php
 
                 require("modules/login-query.php");
+                require('modules/forgot-password.php');
 
                 if (!empty($error != "")) {
                     echo "
@@ -55,6 +56,21 @@
                             </button>
                             <i class='fa fa-info-circle' aria-hidden='true'></i>
                             $error
+                        </div>
+
+                    ";
+                }
+
+                if (!empty($resetLink)) {
+                    echo "
+
+                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                        <span class='sr-only'>Close</span>
+                                    </button>
+                                    <i class='fa fa-info-circle' aria-hidden='true'></i>
+                                    $resetLink
                         </div>
 
                     ";
@@ -112,10 +128,12 @@
                     <button type="submit" id="login" name="loginBtn" class="btn btn-success btn-block my-3">Login</button>
 
                     <p class="text-muted text-center">New User ?
-                        <a href="register.php" class="card-link text-primary">Register Here</a>
+                        <a href="register.php" class="card-link text-primary">Register Here</a> |
+                        <a href="" class="card-link text-primary mx-0" data-toggle="modal" data-target="#exampleModal">Forgot Password</a>
                     </p>
 
                 </form>
+
                 <!-- Script for Bootstrap form validation -->
 
                 <script>
@@ -140,6 +158,45 @@
                 </script>
 
                 <!-- Form End -->
+
+            </div>
+
+        </div>
+
+        <!-- Forgot Password Modal -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter your email ID</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="" method="POST">
+
+                            <div class="form-group">
+                                <input type="email" name="reset-email" id="reset-email" class="form-control" id="email-id">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" name="reset-btn-link" class="btn btn-primary">Send Reset Link</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                </div>
 
             </div>
 

@@ -7,7 +7,7 @@ if (isset($_POST['loginBtn'])) {
 	$userEmail = $_POST['userEmail'] ? addslashes($_POST['userEmail']) : exit('Invalid email');
 	$userPwd   = $_POST['userPwd'] ? addslashes($_POST['userPwd']) : exit('Invalid password');
 
-	$query = "SELECT * FROM `user_master` WHERE `user_email`='$userEmail'";
+	$query = "SELECT * FROM `user_master` WHERE `user_email`='$userEmail' AND `user_status` ='active'";
 	$res   = mysqli_query($conn, $query);
 	$nums  = mysqli_num_rows($res);
 
@@ -31,7 +31,7 @@ if (isset($_POST['loginBtn'])) {
 
 		} else {
 
-			$error = "Invalid Credentials!";
+			$error = "Invalid credentials or Account not activated.";
 			
 		}
 	} else {
