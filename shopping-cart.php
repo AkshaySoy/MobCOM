@@ -174,7 +174,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" type="button" class="btn btn-primary btn-block p-2">
+                        <a href="checkout.php" type="button" class="btn btn-primary btn-block p-2">
                             Go To Checkout
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
