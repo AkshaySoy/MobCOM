@@ -33,3 +33,13 @@ module.exports.removeProductFromCart = async function (req, res ){
         res.status(400).json({"status": false});
     }
 }
+
+module.exports.confirmOrder = async function ( req , res ){
+    try{
+        console.log('Confirming Order : ', req.query)
+        res.status(200).json({"status" : true});
+    }
+    catch (err){
+        res.status(400).json({"status": false});
+    }
+}

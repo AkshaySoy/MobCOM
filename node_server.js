@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 app.get('/getAllProducts', controller.getAllProducts);
 app.post('/addProductToCart', controller.addProductToCart);
 app.post('/removeProductFromCart', controller.removeProductFromCart);
-
+app.post('/confirmOrder', controller.confirmOrder);
 
 
 

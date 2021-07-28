@@ -70,8 +70,9 @@
                             if ( $result = $GLOBALS['con'] -> query($sql) ){
                                 if ($result->num_rows > 0) {
                                     $total_products = mysqli_num_rows($result);
+                                    $total_price = 0;
                                     while($row = $result->fetch_assoc()){
-
+                                        $total_price += $row['mobile_price'];
                                         echo "
                                         <div class='row mb-4'>
                                             <div class='col-md-5 col-lg-3 col-xl-3 mb-2'>
@@ -159,7 +160,9 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Subtotal
-                                <span>₹ 17,249</span>
+                                <?php
+                                    echo "<span>₹ ". number_format($total_price,0,'.',',') . "</span>";
+                                ?>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                 Shipping
@@ -170,7 +173,9 @@
                                 <div>
                                     <strong>Total Amount (Including GST)</strong>
                                 </div>
-                                <span><strong>₹ 17,249</strong></span>
+                                <?php
+                                    echo "<span><strong>₹ ". number_format($total_price,0,'.',',') . "</strong</span>";
+                                ?>
                             </li>
                         </ul>
 

@@ -18,12 +18,45 @@
     <?php
 
     require('modules/navbar.php');
-
+    echo "user_id : " . $_SESSION['user_id'] ;
+    echo "glob cart : " . $GLOBALS['products_in_cart'];
+    if ($_SESSION['login_status'] == true){
+        echo "
+        <script>
+            var user_id = $_SESSION[user_id]
+        </script>
+        ";
+    }
+    else{
+        echo "
+        <script>
+            var user_id = null;
+            location.replace('./')
+        </script>
+        ";
+    }
     ?>
 
     <!-- Navbar End -->
 
     <!-- Main Content Start -->
+
+    <?php
+        $sql = "SELECT * FROM shopping_cart_master sc, product_master pm WHERE sc.product_id = pm.product_id";
+        if ($GLOBALS['con']) {
+            if ( $result = $GLOBALS['con'] -> query($sql) ){
+                if ($result->num_rows > 0) {
+                    $total_products = mysqli_num_rows($result);
+                    $total_price = 0;
+                    while($row = $result->fetch_assoc()){
+                        $total_price += $row['mobile_price'];
+                    }
+                    $items_in_cart = mysqli_num_rows($result);
+                }
+            }
+        }
+    ?>
+
 
     <div class="container-fluid my-3 py-2 min-vh-100">
 
@@ -112,7 +145,7 @@
                             <div class="text-center">
 
                                 <button class="btn btn-outline-secondary" type="submit">Go Back</button>
-                                <button class="btn btn-primary" type="submit">Confirm Order</button>
+                                <button class="btn btn-primary" type="button" onclick="confirmOrder()">Confirm Order</button>
 
                             </div>
 
@@ -138,13 +171,17 @@
 
                         <h5 class="font-weight-bold mb-3">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            My Cart (1)
+                            <?php
+                                echo "My Cart (". $items_in_cart . ")";
+                            ?>
                         </h5>
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Subtotal
-                                <span>₹ 17,249</span>
+                                <?php
+                                    echo "<span>₹ ". number_format($total_price,0,'.',',') . "</span>";
+                                ?>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
                                 Shipping
@@ -156,7 +193,9 @@
                                 <div>
                                     <strong>Total Amount (Including GST)</strong>
                                 </div>
-                                <span><strong>₹ 17,249</strong></span>
+                                <?php
+                                    echo "<span><strong>₹ ". number_format($total_price,0,'.',',') . "</strong</span>";
+                                ?>
                             </li>
                         </ul>
 
@@ -192,13 +231,40 @@
 
     <!-- Boostrap 4 JS -->
 
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS -->
-
-    <script src="js/custom.js"></script>
 
 </body>
-
+<script>
+    function confirmOrder(){
+        let firstName = document.getElementById('firstName').value
+        let lastName = document.getElementById('lastName').value
+        let address = document.getElementById('address').value
+        let address2 = document.getElementById('address2').value
+        let state = document.getElementById('state').value
+        let city = document.getElementById('city').value
+        let pincode = document.getElementById('pincode').value
+        console.log('X12', user_id)
+        if (user_id!=null && firstName && lastName && (address || address2) && state && city && pincode){
+            var xhttp = new XMLHttpRequest();
+            let data = `user_id=${user_id}&firstName=${firstName}&lastName=${lastName}&address=${address}&address2=${address2}&state=${state}&city=${city}&pincode=${pincode}`;
+            console.log('Teda: ', data)
+            let url = `http://localhost:3000/confirmOrder?${data}`;
+            xhttp.open("POST", url, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                    alert(this.responseText)
+                    location.reload()
+                };
+            }
+        }
+        else{
+            if (user_id==null){
+                alert('not logged in')
+            }else{
+                alert('fill the form')
+            }
+        }
+    }
+</script>
 </html>

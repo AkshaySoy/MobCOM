@@ -1,0 +1,34 @@
+<script>
+    function confirmOrder(){
+        let firstName = document.getElementById('firstName').value
+        let lastName = document.getElementById('lastName').value
+        let address = document.getElementById('address').value
+        let address2 = document.getElementById('address2').value
+        let state = document.getElementById('state').value
+        let city = document.getElementById('city').value
+        let pincode = document.getElementById('pincode').value
+        console.log('X12', user_id)
+        if (user_id!=null && firstName && lastName && (address || address2) && state && city && pincode){
+            var xhttp = new XMLHttpRequest();
+            let data = `user_id=${user_id}&firstName=${firstName}&lastName=${lastName}&address=${address}&address2=${address2}&state=${state}&city=${city}&pincode=${pincode}`;
+            console.log('Teda: ', data)
+            let url = `http://localhost:3000/confirmOrder?${data}`;
+            xhttp.open("POST", url, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                    alert(this.responseText)
+                    location.reload()
+                };
+            }
+        }
+        else{
+            if (user_id!=null){
+                alert('not logged in')
+            }else{
+                alert('fill the form')
+            }
+        }
+    }
+</script>
