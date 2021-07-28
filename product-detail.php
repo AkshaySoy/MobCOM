@@ -190,7 +190,7 @@
                         <div class="group col-md">
 
                             <!--    ADDING CONDITION FOR AVailablity    -->
-                            <a href="#" class="btn btn-primary">
+                            <a class="btn btn-primary" onclick="buyProduct()">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                                 Buy Now
                             </a>
@@ -554,6 +554,11 @@
         else{
             alert('not logged in')
         }
+    }
+
+
+    function buyProduct(){
+        location.replace(`checkout.php?product_id=${product_id}`)
     }
 </script>
 
