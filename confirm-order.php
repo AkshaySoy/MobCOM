@@ -44,6 +44,10 @@
                 <p class="card-text">
                     Your order <b> Google Pixel 4a (Just Black, 128 GB) </b> is successfully placed.
                     <br>
+                    Order ID : 
+                    <br>
+                    Please check your email for OTP. This will be used for verifying your order at delivery.
+                    <br>
                     Estimated date of arrival : <b> 2 August 2021 </b>
                 </p>
 

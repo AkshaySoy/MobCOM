@@ -59,17 +59,17 @@
 
                     <!-- Table Start -->
 
-                    <table class="table table-hover table-bordered table-responsive-sm shadow">
+                    <table class="table table-hover table-bordered table-responsive-sm shadow" data-toggle="table" data-pagination="true" data-search="true" data-advanced-search="true" data-id-table="advancedTable">
 
                         <thead class="text-center thead-light">
                             <tr>
-                                <th scope="col">#</th>
+                                <th data-sortable="true" scope="col">#</th>
                                 <th scope="col">Product Image</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Model Name</th>
-                                <th scope="col">Model Number</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Stock</th>
+                                <th data-sortable="true" data-field="<?php $row->brand_name ?>" scope="col">Brand</th>
+                                <th data-sortable="true" data-field="<?php $row->model_name ?>" scope="col">Model Name</th>
+                                <th data-sortable="true" data-field="<?php $row->model_number ?>" scope="col">Model Number</th>
+                                <th data-sortable="true" data-field="<?php $row->model_price ?>" scope="col">Price</th>
+                                <th data-sortable="true" data-field="<?php $row->mobile_availabilty ?>" scope="col">Stock</th>
                                 <th scope="col">Manage</th>
                             </tr>
                         </thead>
@@ -78,21 +78,36 @@
 
                         <tbody class="text-center">
 
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>
-                                    <img class="img-fluid" height="50px" width="50px" src="../../images/Apple/iphone 7/1.jpg" alt="">
-                                </td>
-                                <td>Apple</td>
-                                <td>iPhone 7</td>
-                                <td>MN8X2HN/A</td>
-                                <td>52000</td>
-                                <td>1250</td>
-                                <td class="align-middle">
-                                    <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#manageProduct">Manage</button>
-                                </td>
-                            </tr>
+                            <?php
 
+                            $query = "SELECT * FROM `product_master`";
+                            $res = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_object($res)) {
+
+                                echo "
+
+                                <tr>
+                                    <th scope='row'>$row->product_id</th>
+                                    <td>
+                                        <img class='img-fluid' height='50px' width='50px' src='../../images/$row->brand_name/$row->model_name/1.jpg' alt=''>
+                                    </td>
+                                    <td>$row->brand_name</td>
+                                    <td>$row->model_name</td>
+                                    <td>$row->model_number/A</td>
+                                    <td>₹$row->mobile_price</td>
+                                    <td>$row->mobile_availabilty</td>
+                                    <td class='align-middle'>
+                                        <button type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageProduct'>Manage</button>
+                                    </td>
+                                </tr>
+                                
+                                
+                                ";
+                            }
+
+                            ?>
+                            <!-- 
                             <tr>
                                 <th scope="row">2</th>
                                 <td>
@@ -106,7 +121,7 @@
                                 <td class="align-middle">
                                     <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#manageProduct">Manage</button>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
 

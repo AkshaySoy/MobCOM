@@ -14,6 +14,7 @@ require_once('../../modules/config.php');
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
 
 <!-- Custom styles for this template -->
 <link href="dashboard.css" rel="stylesheet">

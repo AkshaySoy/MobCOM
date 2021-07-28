@@ -32,6 +32,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="transaction.php">
+                    <span data-feather="user-plus"></span>
+                    Add Delivery Personel
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="support.php">
                     <span data-feather="help-circle"></span>
                     Support
