@@ -76,7 +76,7 @@
 
                         <div class="form-group col-md-4">
                             <label for="os">Operating System</label>
-                            <input type="text" class="form-control" id="os" name="os" required>
+                            <input type="text" class="form-control" id="os" name="os" placeholder="" required>
                         </div>
 
                         <div class="form-group col-md-4">

@@ -182,23 +182,30 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="state">State</label>
-                            <select class="custom-select d-block w-100" name="state" id="state" required>
-                                <option value="">Choose...</option>
-                                <option>Jharkhand</option>
+
+                            <select class="custom-select d-block w-100" name="state" id="state-select" required>
+                                <option value selected disabled>Select State</option>
+                                <?php
+                                $query = "SELECT * FROM `state_master` ORDER BY `state_name` ASC";
+                                $res = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_object(($res))) {
+                                    echo "<option value='$row->state_id'>$row->state_name</option>";
+                                }
+                                ?>
                             </select>
                             <div class="invalid-feedback">
-
                                 Please select your state
                             </div>
                         </div>
+
+                        <!-- City list script at bottom -->
 
                         <!-- City -->
 
                         <div class="col-md-4 mb-3">
                             <label for="city">City</label>
-                            <select class="custom-select d-block w-100" id="city" name="city" required>
-                                <option value="">Choose...</option>
-                                <option>Jamshedpur</option>
+                            <select class="custom-select d-block w-100" id="city-select" name="city" required>
+                                <option value selected disabled>Select City</option>
                             </select>
                             <div class="invalid-feedback">
                                 Please select a valid city
@@ -304,6 +311,29 @@
     require('modules/footer.php');
 
     ?>
+
+    <!-- Script to get city list -->
+
+    <script>
+
+        $(document).on('change', '#state-select', function() {
+            var stateID = $("#state-select").val();
+
+            $.ajax({
+                url: 'modules/get-cities.php',
+                type: 'POST',
+                data: {
+                    POST_TYPE: 'GET_VIA_ID',
+                    STATE_ID: stateID
+                },
+                success: function(res) {
+                    console.log(res)
+                    $("#city-select").html(res);
+                }
+            })
+        })
+
+    </script>
 
     <!-- Footer End -->
 

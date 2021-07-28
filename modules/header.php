@@ -24,6 +24,12 @@ require_once('config.php');
 
 <link rel="icon" href="images/favicon.ico" type="image/ico">
 
-<!-- Custom JS -->
+<!-- Bootstrap 4 Stepper -->
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+
+<!-- Custom JS -->
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
 <script src="js/custom-script.js"></script>
