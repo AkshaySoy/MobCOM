@@ -52,7 +52,9 @@
                                 <th scope="col">Product ID</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Date Purchased</th>
-                                <th scope="col">Track Order</th>
+                                <th scope="col">Order Status</th>
+                                <th scope="col">Track Status</th>
+                                <th scope="col">Manage Order</th>
                             </tr>
                         </thead>
 
@@ -61,26 +63,16 @@
                         <tbody class="text-center">
 
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">123456789</th>
                                 <td>John Doe</td>
                                 <td>The Village</td>
                                 <td>24</td>
                                 <td>iPhone 7</td>
                                 <td>21 July 2021</td>
+                                <td>Order Confirmed</td>
+                                <td>Preparing for dispatch</td>
                                 <td class="align-middle">
-                                    <button type="button" class="btn btn-primary">Track</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Ethan Hunters</td>
-                                <td>The Village</td>
-                                <td>24</td>
-                                <td>iPhone 7</td>
-                                <td>21 July 2021</td>
-                                <td class="align-middle">
-                                    <button type="button" class="btn btn-primary">Track</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manageOrder">Manage</button>
                                 </td>
                             </tr>
 
@@ -89,6 +81,53 @@
                     </table>
 
                     <!-- Table End -->
+
+                    <!-- Modal -->
+
+                    <div class="modal fade" id="manageOrder" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="manageOrderLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="manageOrderLabel">Manage Order</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="">
+
+                                        <div class="form-group">
+
+                                            <label for="order-status">Change Order Status</label>
+                                            <select class="custom-select d-block w-100" id="order-status" name="order-status" required>
+                                                <option value="order confirmed">Order Confirmed</option>
+                                                <option value="picked by courier">Picked by courier</option>
+                                                <option value="on the way">On the way</option>
+                                                <option value="delivered">Delivered</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="track-status">Change Track Status</label>
+                                            <textarea class="form-control" id="track-status" name="track-status"></textarea>
+
+                                        </div>
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 

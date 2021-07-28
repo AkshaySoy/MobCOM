@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2021 at 06:35 AM
+-- Generation Time: Jul 27, 2021 at 05:20 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -24,30 +24,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand_master`
+-- Table structure for table `admin_master`
 --
 
-CREATE TABLE `brand_master` (
-  `brand_id` int(11) NOT NULL,
-  `brand_name` varchar(50) NOT NULL
+CREATE TABLE `admin_master` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(25) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `admin_status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `brand_master`
+-- Dumping data for table `admin_master`
 --
 
-INSERT INTO `brand_master` (`brand_id`, `brand_name`) VALUES
-(1, 'Google'),
-(2, 'OnePlus'),
-(3, 'POCO'),
-(4, 'Realme'),
-(5, 'Redmi'),
-(6, 'Samsung'),
-(7, 'Apple'),
-(8, 'Asus'),
-(9, 'Honor'),
-(10, 'LG'),
-(11, 'Nokia');
+INSERT INTO `admin_master` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_status`) VALUES
+(1, 'MobCOM ADMIN', 'mobcom.admn@gmail.com', '$2y$10$nZuRwMkOl9tIvztg6NcQ9uGV6ObuN19MZpIXHcmvG0Cz8uNz1YFim', 'active');
 
 -- --------------------------------------------------------
 
@@ -738,24 +731,24 @@ CREATE TABLE `product_master` (
 
 INSERT INTO `product_master` (`product_id`, `product_desc`, `brand_name`, `model_number`, `model_name`, `model_colour`, `display_size`, `display_resolution`, `operating_system`, `processor`, `internal_storage`, `ram`, `memory_card_available`, `primary_camera`, `secondary_camera`, `network_type`, `battery_capacity`, `mobile_width`, `mobile_depth`, `mobile_weight`, `mobile_price`, `mobile_availabilty`) VALUES
 (1, 'Meet Pixel 4a. It comes packed with the things you want most in a phone, for a lot less than you’d expect. And it’s unlocked – so you can pick the carrier and data plan that work best for you.', 'Google', 'G025J', 'Pixel 4a', 'Just Black', 14.73, '2340 x 1080', 'android 10', 'Qualcomm Snapdragon 730G', 128, 6, '64GB', '12.2MP', '8MP', '4G VOLTE, 4G, 3G, 2G', 3140, 69, 144, 8, 35000, 50),
-(2, 'Apple iPhone 7 (32GB) - Black', 'Apple', '\r\nMN8X2HN/A', '\r\niPhone 7', '\r\nBlack', 11.94, '1334 x 750', 'IOS 12', '\r\nApple A10 Fusion 64-bit processor and Embedded M10 Motion Co-processor\r\n', 32, 2, '64GB', '12MP', '\r\n7MP', '3G, 4G LTE, GPRS, WiFi, EDGE', 2700, 67, 138, 138, 52000, 0),
-(3, 'Apple iPhone 11 (Green, 64 GB)', 'Apple', '\r\nMHDG3HN/A', '\r\niPhone 11', '\r\nGreen', 15.49, '1792 x 828', '\r\niOS 14.2', 'A13 Bionic Chip', 64, 4, '32GB', '12MP + 12MP', '12MP', '\r\n4G VOLTE, 4G, 3G, 2G', 0, 76, 151, 194, 35000, 0),
-(4, 'Apple iPhone 12 Pro Max (Pacific Blue, 512 GB)', 'Apple', '\r\nMGDL3HN/A', '\r\niPhone 12 Pro Max', '\r\nPacific Blue', 17.02, '\r\n2778 x 1284', '\r\niOS 14', 'A14 Bionic Chip with Next Generation Neural Engine', 512, 4, '32BG', '12MP + 12MP + 12MP', '12MP', '\r\n5G, 4G, 3G, 2G', 3500, 78, 161, 226, 45200, 0),
-(5, 'Apple iPhone SE (White, 64 GB)', 'Apple', '\r\nMHGQ3HN/A', '\r\niPhone SE', 'White', 11.94, '\r\n1334 x 750', '\r\niOS 14.2', '\r\nA13 Bionic Chip with 3rd Gen Neural Engine', 64, 3, '128GB', '\r\n12MP', '\r\n7MP', '4G VOLTE, 4G, 3G, 2G', 2700, 67, 7, 148, 35200, 0),
+(2, 'Apple iPhone 7 (32GB) - Black', 'Apple', '\r\nMN8X2HN/A', 'iPhone 7', '\r\nBlack', 11.94, '1334 x 750', 'IOS 12', '\r\nApple A10 Fusion 64-bit processor and Embedded M10 Motion Co-processor\r\n', 32, 2, '64GB', '12MP', '\r\n7MP', '3G, 4G LTE, GPRS, WiFi, EDGE', 2700, 67, 138, 138, 52000, 0),
+(3, 'Apple iPhone 11 (Green, 64 GB)', 'Apple', '\r\nMHDG3HN/A', 'iPhone 11', '\r\nGreen', 15.49, '1792 x 828', '\r\niOS 14.2', 'A13 Bionic Chip', 64, 4, '32GB', '12MP + 12MP', '12MP', '\r\n4G VOLTE, 4G, 3G, 2G', 0, 76, 151, 194, 35000, 0),
+(4, 'Apple iPhone 12 Pro Max (Pacific Blue, 512 GB)', 'Apple', '\r\nMGDL3HN/A', 'iPhone 12 Pro Max', '\r\nPacific Blue', 17.02, '\r\n2778 x 1284', '\r\niOS 14', 'A14 Bionic Chip with Next Generation Neural Engine', 512, 4, '32BG', '12MP + 12MP + 12MP', '12MP', '\r\n5G, 4G, 3G, 2G', 3500, 78, 161, 226, 45200, 0),
+(5, 'Apple iPhone SE (White, 64 GB)', 'Apple', '\r\nMHGQ3HN/A', 'iPhone SE', 'White', 11.94, '\r\n1334 x 750', '\r\niOS 14.2', '\r\nA13 Bionic Chip with 3rd Gen Neural Engine', 64, 3, '128GB', '\r\n12MP', '\r\n7MP', '4G VOLTE, 4G, 3G, 2G', 2700, 67, 7, 148, 35200, 0),
 (6, 'Apple iPhone XR (Black, 64 GB) (Includes EarPods, Power Adapter)', 'Apple', '\r\nMRY42HN/A', 'iPhone XR', '\r\nBlack', 15.5, '\r\n\r\n1792 x 828', '\r\niOS 12', '\r\nA12 Bionic Chip', 64, 3, '64GB', '\r\n12MP', '7MP', '\r\n3G, 4G, 2G', 2700, 76, 8, 194, 45200, 0),
 (7, 'Asus Zenfone 3 Max ZC520TL-4H122IN (Grey, 32GB)', 'Asus', 'ZC520TL', 'Asus Zenfone 3 Max', 'Silver', 13.2, '1280 x 720', 'Android', 'MediaTek MT6737 64-bit', 32, 3, '32GB', '13MP', '5MP', 'dual SIM dual-standby (4G+4G)', 4130, 15, 1, 150, 13000, 0),
 (8, 'Asus Zenfone Max Pro M1 (Blue, 32 GB)  (3 GB RAM)', 'Asus', 'ZB601KL-4D101IN', 'Zenfone Max Pro M1', 'Silver', 15.21, '\r\n2160 x 1080', '\r\nAndroid Oreo 8.1', 'Qualcomm Snapdragon 636 Octa Core', 32, 3, '2TB', '13MP + 5MP', '\r\n8MP', '\r\n3G, 4G VOLTE, 2G', 5000, 76, 8, 180, 14000, 0),
 (9, 'Asus ZenFone Max Pro M2 (Blue, 64 GB)  (4 GB RAM)', 'Asus', 'ZB630KL-4D001IN', 'ZenFone Max Pro M2', 'Blue', 15.9, '\r\n2280 x 1080', '\r\nAndroid Oreo 8.1', 'Qualcomm Snapdragon 660 Octa Core', 64, 4, '2TB', '\r\n12MP + 5MP', '\r\n13MP', '\r\n3G, 4G VOLTE, 4G, 2G', 5000, 76, 9, 175, 15600, 0),
-(10, 'Asus ROG Phone 3 (Black, 128 GB)  (12 GB RAM)', 'Asus', 'ZS661KS-6A039IN', '\r\nROG Phone 3', '\r\nBlack', 16.74, '2340 x 1080', '\r\nAndroid 10', '\r\nQualcomm Snapdragon 865+ (SM8250)', 128, 12, '512GB', '64MP + 13MP + 5MP', '24MP', '\r\n5G, 4G, 3G, 2G', 6000, 78, 10, 240, 62000, 0),
+(10, 'Asus ROG Phone 3 (Black, 128 GB)  (12 GB RAM)', 'Asus', 'ZS661KS-6A039IN', 'ROG Phone 3', '\r\nBlack', 16.74, '2340 x 1080', '\r\nAndroid 10', '\r\nQualcomm Snapdragon 865+ (SM8250)', 128, 12, '512GB', '64MP + 13MP + 5MP', '24MP', '\r\n5G, 4G, 3G, 2G', 6000, 78, 10, 240, 62000, 0),
 (11, 'Asus ROG Phone II (Black, 128 GB)  (8 GB RAM)', 'Asus', '\r\nZS660KL-1A017IN', 'ROG Phone II\r\n', '\r\nBlack', 16.74, '\r\n2340 x 1080', 'Android Pie 9', 'Qualcomm Snapdragon 855 Plus', 128, 8, '512GB', '48MP + 13MP', '24MP', '\r\n3G, 4G VOLTE, 4G, 2G', 6000, 78, 10, 240, 72000, 0),
-(12, 'Honor 9X (Midnight Black, 128 GB)  (4 GB RAM)', 'Honor', '\r\nSTK-L22', '\r\n9X', '\r\nMidnight Blue', 16.74, '\r\n2340 x 1080', '\r\nAndroid Pie 9', '\r\nKirin 710F', 128, 4, '512GB', '48MP + 8MP + 2MP', '\r\n16MP', '\r\n4G VOLTE, 3G, 2G', 4000, 77, 9, 197, 16000, 0),
-(13, 'Honor 20 (Midnight Black, 128 GB)  (6 GB RAM)', 'Honor', '\r\nYAL-AL00', '\r\n20', '\r\nMidnight Black', 15.9, '\r\n2340 x 1080', 'Android Pie 9.0', 'HiSilicon Kirin 980', 128, 6, '64BG', '48MP + 2MP + 16MP\r\n', '32MP', '\r\n3G, 4G VOLTE, 4G, 2G', 3750, 74, 8, 174, 20000, 0),
-(14, 'LG G8X (Black, 128 GB)  (6 GB RAM)', 'LG', '\r\nLMG850EMW', '\r\nG8X', '\r\nBlack', 16.26, '\r\n2340 x 1080', 'Android Pie 9', '\r\nQualcomm Snapdragon™ 855 Octa-core', 128, 6, '2TB', '12MP + 13MP\r\n', '32MP ', '\r\n4G VOLTE, 3G', 4000, 76, 8, 191, 26000, 0),
+(12, 'Honor 9X (Midnight Black, 128 GB)  (4 GB RAM)', 'Honor', '\r\nSTK-L22', '9X', '\r\nMidnight Blue', 16.74, '\r\n2340 x 1080', '\r\nAndroid Pie 9', '\r\nKirin 710F', 128, 4, '512GB', '48MP + 8MP + 2MP', '\r\n16MP', '\r\n4G VOLTE, 3G, 2G', 4000, 77, 9, 197, 16000, 0),
+(13, 'Honor 20 (Midnight Black, 128 GB)  (6 GB RAM)', 'Honor', '\r\nYAL-AL00', '20', '\r\nMidnight Black', 15.9, '\r\n2340 x 1080', 'Android Pie 9.0', 'HiSilicon Kirin 980', 128, 6, '64BG', '48MP + 2MP + 16MP\r\n', '32MP', '\r\n3G, 4G VOLTE, 4G, 2G', 3750, 74, 8, 174, 20000, 0),
+(14, 'LG G8X (Black, 128 GB)  (6 GB RAM)', 'LG', '\r\nLMG850EMW', 'G8X', '\r\nBlack', 16.26, '\r\n2340 x 1080', 'Android Pie 9', '\r\nQualcomm Snapdragon™ 855 Octa-core', 128, 6, '2TB', '12MP + 13MP\r\n', '32MP ', '\r\n4G VOLTE, 3G', 4000, 76, 8, 191, 26000, 0),
 (15, 'LG Velvet Dual Screen (Aurora Silver, 128 GB)  (6 GB RAM)', 'LG', '\r\nLMG910EMW', 'Velvet Dual Screen', 'Aurora Silver', 17.27, '2460 x 1080', 'Android 10', 'Qualcomm Snapdragon 845', 128, 6, '2TB', '48MP + 8MP + 5MP', '16MP ', '\r\n4G VOLTE, 4G, 3G, 2G', 4300, 74, 8, 180, 53000, 0),
 (16, 'LG Wing (Illusion Sky, 128 GB)  (8 GB RAM)', 'LG', '\r\nLMF100EMW', 'Wing', '\r\nIllusion Sky', 17.27, '2460 x 1080', '\r\nAndroid 10', '\r\nQualcomm Snapdragon 765G', 128, 8, '2TB', '\r\n64MP + 13MP + 12MP', '32MP', '5G, 4G VOLTE, 4G, 3G, 2G', 4000, 75, 11, 260, 45000, 0),
-(17, 'Nokia 5.3 (CHARCOAL, 64 GB)  (6 GB RAM)', 'Nokia', '\r\n5.3 DS 6/64', '\r\n5.3', '\r\nCHARCOAL', 16.64, '720 x 1600', 'Android Android Q 10', 'Qualcomm Snapdragon 665', 64, 6, '32GB', '\r\n13MP', '8 MP, f/2.0, (wide)', '\r\n3G, 4G VOLTE, 4G, 2G', 4000, 67, 9, 180, 16000, 0),
+(17, 'Nokia 5.3 (CHARCOAL, 64 GB)  (6 GB RAM)', 'Nokia', '\r\n5.3 DS 6/64', '5.3', '\r\nCHARCOAL', 16.64, '720 x 1600', 'Android Android Q 10', 'Qualcomm Snapdragon 665', 64, 6, '32GB', '\r\n13MP', '8 MP, f/2.0, (wide)', '\r\n3G, 4G VOLTE, 4G, 2G', 4000, 67, 9, 180, 16000, 0),
 (18, 'Nokia 6.1 Plus (Blue, 64 GB)  (6 GB RAM)', 'Nokia', '', '6.1 Plus', 'Blue', 14.73, '2280 x 1080', '\r\nAndroid Oreo 8.1.0', '\r\nQualcomm Snapdragon 636 Octacore', 64, 4, '400GB', '16MP + 5MP', '\r\n16MP ', '\r\n3G, 4G, 2G', 3630, 71, 8, 151, 7000, 0),
-(19, 'Nokia TA-1174 / TA-1299  (Black)', 'Nokia', '\r\nTA-1174/NOKIA 105 DS / 105 ta-1174 ds', 'TA-1174 / TA-1299', '\r\nBlack', 4.57, '\r\n320 x 240', '', '', 4, 4, '1GB', '', '', '\r\n2G', 800, 0, 0, 0, 3500, 0),
+(19, 'Nokia TA-1174 / TA-1299  (Black)', 'Nokia', '\r\nTA-1174/NOKIA 105 DS / 105 ta-1174 ds', 'TA1174', '\r\nBlack', 4.57, '\r\n320 x 240', '', '', 4, 4, '1GB', '', '', '\r\n2G', 800, 0, 0, 0, 3500, 0),
 (20, 'Nokia 150 DS 2020  (Black)', 'Nokia', '\r\nTA-1235 / 12GMNB21A01', '150 DS 2020', '\r\nBlack', 6.1, '\r\n320 x 240', '\r\nSeries 30+', 'MediaTek', 4, 4, '32GB', '0.3MP', '', '\r\n2G', 1020, 51, 15, 91, 8000, 0),
 (21, 'Nokia C3 (Nordic Blue, 16 GB)  (2 GB RAM)', 'Nokia', '\r\nSP01Z01Z2249Y', 'C3', '\r\nNordic Blue', 15.21, '\r\n1440 x 720', 'Android 10', 'SC9863A Octa Core', 16, 2, '128GB', '8MP', '8MP ', '\r\n4G VOLTE, 4G, 3G, 2G', 3040, 77, 9, 185, 5000, 0),
 (22, 'OnePlus 7T', 'OnePlus', 'B082K96P6W', 'OnePlus 7T', 'Glacier Blue', 16.6, '2400 x 1080', 'Android', 'Qualcomm Snapdragon 865', 256, 8, '256GB', '48MP+8MP+5MP+2MP', '48MP', 'GSM, TDS, (B1/2/4/5/8/9/19), FDD-LTE, (B1/2/3/4/5/7/8/12/13/17/18/19/20/26/28/29), (B2/3/5/8), CDMA, TDD-LTE, UMTS, (B34/38/39/40/41), 4G, 2G, (B34/B39), (BC0/BC1)', 3800, 16, 7, 190, 35000, 0),
@@ -763,8 +756,8 @@ INSERT INTO `product_master` (`product_id`, `product_desc`, `brand_name`, `model
 (24, 'OnePlus 8 Pro (Glacial Green 8GB RAM+128GB Storage)', 'OnePlus', 'B078BN2H3R', 'OnePlus 8 Pro', 'Glacial Green', 17.2, '\r\nAMOLED', 'Android', 'Qualcomm Snapdragon 865', 256, 8, '256GB', '48', '48MP+8MP+48MP+5MP', 'GSM, BC0(Roaming), Wi-Fi 802.11 a/b/g/n/ac/ax, 2.4G/5G, Wi-Fi 6, Bluetooth 5.1, support aptX & aptX HD & LDAC & AAC, NFC enabled, LTE-FDD, NR, WCDMA, CDMA, (B1/2/3/4/5/7/8/12/17/18/19/20/26), N78, (B1/B2/B4/B5/B8/B9/B19), 5G, (850/900/1800/1900), (B1/3/41', 4510, 17, 7, 199, 45200, 0),
 (25, 'OnePlus Nord 5G (Blue Marble, 12GB RAM, 256GB Storage)', 'OnePlus', 'B0869855B8', 'OnePlus Nord 5G', 'Marble Blue', 16.4, '2400 x 1080', 'Android', 'Qualcomm Snapdragon 765G 5G mobile platform', 4, 64, '64GB', '48', '48MP+8MP+5MP+2MP', 'GSM, LTE-FDD, IN, WCDMA, (B1/2/3/4/5/7/8/12/17/18/19/20/26), (B38/39/40/41/46), N78, (B1/B2/B4/B5/B8/B9/B19), 5G, (850/900/1800/1900), MIMO:LTE: B1, 3, 40 NR: N78, LTE-TDD, Network connectivity may vary depending on carrier’s network and related service d', 4115, 16, 7, 184, 35999, 0),
 (26, 'POCO C3 (Arctic Blue, 64 GB)  (4 GB RAM)', 'POCO', 'MZB07RJIN', 'C3', 'Arctic Blue', 16.59, '1600 x 720', 'Android 10', 'Mediatek Helio G35', 64, 4, '512GB', '13MP + 2MP + 2MP', '5MP ', '4G VOLTE, 4G, 3G, 2G', 5000, 77, 9, 194, 16999, 0),
-(27, 'POCO F1 (Graphite Black, 64 GB)  (6 GB RAM)', 'POCO', 'MZB6645IN', '\r\nF1', 'Graphite Black', 15.7, '2160 x 1080', 'Android Oreo 8.1', 'Qualcomm Snapdragon 845', 64, 6, '256GB', '\r\n12MP + 5MP', '20MP ', '3G, 4G VOLTE, 2G', 4000, 75, 9, 180, 13999, 0),
-(28, 'POCO M2 (Brick Red, 128 GB)  (6 GB RAM)', 'POCO', '\r\nMZB9922IN', '\r\nM2', 'Brick Red', 16.59, '2340 x 1080', 'Android 10', 'MediaTek Helio G80', 128, 6, '512GB', '13MP + 8MP + 5MP + 2MP', '8MP ', '4G VOLTE, 4G, 3G, 2G', 5000, 77, 9, 198, 13599, 0),
+(27, 'POCO F1 (Graphite Black, 64 GB)  (6 GB RAM)', 'POCO', 'MZB6645IN', 'F1', 'Graphite Black', 15.7, '2160 x 1080', 'Android Oreo 8.1', 'Qualcomm Snapdragon 845', 64, 6, '256GB', '\r\n12MP + 5MP', '20MP ', '3G, 4G VOLTE, 2G', 4000, 75, 9, 180, 13999, 0),
+(28, 'POCO M2 (Brick Red, 128 GB)  (6 GB RAM)', 'POCO', '\r\nMZB9922IN', 'M2', 'Brick Red', 16.59, '2340 x 1080', 'Android 10', 'MediaTek Helio G80', 128, 6, '512GB', '13MP + 8MP + 5MP + 2MP', '8MP ', '4G VOLTE, 4G, 3G, 2G', 5000, 77, 9, 198, 13599, 0),
 (29, 'POCO M2 Pro (Out of the Blue, 64 GB)  (6 GB RAM)', 'POCO', '\r\nMZB9627IN', 'M2 Pro', 'Out of the Blue', 16.94, '2400 x 1080', '\r\nAndroid 10', 'Qualcomm Snapdragon 720G', 64, 6, '512GB', '\r\n48MP + 8MP + 5MP + 2MP', '16MP', '\r\n4G, 3G, 2G', 5000, 77, 9, 209, 17999, 0);
 
 -- --------------------------------------------------------
@@ -777,8 +770,15 @@ CREATE TABLE `shopping_cart_master` (
   `cart_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `date_added` date NOT NULL DEFAULT current_timestamp()
+  `time_stamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shopping_cart_master`
+--
+
+INSERT INTO `shopping_cart_master` (`cart_id`, `user_id`, `product_id`, `time_stamp`) VALUES
+(44, 8, 3, '2021-07-27 20:23:03');
 
 -- --------------------------------------------------------
 
@@ -853,7 +853,7 @@ CREATE TABLE `user_master` (
   `user_pincode` int(25) NOT NULL,
   `user_pwd` varchar(255) NOT NULL,
   `date_added` varchar(255) NOT NULL,
-  `user_status` tinyint(1) NOT NULL
+  `user_status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -861,8 +861,10 @@ CREATE TABLE `user_master` (
 --
 
 INSERT INTO `user_master` (`user_id`, `first_name`, `last_name`, `user_email`, `user_phone`, `user_gender`, `user_address_1`, `user_address_2`, `state_id`, `city_id`, `user_pincode`, `user_pwd`, `date_added`, `user_status`) VALUES
-(1, 'Ramdayal', 'Munda', 'myown.coc.id.1@gmail.com', 7004140477, 'Male', 'Boys\' Hostel 1, Room number 310', 'RVSCET', 0, 0, 831012, '$2y$10$42cQSyKauF.6PaLbWpN6guIy3awoe3.A3t9iwPz4XqHTajcv6avim', 'Tue, 09 Mar 2021 23:18:12 +0530', 1),
-(2, 'ram', 'las', 'test@test.test', 6468536834, 'Male', ' seef argarg ag', 'asrg asgsrh SRG', 0, 0, 827006, '$2y$10$XM0piWJIfXNG42tiU.A.hO8OWb5Edc1tj8jXMK2.vD/QHBZeLH3AO', '21-05-08 12:37:31', 1);
+(1, 'Ramdayal', 'Munda', 'myown.coc.id.1@gmail.com', 7004140477, 'Male', 'Boys\' Hostel 1, Room number 310', 'RVSCET', 0, 0, 831012, '$2y$10$42cQSyKauF.6PaLbWpN6guIy3awoe3.A3t9iwPz4XqHTajcv6avim', 'Tue, 09 Mar 2021 23:18:12 +0530', '1'),
+(2, 'ram', 'las', 'test@test.test', 6468536834, 'Male', ' seef argarg ag', 'asrg asgsrh SRG', 0, 0, 827006, '$2y$10$XM0piWJIfXNG42tiU.A.hO8OWb5Edc1tj8jXMK2.vD/QHBZeLH3AO', '21-05-08 12:37:31', '1'),
+(3, 'ram', 'dayal', 'ramdayal@gmail.com', 9898998989, 'Male', 'test etst', 'test rt ', 0, 0, 854754, '$2y$10$rrj7st6nfBlcsq3H5UfuQ.am5HCFUlK6lYIRNrsMDb.t2D55P1Xy.', '21-05-10 10:50:41', '1'),
+(8, 'qasda', 'aefa', 'mocof@dropjar.com', 1234131231, 'Male', 'asdas', 'awfaws', 0, 0, 134133, '$2y$10$e5/fcg/zAsEAqgH.ESy4rO1AyklEjJbsX5etyEDuDURunqYL0y046', '21-07-27 19:31:52', 'active');
 
 -- --------------------------------------------------------
 
@@ -885,12 +887,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `brand_master`
---
-ALTER TABLE `brand_master`
-  ADD PRIMARY KEY (`brand_id`);
 
 --
 -- Indexes for table `order_master`
@@ -921,12 +917,6 @@ ALTER TABLE `user_master`
 --
 
 --
--- AUTO_INCREMENT for table `brand_master`
---
-ALTER TABLE `brand_master`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
@@ -942,13 +932,13 @@ ALTER TABLE `product_master`
 -- AUTO_INCREMENT for table `shopping_cart_master`
 --
 ALTER TABLE `shopping_cart_master`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user_master`
 --
 ALTER TABLE `user_master`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
