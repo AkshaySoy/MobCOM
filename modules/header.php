@@ -33,11 +33,3 @@ require_once('config.php');
 <!-- Custom JS -->
 <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
 <script src="js/custom-script.js"></script>
-
-<!-- For viewing file name in input field -->
-
-<script>
-    $(document).ready(function() {
-        bsCustomFileInput.init()
-    })
-</script>
