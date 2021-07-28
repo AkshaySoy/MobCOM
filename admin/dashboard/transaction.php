@@ -42,7 +42,7 @@
 
                     <!-- Table Start -->
 
-                    <table class="table table-hover table-bordered table-responsive-sm shadow">
+                    <table class="table table-hover table-bordered table-responsive-sm shadow" data-toggle="table" data-pagination="true" data-search="true" data-advanced-search="true" data-id-table="advancedTable">
 
                         <thead class="text-center thead-light">
                             <tr>
