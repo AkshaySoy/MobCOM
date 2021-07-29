@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Checkout";
     require('modules/header.php');
 
     ?>
