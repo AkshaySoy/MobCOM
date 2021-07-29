@@ -39,7 +39,7 @@ module.exports.removeProductFromCart = async function (req, res ){
 module.exports.placeOrder = async function ( req, res ){
     try {
         let orderData = JSON.parse(req.query.data)
-        orderData.address = orderData.address + " "+ orderData.address2 +" , " + orderData.city+" , "+ orderData.state + " , PIN = " + orderData.pincode
+        orderData.address = orderData.address + " "+ orderData.address2 +" , PIN = " + orderData.pincode
         orderData.name = orderData.firstName +" "+ orderData.lastName
         let order_id = await helper.generateOrderId( orderData.user_id )
         orderData.order_id = order_id

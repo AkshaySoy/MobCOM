@@ -282,8 +282,8 @@
         let lastName = document.getElementById('lastName').value
         let address = document.getElementById('address').value
         let address2 = document.getElementById('address2').value
-        let state = document.getElementById('state').value
-        let city = document.getElementById('city').value
+        let state = document.getElementById('state-select').value
+        let city = document.getElementById('city-select').value
         let pincode = document.getElementById('pincode').value
 
         if (user_id != null && firstName && lastName && (address || address2) && state && city && pincode) {
