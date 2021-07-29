@@ -110,7 +110,7 @@
 
                                     <div class='card-body d-flex flex-column'>
                                         <a href='#' style='text-decoration: none;'>
-                                            <h5 class='card-title'>$product[brand_name] $product[model_name]</h5>
+                                            <h5 class='card-title' onclick='location.href=(`product-detail.php?product_id=$product[product_id]`)'>$product[brand_name] $product[model_name]</h5>
                                         </a>
 
                                         <div class='mb-1'>
@@ -123,7 +123,7 @@
 
                                         <p class='card-text font-weight-bold mb-0'>₹ " . number_format($product['mobile_price'],0,'.',',') ."</p>
 
-                                        <a href='#' class='btn btn-danger mt-3'>Buy Now</a>
+                                        <a href='#' class='btn btn-danger mt-3' onclick='location.href=(`checkout.php?product_id=$product[product_id]`)'>Buy Now</a>
 
                                     </div>
 
@@ -139,7 +139,7 @@
 
             </div>
 
-            <a class="card-link float-right" href="#">
+            <a class="card-link float-right" href="#" onclick="location.href='product-list.php?search_text=&search_submit='">
                 View More
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -169,7 +169,7 @@
 
                                     <div class='card-body d-flex flex-column'>
                                         <a href='#' style='text-decoration: none;'>
-                                            <h5 class='card-title'>$product[brand_name] $product[model_name]</h5>
+                                            <h5 class='card-title' onclick='location.href=(`product-detail.php?product_id=$product[product_id]`)'>$product[brand_name] $product[model_name]</h5>
                                         </a>
 
                                         <div class='mb-1'>
@@ -182,7 +182,7 @@
 
                                         <p class='card-text font-weight-bold mb-0'>₹ 15,999</p>
 
-                                        <a href='#' class='btn btn-danger mt-3'>Buy Now</a>
+                                        <a href='#' class='btn btn-danger mt-3' onclick='location.href=(`checkout.php?product_id=$product[product_id]`)'>Buy Now</a>
 
                                     </div>
 
@@ -197,7 +197,7 @@
 
             </div>
 
-            <a class="card-link float-right" href="#">
+            <a class="card-link float-right" href="#" onclick="location.href='product-list.php?search_text=&search_submit='">
                 View More
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -214,69 +214,42 @@
 
             <div class="row">
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                
+                <?php
+                    echo "
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Apple`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/apple.svg' alt='Apple' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                    <a href="#">
-                        <img src="images/brand_images/apple.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Asus`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/asus.svg' alt='Asus' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                </div>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Nokia`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/nokia.svg' alt='Nokia' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=OnePlus`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/one-plus.svg' alt='OnePlus' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                    <a href="#">
-                        <img src="images/brand_images/asus.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Honor`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/honor.svg' alt='Honor' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                </div>
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/nokia.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/one-plus.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/oppo.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/xiaomi.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/realme.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/honor.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
+                    ";
+                ?>
 
             </div>
 
