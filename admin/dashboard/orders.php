@@ -113,8 +113,8 @@
 
                                             <label for="track-status">Change Track Status</label>
                                             <select class="custom-select d-block w-100" id="track-status" name="track-status" required>
-                                                <option value="order confirmed">Preparing for dispatch</option>
-                                                <option value="picked by courier">Package Shipped</option>
+                                                <option value="Preparing for dispatch">Preparing for dispatch</option>
+                                                <option value="package shipped">Package Shipped</option>
                                                 <option value="on the way">Package arrivied at your nearest location</option>
                                                 <option value="delivered">Out for delivery</option>
                                             </select>

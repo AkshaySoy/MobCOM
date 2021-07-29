@@ -283,7 +283,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText)
                     alert(this.responseText)
-                    location.replace('confirm-order.php')
+                    location.replace('confirm-order.php?order-confirm=true') 
                 };
             }
         } else {
