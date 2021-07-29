@@ -183,6 +183,12 @@
                             In Stock
                         </dd>
 
+                        <dt class="col-sm-3">Availabilty</dt>
+                        <dd class="col-sm-9 text-danger">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            Out Of Stock
+                        </dd>
+
                     </dl>
 
                     <div class="row">
@@ -392,115 +398,6 @@
                 </div>
 
                 <!-- Left Side Content End -->
-
-                <!-- Right Side Content Start -->
-
-                <div class="col-md-4">
-
-                    <div class="card p-3">
-
-                        <h4 class="font-weight-bold mb-3">Similar Products</h4>
-
-                        <!-- Media Product Start -->
-
-                        <div class="media mb-3">
-
-                            <a href="#">
-                                <img class="media-img mr-3" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-
-                            <div class="media-body">
-
-                                <h6 class="m-0">
-                                    <a class=" card-link" href="#">Samsung Galaxy M31 (Fusion Black, 64 GB)</a>
-                                </h6>
-
-                                <small class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </small>
-
-                                <h5 class="font-weight-bold mt-1">₹ 17,249</h5>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Media Product End -->
-
-                        <!-- Media Product Start -->
-
-                        <div class="media mb-3">
-
-                            <a href="#">
-                                <img class="media-img mr-3" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-
-                            <div class="media-body">
-
-                                <h6 class="m-0">
-                                    <a class=" card-link" href="#">Samsung Galaxy M31 (Fusion Black, 64 GB)</a>
-                                </h6>
-
-                                <small class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </small>
-
-                                <h5 class="font-weight-bold mt-1">₹ 17,249</h5>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Media Product End -->
-                        <!-- Media Product Start -->
-
-                        <div class="media mb-3">
-
-                            <a href="#">
-                                <img class="media-img mr-3" src="images/phone_images/71Sinqbw35L._SL1500_.jpg">
-                            </a>
-
-                            <div class="media-body">
-
-                                <h6 class="m-0">
-                                    <a class=" card-link" href="#">Samsung Galaxy M31 (Fusion Black, 64 GB)</a>
-                                </h6>
-
-                                <small class="mb-3">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="badge badge-success p-2">4.5</span>
-                                    <span class="text-muted">Ratings</span>
-                                </small>
-
-                                <h5 class="font-weight-bold mt-1">₹ 17,249</h5>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Media Product End -->
-
-                    </div>
-
-                </div>
-
-                <!-- Right Side Content End -->
 
             </div>
 

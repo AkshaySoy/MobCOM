@@ -112,7 +112,21 @@
                                         <div class="form-group">
 
                                             <label for="track-status">Change Track Status</label>
-                                            <textarea class="form-control" id="track-status" name="track-status"></textarea>
+                                            <select class="custom-select d-block w-100" id="track-status" name="track-status" required>
+                                                <option value="Preparing for dispatch">Preparing for dispatch</option>
+                                                <option value="package shipped">Package Shipped</option>
+                                                <option value="on the way">Package arrivied at your nearest location</option>
+                                                <option value="delivered">Out for delivery</option>
+                                            </select>
+
+                                        </div>
+
+                                        
+                                        <div class="form-group">
+
+                                            <label for="assign-deli">Assign Delivery Associate</label>
+                                            <select class="custom-select d-block w-100" id="assign-deli" name="assign-deli" required>
+                                            </select>
 
                                         </div>
 

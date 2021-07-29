@@ -120,7 +120,12 @@
                                     ";
                                 }
                                 } else { 
-                                    echo "<br>no products<br>"; 
+                                    echo "
+                                    <div class='alert alert-danger' role='alert'>
+                                        <i class='fa fa-info-circle' aria-hidden='true'></i>
+                                        Your cart is empty. Continue Shopping.
+                                    </div>
+                                    "; 
                                 }
                             }
                             else{  

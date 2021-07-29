@@ -98,7 +98,7 @@
                                     <td>₹$row->mobile_price</td>
                                     <td>$row->mobile_availabilty</td>
                                     <td class='align-middle'>
-                                        <button type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageProduct'>Manage</button>
+                                        <button id='$row->product_id' type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageProduct'>Manage</button>
                                     </td>
                                 </tr>
                                 
