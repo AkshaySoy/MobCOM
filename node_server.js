@@ -21,7 +21,7 @@ app.get('/getAllProducts', controller.getAllProducts);
 app.post('/addProductToCart', controller.addProductToCart);
 app.post('/removeProductFromCart', controller.removeProductFromCart);
 app.post('/placeOrder', controller.placeOrder);
-
+app.get('/product',controller.getProductDetailsById);
 
 
 

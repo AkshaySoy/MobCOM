@@ -98,7 +98,7 @@
                                     <td>₹$row->mobile_price</td>
                                     <td>$row->mobile_availabilty</td>
                                     <td class='align-middle'>
-                                        <button id='$row->product_id' type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageProduct'>Manage</button>
+                                        <button id='$row->product_id' onclick='getProductDetails(this.id)' type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageProduct'>Manage</button>
                                     </td>
                                 </tr>
                                 
@@ -146,5 +146,29 @@
     ?>
 
 </body>
+
+    <script>
+
+
+        function addOrUpdateProduct() {
+            console.log('add or update product.')
+        }
+
+        function getProductDetails(id){
+            console.log('getting : ', id)
+            let product_data = {}
+            var xhttp = new XMLHttpRequest();
+            let url = `http://localhost:3000/product?product_id=${id}`;
+            xhttp.open("GET", url, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    product_data = JSON.parse(this.responseText).productData[0]
+                    console.log('por : ', product_data)
+                };
+            }
+
+        }
+    </script>
 
 </html>

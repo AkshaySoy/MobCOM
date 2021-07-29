@@ -67,3 +67,21 @@ module.exports.placeOrder = async function ( req, res ){
         res.status(400).json({"status": false});
     }
 }
+
+module.exports.getProductDetailsById = async function ( req ,res ){
+    try {
+        let productId = req.query.product_id
+        console.log('pr : ', productId)
+
+        await dao.getProductById(productId, async function (err, result) {
+            if (err) console.log("Database error!", err);
+            else{
+                res.status(200).json({"status" : true, productData: result});  
+            }
+        });
+    }
+    catch (err){
+        console.log(err)
+        res.status(400).json({"status": false});
+    }
+}

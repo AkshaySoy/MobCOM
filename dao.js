@@ -51,3 +51,17 @@ module.exports.getCartDataByUserId = async function ( orderData, callback ){
         callback(null, result);
     });
 }
+
+
+module.exports.getProductById = async function ( product_id , callback ){
+    let product_data = []
+    dbConfig.con.query(`SELECT * FROM product_master WHERE product_id=${product_id}`, function(err, res, fields) {
+        if (err)  return callback(err);
+        if(res.length){
+            for(var i = 0; i<res.length; i++ ){
+                product_data.push(res[i]);
+            }
+        }
+        callback(null, product_data);
+    });
+}
