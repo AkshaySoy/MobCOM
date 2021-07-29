@@ -51,11 +51,7 @@
                                 <th scope="col">Customer Name</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">State</th>
                                 <th scope="col">City</th>
-                                <th scope="col">Pin Code</th>
-
-
                             </tr>
                         </thead>
 
@@ -63,16 +59,35 @@
 
                         <tbody class="text-center">
 
-                            <tr>
-                                <th scope="row">123456789</th>
-                                <td>Delivered</td>
-                                <td>John Doe</td>
-                                <td>789456123</td>
-                                <td>Some Random Address</td>
-                                <td>Jharkhand</td>
-                                <td>Ranchi</td>
-                                <td>833201</td>
-                            </tr>
+                            <?php
+
+                            $query = "SELECT `user_master`.*, `order_master`.*, `state_master`.*, `cities_master`.* 
+                                      FROM `user_master`, `order_master`, `state_master`, `cities_master`
+                                      WHERE `user_master`.`user_id`=`order_master`.`user_id`
+                                      AND `order_master`.`state_id`=`state_master`.`state_id`
+                                      AND `order_master`.`city_id`=`cities_master`.`city_id`
+                                      AND `order_master`.`track_status` = 'Delivered'";
+
+                            $res = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_object($res)) {
+
+                                echo "
+
+                                    <tr>
+                                        <th scope='row'>$row->order_id</th>
+                                        <td>$row->order_status</td>
+                                        <td>$row->name</td>
+                                        <td>$row->user_phone</td>
+                                        <td>$row->order_address</td>
+                                        <td>$row->city_name</td>
+                                    </tr>
+                                
+                                
+                                ";
+                            }
+
+                            ?>
 
                         </tbody>
 

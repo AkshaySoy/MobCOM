@@ -44,7 +44,8 @@
         $activeUser = $_SESSION['deli_id'];
         $pending = "SELECT `order_master`.*, `delivery_master`.*
                   FROM `order_master`, `delivery_master`
-                  WHERE `order_master`.`deli_id`=`delivery_master`.`deli_id`";
+                  WHERE `order_master`.`deli_id`=`delivery_master`.`deli_id`
+                  AND `order_master`.`track_status`= 'Out for delivery'";
         $res = mysqli_query($conn, $pending);
 
         if ($res) {
@@ -62,7 +63,7 @@
         $delivered = "SELECT `order_master`.*, `delivery_master`.*
                   FROM `order_master`, `delivery_master`
                   WHERE `order_master`.`deli_id`=`delivery_master`.`deli_id`
-                  AND `order_master`.`order_status`= 'delivered'";
+                  AND `order_master`.`order_status`= 'Delivered'";
         $res2 = mysqli_query($conn, $delivered);
      
         if ($res2) {
