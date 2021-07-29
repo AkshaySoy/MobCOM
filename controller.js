@@ -60,7 +60,7 @@ module.exports.placeOrder = async function ( req, res ){
         }else{
             console.log(' no product or cart Id')
         }
-        res.status(200).json({"status" : true});
+        res.status(200).json({"status" : true, order_id : order_id});
     }
     catch (err){
         console.log(err)

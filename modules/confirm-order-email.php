@@ -14,10 +14,12 @@ $headers .= 'From: '.$from."\r\n".
 // Compose a simple HTML email message
 $message = '<html><body>';
 $message .= '<h1>Welcome to MobCOM !</h1>';
+$message .= "<h1>". $order_id ."</h1>";
 $message .= '<p>Thank you for registering with us ! Please click the link below to activate your account.</p>';
 $message .= '<a href="http://localhost/MobCOM/account-activated.php?user_email='.$email.'">Activate your account.</a>';
 $message .= '</body></html>';
  
 // Sending email
+$email = $_SESSION['user_email'];
 mail($email, $subject, $message, $headers);
 ?>

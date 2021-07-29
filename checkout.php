@@ -44,19 +44,37 @@
     <!-- Main Content Start -->
 
     <?php
-    $sql = "SELECT * FROM shopping_cart_master sc, product_master pm WHERE sc.product_id = pm.product_id";
-    if ($GLOBALS['con']) {
-        if ($result = $GLOBALS['con']->query($sql)) {
-            if ($result->num_rows > 0) {
-                $total_products = mysqli_num_rows($result);
-                $total_price = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $total_price += $row['mobile_price'];
+
+
+    if ( isset($_GET['product_id'])){
+        $product_id = $_GET['product_id'];
+        $sql = "SELECT * FROM product_master WHERE product_id=" . $product_id;
+        if ($GLOBALS['con']) {
+            if ($result = $GLOBALS['con']->query($sql)) {
+                if ($result->num_rows > 0) {
+                    $product = $result->fetch_assoc();
                 }
-                $items_in_cart = mysqli_num_rows($result);
+            }
+        }
+        $total_price = $product['mobile_price'];
+        
+    }else{
+        $sql = "SELECT * FROM shopping_cart_master sc, product_master pm WHERE sc.product_id = pm.product_id";
+        if ($GLOBALS['con']) {
+            if ($result = $GLOBALS['con']->query($sql)) {
+                if ($result->num_rows > 0) {
+                    $total_products = mysqli_num_rows($result);
+                    $total_price = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        $total_price += $row['mobile_price'];
+                    }
+                    $items_in_cart = mysqli_num_rows($result);
+                }
             }
         }
     }
+
+
     ?>
 
 
@@ -176,18 +194,16 @@
 
                     <div class="card-body">
 
-                        <h5 class="font-weight-bold mb-3" id="cartElement">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <?php
-                            echo "My Cart (" . $items_in_cart . ")";
-                            ?>
-                        </h5>
-                        <h5 class="font-weight-bold mb-3" id="productElement">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <?php
-                            echo "Product Name";
-                            ?>
-                        </h5>
+                        <?php
+                            echo "<h5 class='font-weight-bold mb-3'>";
+                            echo "<i class='fa fa-shopping-cart' aria-hidden='true'></i>";
+                            if (isset($_GET['product_id'])){
+                                echo $product['brand_name'] . " ". $product['model_name'];
+                            }else{
+                                echo "My Cart (" . $items_in_cart . ")";
+                            }
+                            echo "</h1>";
+                        ?>
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" id="subTotalText">
@@ -277,6 +293,8 @@
     }
 
 
+
+
     function placeOrder() {
         let firstName = document.getElementById('firstName').value
         let lastName = document.getElementById('lastName').value
@@ -306,9 +324,9 @@
             xhttp.send();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
-                    alert(this.responseText)
-                    location.replace('confirm-order.php?order-confirm=true')
+                    let response = JSON.parse(this.responseText)
+                    
+                    location.replace(`confirm-order.php?order_id=${response.order_id}`)
                 };
             }
         } else {

@@ -62,6 +62,7 @@
 
     if ($con) {
         //to get total item in the DB
+        $query .= " ORDER BY RAND() ";
         if ($result = $con->query($query)) {
             if ($result->num_rows > 0) {
                 $total_products = mysqli_num_rows($result);

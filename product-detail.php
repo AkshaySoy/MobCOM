@@ -61,8 +61,8 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Product List</a></li>
+                <li class="breadcrumb-item"><a href=".">Home</a></li>
+                <li class="breadcrumb-item"><a href="product-list.php">Product List</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <?php
                         echo "$row[brand_name] $row[model_name]";
@@ -178,16 +178,19 @@
                         <dd class="col-sm-9">3-4 days</dd>
 
                         <dt class="col-sm-3">Availabilty</dt>
-                        <dd class="col-sm-9 text-success">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            In Stock
-                        </dd>
-
-                        <dt class="col-sm-3">Availabilty</dt>
-                        <dd class="col-sm-9 text-danger">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            Out Of Stock
-                        </dd>
+                        <?php
+                            if ($row['mobile_availabilty'] > 0){
+                                echo "<dd class='col-sm-9 text-success'>
+                                <i class='fa fa-check' aria-hidden='true'></i>
+                                In Stock
+                                </dd>";
+                            }else{
+                                echo "<dd class='col-sm-9 text-danger'>
+                                <i class='fa fa-times' aria-hidden='true'></i>
+                                Out Of Stock
+                                </dd>";
+                            }
+                        ?>
 
                     </dl>
 

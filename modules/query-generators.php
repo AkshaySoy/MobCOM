@@ -115,4 +115,13 @@ function GQ_pageNumber($pageNumber, $itemsPerPage){
 function GQ_productId($id){
     return "SELECT * FROM `product_master` WHERE `product_id` = $id";
 }
+
+function GQ_getLastFiveProducts() {
+    return  "SELECT * FROM `product_master` ORDER BY 'product_id' DESC LIMIT 5";
+}
+
+
+function GQ_getRandomFiveProducts(){
+    return "SELECT * FROM `product_master` ORDER BY RAND() LIMIT 5";
+}
 ?>
