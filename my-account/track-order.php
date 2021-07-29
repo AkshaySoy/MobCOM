@@ -14,11 +14,30 @@
 
                     <div class="bs-stepper-header" role="tablist">
 
+                        <?php
+
+
+                        $activeUser = $_SESSION['user_id'];
+
+                        $query = "SELECT * FROM order_master WHERE user_id = $activeUser";
+
+                        $res = mysqli_query($conn, $query);
+
+                        while ($row = mysqli_fetch_object($res)) {
+
+                            $orderStatus = $row->order_status;
+                            $trackStatus = $row->track_status;
+                            $dateUpdated = $row->track_timestamp;
+
+                        }
+
+                        ?>
+
                         <!-- Order Confirmed -->
 
                         <div class="step active" data-target="#test-nl-1">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger1" disabled="disabled" aria-controls="test-nl-1" aria-selected="true">
-                                <span class="bs-stepper-circle bg-success">
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "order confirmed") echo 'bg-success'; else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </span>
                                 <span class="bs-stepper-label">Order Confirmed</span>
@@ -31,10 +50,10 @@
 
                         <div class="step" data-target="#test-nl-2">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger2" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle bg-secondary">
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "picked by courier") echo 'bg-success'; else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
-                                <span class="bs-stepper-label font-weight-light">Picked by Courier</span>
+                                <span class="bs-stepper-label">Picked by Courier</span>
                             </button>
                         </div>
 
@@ -44,7 +63,7 @@
 
                         <div class="step" data-target="#test-nl-3">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger3" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle bg-secondary">
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "on the way") echo 'bg-success'; else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                 </span>
                                 <span class="bs-stepper-label font-weight-light">On The Way</span>
@@ -54,10 +73,10 @@
                         <div class="bs-stepper-line"></div>
 
                         <!-- Delivered -->
-                        
+
                         <div class="step" data-target="#test-nl-3">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger3" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle bg-secondary">
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "delivered") echo 'bg-success'; else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-archive" aria-hidden="true"></i>
                                 </span>
                                 <span class="bs-stepper-label font-weight-light">Delivered</span>
@@ -69,15 +88,11 @@
 
                         <div id="test-nl-1" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="stepper2trigger1">
 
-                        <h5>Last Updated : 28 July 2021 13:00</h5>
+                            <h5>Last Updated : <?php echo $trackStatus ?></h5>
 
-                        <ul class="text-muted">
-                            <li>Preparing for dispatch</li>
-                            <li>Package has shipped</li>
-                            <li>Package left Jamshedpur Courier facility</li>
-                            <li>Package has arrived near your location</li>
-                            <li>Package is out for delivery</li>
-                        </ul>
+                            <ul class="text-muted">
+                                <li><?php echo $trackStatus ?></li>
+                            </ul>
 
                         </div>
 

@@ -48,7 +48,7 @@
                     <i class="fa fa-user" aria-hidden="true"></i>
                     Total Customer Registered
                   </h5>
-                  <h4 class="card-text">100</h4>
+                  <h4 class="card-text">25</h4>
                 </div>
               </div>
             </div>
@@ -101,18 +101,6 @@
               </div>
             </div>
 
-            <div class="col mb-4">
-              <div class="card text-left shadow">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <i class="fa fa-question-circle-o" aria-hidden="true"></i>
-                    Recent Support Ticket
-                  </h5>
-                  <h4 class="card-text">ticket id</h4>
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -122,7 +110,7 @@
       </main>
 
     </div>
-    
+
   </div>
 
   <?php

@@ -37,6 +37,41 @@
 
         <!-- Main Content Start -->
 
+        <!-- Pending Delivery query -->
+
+        <?php
+
+        $activeUser = $_SESSION['deli_id'];
+        $pending = "SELECT `order_master`.*, `delivery_master`.*
+                  FROM `order_master`, `delivery_master`
+                  WHERE `order_master`.`deli_id`=`delivery_master`.`deli_id`";
+        $res = mysqli_query($conn, $pending);
+
+        if ($res) {
+          $num = mysqli_num_rows($res);
+          mysqli_free_result($res);
+        }
+
+        ?>
+
+        <!-- Delivered Order query -->
+
+        <?php
+
+        $activeUser = $_SESSION['deli_id'];
+        $delivered = "SELECT `order_master`.*, `delivery_master`.*
+                  FROM `order_master`, `delivery_master`
+                  WHERE `order_master`.`deli_id`=`delivery_master`.`deli_id`
+                  AND `order_master`.`order_status`= 'delivered'";
+        $res2 = mysqli_query($conn, $delivered);
+     
+        if ($res2) {
+          $num2 = mysqli_num_rows($res2);
+          mysqli_free_result($res2);
+        }  
+
+        ?>
+
         <div class="container-fluid p-2">
 
           <div class="row row-cols-1 row-cols-md-3">
@@ -48,7 +83,7 @@
                     <i class="fa fa-archive" aria-hidden="true"></i>
                     Pending Orders
                   </a>
-                  <h4 class="card-text mt-2">5</h4>
+                  <h4 class="card-text mt-2"><?php echo $num ?></h4>
                 </div>
               </div>
             </div>
@@ -60,7 +95,7 @@
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                     Delivered Orders
                   </a>
-                  <h4 class="card-text mt-2">25</h4>
+                  <h4 class="card-text mt-2"><?php echo $num2 ?></h4>
                 </div>
               </div>
             </div>
@@ -74,7 +109,7 @@
       </main>
 
     </div>
-    
+
   </div>
 
   <?php

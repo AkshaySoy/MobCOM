@@ -62,19 +62,39 @@
 
                         <tbody class="text-center">
 
-                            <tr>
-                                <th scope="row">123456789</th>
-                                <td>John Doe</td>
-                                <td>The Village</td>
-                                <td>24</td>
-                                <td>iPhone 7</td>
-                                <td>21 July 2021</td>
-                                <td>Order Confirmed</td>
-                                <td>Preparing for dispatch</td>
-                                <td class="align-middle">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manageOrder">Manage</button>
-                                </td>
-                            </tr>
+                            <?php
+
+                            $query = "SELECT`user_master`.*, `product_master`.*, `order_master`.*
+                                      FROM `user_master`, `product_master`, `order_master`
+                                      WHERE `user_master`.`user_id`=`order_master`.`user_id`
+                                      AND `product_master`.`product_id`=`order_master`.`product_id`
+                                      GROUP BY `product_master`.`product_id`";
+   
+                            $res = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_object($res)) {
+
+                                echo "
+
+                                    <tr>
+                                        <th scope='row'>$row->order_id</th>
+                                        <td>$row->first_name $row->last_name </td>
+                                        <td>$row->order_address</td>
+                                        <td>$row->product_id</td>
+                                        <td>$row->brand_name $row->model_name</td>
+                                        <td>$row->date_added</td>
+                                        <td>$row->order_status</td>
+                                        <td>$row->track_status</td>
+                                        <td class='align-middle'>
+                                            <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#manageOrder'>Manage</button>
+                                        </td>
+                                    </tr>
+                                
+                                ";
+                            }
+
+                            ?>
+
 
                         </tbody>
 
@@ -101,6 +121,7 @@
 
                                             <label for="order-status">Change Order Status</label>
                                             <select class="custom-select d-block w-100" id="order-status" name="order-status" required>
+                                                <option value selected disabled>Select Status</option>
                                                 <option value="order confirmed">Order Confirmed</option>
                                                 <option value="picked by courier">Picked by courier</option>
                                                 <option value="on the way">On the way</option>
@@ -113,6 +134,7 @@
 
                                             <label for="track-status">Change Track Status</label>
                                             <select class="custom-select d-block w-100" id="track-status" name="track-status" required>
+                                                <option value selected disabled>Select Status</option>
                                                 <option value="Preparing for dispatch">Preparing for dispatch</option>
                                                 <option value="package shipped">Package Shipped</option>
                                                 <option value="on the way">Package arrivied at your nearest location</option>
@@ -121,11 +143,12 @@
 
                                         </div>
 
-                                        
+
                                         <div class="form-group">
 
                                             <label for="assign-deli">Assign Delivery Associate</label>
                                             <select class="custom-select d-block w-100" id="assign-deli" name="assign-deli" required>
+                                                <option value selected disabled>Select Delivery Associate</option>
                                             </select>
 
                                         </div>

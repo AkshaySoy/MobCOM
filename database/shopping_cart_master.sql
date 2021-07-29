@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2021 at 01:02 PM
+-- Generation Time: Jul 29, 2021 at 12:52 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -24,22 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_master`
+-- Table structure for table `shopping_cart_master`
 --
 
-CREATE TABLE `order_master` (
-  `order_id` bigint(100) NOT NULL,
-  `user_id` int(100) NOT NULL,
-  `deli_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `product_id` int(100) DEFAULT NULL,
-  `order_address` varchar(255) NOT NULL,
-  `state_id` int(11) NOT NULL,
-  `city_id` int(11) NOT NULL,
-  `date_added` datetime NOT NULL DEFAULT current_timestamp(),
-  `order_status` varchar(25) NOT NULL,
-  `track_status` varchar(255) NOT NULL,
-  `track_timestamp` datetime NOT NULL DEFAULT current_timestamp()
+CREATE TABLE `shopping_cart_master` (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `time_stamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 COMMIT;
 

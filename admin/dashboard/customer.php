@@ -81,7 +81,7 @@
                                         <td>$row->city_name</td>
                                         <td>$row->user_email</td>
                                         <td>$row->user_phone</td>
-                                        <td>$row->date_added</td>
+                                        <td>$row->user_date_added</td>
                                         <td>$row->user_status</td>
 
                                     </tr>

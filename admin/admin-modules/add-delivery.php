@@ -15,8 +15,8 @@ if (isset($_POST['addDelivery'])) {
 
     $deliPassword = password_hash($deliPassword, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO `delivery_master` (`deli_id`, `deli_name`, `deli_phone`, `deli_password`, `state_id`, `city_id`, `deli_status`, `date_added`) 
-              VALUES (NULL, '$deliName', '$deliPhone', '$deliPassword', '$state', '$city', 'Active', current_timestamp())";
+    $query = "INSERT INTO `delivery_master` (`deli_id`, `order_id`, `deli_name`, `deli_phone`, `deli_password`, `state_id`, `city_id`, `deli_status`, `date_added`) 
+              VALUES (NULL, '', '$deliName', '$deliPhone', '$deliPassword', '$state', '$city', 'Active', current_timestamp())";
     $res = mysqli_query($conn, $query);
 
     if (!$res) {
@@ -56,24 +56,24 @@ if (isset($_POST['addDelivery'])) {
 
                         <div class="form-group col-md-4">
                             <label for="deli-name">Enter Associate Name</label>
-                            <input type="text" class="form-control" id="deli-name" name="deli-name" required>
+                            <input type="text" class="form-control" name="deli-name" required>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="deli-phone">Enter Phone Number</label>
-                            <input type="number" class="form-control" id="deli-phone" name="deli-phone" required>
+                            <input type="number" class="form-control" name="deli-phone" required>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="deli-password">Enter Password</label>
-                            <input type="password" class="form-control" id="deli-password" name="deli-password" required>
+                            <input type="password" class="form-control" name="deli-password" required>
                         </div>
 
                     </div>
 
                     <div class="form-row">
 
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="state">State</label>
 
                             <select class="custom-select d-block w-100" name="state" id="state-select" required>
@@ -92,7 +92,7 @@ if (isset($_POST['addDelivery'])) {
 
                         <!-- City -->
 
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="city">City</label>
                             <select class="custom-select d-block w-100" id="city-select" name="city" required>
                                 <option value selected disabled>Select City</option>

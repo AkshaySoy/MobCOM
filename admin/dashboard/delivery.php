@@ -89,9 +89,11 @@
 
                             while ($row = mysqli_fetch_object($res)) {
 
+                                $json = json_encode($row);
+
                                 echo "
 
-                                <tr>
+                                <tr class='edit' data-json='$json'>
                                     <th scope='row'>$row->deli_id</th>
                                     <td>$row->deli_name</td>
                                     <td>$row->deli_phone</td>
@@ -100,10 +102,9 @@
                                     <td>$row->deli_status</td>
                                     <td>$row->date_added</td>
                                     <td class='align-middle'>
-                                        <button type='button' class='btn btn-primary btn-sm mb-3' data-toggle='modal' data-target='#manageDelivery'>Manage</button>
+                                        <button id='edit' type='button' class='btn btn-primary btn-sm mb-3'>Manage</button>
                                     </td>
                                 </tr>
-                                
                                 
                                 ";
                             }
@@ -133,6 +134,52 @@
     ?>
 
     <script>
+        $(document).on('click', '.edit', function() {
+
+            var json_data = $(this).attr('data-json');
+            var data = JSON.parse(json_data);
+            console.log(data);
+
+            $("#deli-id").val(data.deli_id);
+            $("#deli-name").val(data.deli_name);
+            $("#deli-phone").val(data.deli_phone);
+            $("#deli-status").val(data.deli_status);
+            $('.manage-delivery').modal('show');
+
+        })
+
+        $(document).on('click', '#updateDelivery', function() {
+
+            var deliId = $("#deli-id").val() || 0;
+            var deliName = $("#deli-name").val() || 0;
+            var deliPhone = $("#deli-phone").val() || 0;
+            var deliStatus = $("#deli-status").val() || 0;
+
+            var deliveryObj = {
+                deliId: deliId,
+                deliName: deliName,
+                deliPhone: deliPhone,
+                deliStatus: deliStatus,
+            }
+
+            $.ajax({
+                url: '../admin-modules/update-delivery.php',
+                type: 'POST',
+                data: {
+                    deliveryObj: JSON.stringify(deliveryObj)
+                },
+                success: function(res) {
+                    console.log(res)
+                    if (res.trim() == 'success') {
+                        alert('Data Updated successfully!');
+                        window.location.reload();
+                    } else {
+                        alert(res);
+                    }
+                }
+            })
+
+        })
 
         $(document).on('change', '#state-select', function() {
             var stateID = $("#state-select").val();
@@ -150,7 +197,6 @@
                 }
             })
         })
-
     </script>
 
 </body>
