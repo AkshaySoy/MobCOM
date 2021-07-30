@@ -13,13 +13,13 @@
 
     $res = mysqli_query($conn, $query);
 
-        if ($res) {
-            $num = mysqli_num_rows($res);
-        }
+    if ($res) {
+        $num = mysqli_num_rows($res);
+    }
 
-        if ($num == 0) {
+    if ($num == 0) {
 
-            echo "
+        echo "
           
                 <div class='container-fluid'>
     
@@ -31,9 +31,12 @@
                 </div>
             
             ";
-        } else {
+    } else {
 
-            while ($row = mysqli_fetch_object($res)) 
+        while ($row = mysqli_fetch_object($res)) {
+
+            $orignalDate = $row->date_added;
+            $dateAdded = date("d M Y", strtotime($orignalDate));
 
             echo "
     
@@ -45,7 +48,7 @@
     
                 <div class='card-header'>
                     <strong class='mr-3'>Order ID: $row->order_id</strong>
-                    <span>Order Date: $row->date_added</span>
+                    <span>Order Date: $dateAdded</span>
                 </div>
     
                 <div class='card-body'>
@@ -139,15 +142,13 @@
     
             </div>
     
-        <!-- Order Card End -->    
+            <!-- Order Card End -->    
             
-        ";
-
-            require('track-order.php');
+            ";
         }
-    
 
-
+        require('track-order.php');
+    }
 
     ?>
 

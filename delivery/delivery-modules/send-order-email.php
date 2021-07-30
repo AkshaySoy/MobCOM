@@ -14,7 +14,7 @@ $headers .= 'From: '.$from."\r\n".
 // Compose a simple HTML email message
 $message = '<html><body>';
 $message .= '<h1>Delivery Successful !</h1>';
-$message .= '<p>Thank you for shopping with us ! Your order has been successfully delivered.</p>';
+$message .= "<p>Thank you for shopping with us ! Your package with order ID ".$orderId." has been successfully delivered.</p>";
 $message .= '</body></html>';
  
 // Sending email

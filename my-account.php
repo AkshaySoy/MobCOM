@@ -101,7 +101,7 @@
         </div>
 
     </div>
-    
+
     <!-- Footer Start -->
 
     <?php
@@ -109,6 +109,25 @@
     require('modules/footer.php');
 
     ?>
+
+    <script>
+        $(document).on('change', '#state-select', function() {
+            var stateID = $("#state-select").val();
+
+            $.ajax({
+                url: 'modules/get-cities.php',
+                type: 'POST',
+                data: {
+                    POST_TYPE: 'GET_VIA_ID',
+                    STATE_ID: stateID
+                },
+                success: function(res) {
+                    console.log(res)
+                    $("#city-select").html(res);
+                }
+            })
+        })
+    </script>
 
     <!-- Footer End -->
 

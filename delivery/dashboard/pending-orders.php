@@ -73,9 +73,6 @@
 
                             while ($row = mysqli_fetch_object($res)) {
 
-                                $userId = $row->user_id;
-                                $userEmail = $row->user_email;
-
                                 echo "
                
                                 <tr>
@@ -133,6 +130,10 @@
                     </div>
 
                 </div>
+
+                <script>
+                    
+                </script>
 
 
                 <?php
