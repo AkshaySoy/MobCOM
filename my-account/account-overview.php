@@ -156,6 +156,9 @@
 
                     while ($row = mysqli_fetch_object($res4)) {
 
+                        $orignalDate = $row->date_added;
+                        $recentDate = date("d M Y", strtotime($orignalDate));
+
                         echo "
     
                         <div class='col-md-6'>
@@ -170,7 +173,7 @@
     
                                         <div class='text-muted'>
                                             <i class='fa fa-calendar' aria-hidden='true'></i>
-                                            $row->date_added
+                                            $recentDate
                                         </div>
     
                                         <p>$row->brand_name $row->model_name ($row->model_colour, $row->internal_storage GB)

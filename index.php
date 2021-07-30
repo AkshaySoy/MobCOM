@@ -22,27 +22,27 @@
     require('modules/query-generators.php');
     require('modules/db-connection.php');
 
-    $response = $con -> query ( GQ_getRandomFiveProducts() );
-    
+    $response = $con->query(GQ_getRandomFiveProducts());
+
     $j = 0;
     //not newly but random
     $newly_added_product_list = [];
     if ($response->num_rows > 0) {
-        while ( $row = $response->fetch_assoc() ){
-            $newly_added_product_list[$j] =$row;
+        while ($row = $response->fetch_assoc()) {
+            $newly_added_product_list[$j] = $row;
             $j += 1;
         }
     }
 
     //not top deals but random
     $top_deals_product_list = [];
-    $response = $con -> query ( GQ_getRandomFiveProducts() );
+    $response = $con->query(GQ_getRandomFiveProducts());
     $j = 0;
     //not newly but random
     $top_deals_product_list = [];
     if ($response->num_rows > 0) {
-        while ( $row = $response->fetch_assoc() ){
-            $top_deals_product_list[$j] =$row;
+        while ($row = $response->fetch_assoc()) {
+            $top_deals_product_list[$j] = $row;
             $j += 1;
         }
     }
@@ -62,13 +62,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="First slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/Top-mobile-deals-1200x450.png" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="Second slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/iphone-11-banner.png" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="Third slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/BANNER-2.png" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -100,8 +100,8 @@
 
                 <!-- Product Card Start -->
                 <?php
-                    foreach ($newly_added_product_list as $product){
-                        echo "
+                foreach ($newly_added_product_list as $product) {
+                    echo "
                             <div class='col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3'>
 
                                 <div class='card card-product h-100 p-1 d-flex' style='max-width: 500px;'>
@@ -121,7 +121,7 @@
                                             <span class='fa fa-star'></span>
                                         </div>
 
-                                        <p class='card-text font-weight-bold mb-0'>₹ " . number_format($product['mobile_price'],0,'.',',') ."</p>
+                                        <p class='card-text font-weight-bold mb-0'>₹ " . number_format($product['mobile_price'], 0, '.', ',') . "</p>
 
                                         <a href='#' class='btn btn-danger mt-3' onclick='location.href=(`checkout.php?product_id=$product[product_id]`)'>Buy Now</a>
 
@@ -131,10 +131,9 @@
 
                             </div>
                         ";
-                        
-                    }
+                }
                 ?>
-                
+
                 <!-- Prodicut card end -->
 
             </div>
@@ -159,8 +158,8 @@
 
                 <!-- Product Cards Start -->
                 <?php
-                    foreach ( $top_deals_product_list as $product ){
-                        echo "
+                foreach ($top_deals_product_list as $product) {
+                    echo "
                             <div class='col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3'>
 
                                 <div class='card h-100 p-1 d-flex' style='max-width: 500px;'>
@@ -190,7 +189,7 @@
 
                             </div>
                         ";
-                    }
+                }
                 ?>
 
                 <!-- Product Cards End -->
@@ -214,9 +213,9 @@
 
             <div class="row">
 
-                
+
                 <?php
-                    echo "
+                echo "
                         <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Apple`)'>
                             <a href='#'>
                                 <img src='images/brand_images/apple.svg' alt='Apple' height='100px' width='100px'>
@@ -268,6 +267,12 @@
     require('modules/footer.php');
 
     ?>
+
+    <script>
+        $('.carousel').carousel({
+            interval: 3300
+        })
+    </script>
 
     <!-- Footer End -->
 

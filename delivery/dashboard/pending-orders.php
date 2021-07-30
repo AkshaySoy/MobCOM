@@ -51,9 +51,7 @@
                                 <th scope="col">Customer Name</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">State</th>
                                 <th scope="col">City</th>
-                                <th scope="col">Pin Code</th>
                                 <th scope="col">Order Status</th>
 
                             </tr>
@@ -63,20 +61,37 @@
 
                         <tbody class="text-center">
 
-                            <tr>
-                                <th scope="row">123456789</th>
-                                <td class="align-middle">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manageOrder">Enter OTP</button>
-                                </td>
-                                <td>John Doe</td>
-                                <td>789456123</td>
-                                <td>Some Random Address</td>
-                                <td>Jharkhand</td>
-                                <td>Ranchi</td>
-                                <td>833201</td>           
-                                <td>Order Confirmed</td>
+                            <?php
 
-                            </tr>
+                            $query = "SELECT `user_master`.*, `order_master`.*, `state_master`.*, `cities_master`.* 
+                                      FROM `user_master`, `order_master`, `state_master`, `cities_master`
+                                      WHERE `user_master`.`user_id`=`order_master`.`user_id`
+                                      AND `order_master`.`state_id`=`state_master`.`state_id`
+                                      AND `order_master`.`city_id`=`cities_master`.`city_id`
+                                      AND `order_master`.`track_status` = 'Out for delivery'";
+                            $res = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_object($res)) {
+
+                                echo "
+               
+                                <tr>
+                                    <th scope='row'>$row->order_id</th>
+                                    <td class='align-middle'>
+                                        <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#manageOrder'>Enter OTP</button>
+                                    </td>
+                                    <td>$row->name</td>
+                                    <td>$row->user_phone</td>
+                                    <td>$row->order_address</td>
+                                    <td>$row->city_name</td>
+                                    <td>$row->track_status</td>
+
+                                </tr>
+                                
+                                ";
+                            }
+
+                            ?>
 
                         </tbody>
 
@@ -97,12 +112,12 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form action="">
+                                    <form action="" method="POST">
 
-                                        <input type="number" class="form-control mb-3" id="enter-otp" name="enter-otp"></input>
+                                        <input type="text" class="form-control mb-3" id="enterOTP" name="enterOTP"></input>
 
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Enter</button>
+                                        <button type="submit" name="otpBtn" class="btn btn-primary">Enter</button>
 
                                     </form>
 
@@ -115,6 +130,17 @@
                     </div>
 
                 </div>
+
+                <script>
+                    
+                </script>
+
+
+                <?php
+
+                require('../delivery-modules/order-delivered.php');
+
+                ?>
 
                 <!-- Main Content End -->
 
