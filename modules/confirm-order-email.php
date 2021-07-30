@@ -14,9 +14,10 @@ $headers .= 'From: '.$from."\r\n".
 // Compose a simple HTML email message
 $message = '<html><body>';
 $message .= '<h1>Welcome to MobCOM !</h1>';
-$message .= "<h1>". $order_id ."</h1>";
-$message .= '<p>Thank you for registering with us ! Please click the link below to activate your account.</p>';
-$message .= '<a href="http://localhost/MobCOM/account-activated.php?user_email='.$email.'">Activate your account.</a>';
+$message .= "<h1>Order Id: ". $order_id ."</h1>";
+$message .= "<h3>OTP : $order_otp</h3>";
+$message .= '<p>Thank You for using our service.</p>';
+$message .= '<p>Use this OTP when the product is at your doorstep.</p>';
 $message .= '</body></html>';
  
 // Sending email

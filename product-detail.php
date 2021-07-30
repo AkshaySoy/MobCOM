@@ -20,7 +20,6 @@
         $product_details = $con -> query (GQ_productId($_GET['product_id']));
         if ($product_details->num_rows > 0) {
             $row = $product_details->fetch_assoc();
-            echo "Product Id : $row[product_id]";
             echo "<script>var product_id = $row[product_id]</script>";
         } else { 
             echo "<script>var product_id = null;alert('product id invalid.');window.location.replace('./')</script>";
@@ -29,16 +28,10 @@
         echo "<script>alert('invalid Link'); window.location.replace('./') </script>";
     }
     if (isset($_SESSION['user_id'])){
-        
-        echo "<br>userId: ". $_SESSION['user_id'];
         echo "<script>var user_id = $_SESSION[user_id];</script>";
-    }else{echo "<br>userId: not logged in";echo "<script>var user_id = null</script>";}
-    if (isset($_SESSION['user_email'])){
-        echo "<br>useremail: ". $_SESSION['user_email'];
-    }else{echo "<br>useremail: not logged in";}
-    if (isset($_SESSION['login_status'])){
-        echo "<br>status: ". $_SESSION['login_status'];
-    }else{echo "<br>status: not logged in";}
+    }else{
+        echo "<script>var user_id = null</script>";
+    }
     ?>
 
 </head>

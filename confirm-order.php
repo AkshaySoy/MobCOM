@@ -20,14 +20,14 @@
     <?php
 
     require('modules/navbar.php');
-    
+    $order_id = "";
+    $order_otp = "";
     if ( isset($_GET['order_id'])){
         $order_id = $_GET['order_id'];
-        echo "<h1>Order is confirmed" . $_SESSION['user_email'] . "</h1>";
+        $order_otp = $_GET['order_otp'];
         require('modules/confirm-order-email.php');
         echo "<script>location.replace('confirm-order.php');</script>";
     }
-
     ?>
 
     <!-- Navbar End -->
@@ -49,12 +49,7 @@
                 </header>
 
                 <p class="card-text">
-                    Your order <b> Google Pixel 4a (Just Black, 128 GB) </b> is successfully placed.
-                    <br>
-                    Order ID : 
-                    <?php
-                        echo $order_id;
-                    ?>
+                    Your order is successfully placed.
                     <br>
                     Please check your email for OTP. This will be used for verifying your order at delivery.
                     <br>

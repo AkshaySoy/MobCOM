@@ -536,20 +536,7 @@
                 ?>
                 <!-- Pagination Start -->
 
-                <nav aria-label="Page navigation sample">
-                    <ul class="pagination justify-content-center mx-2 my-2">
-                        <li class="page-item disabled" value='-1'><a class="page-link">Previous</a>
-                        </li>
-                        <li onclick="paginationFilter(this.value)" class="page-item active" value=1><a class="page-link">1</a>
-                        </li>
-                        <li onclick="paginationFilter(this.value)" class="page-item" value=2><a class="page-link">2</a>
-                        </li>
-                        <li onclick="paginationFilter(this.value)" class="page-item" value=3><a class="page-link">3</a>
-                        </li>
-                        <li class="page-item" value='+1'><a class="page-link">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+
 
                 <!-- Pagination End -->
 

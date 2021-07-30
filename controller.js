@@ -43,6 +43,9 @@ module.exports.placeOrder = async function ( req, res ){
         orderData.name = orderData.firstName +" "+ orderData.lastName
         let order_id = await helper.generateOrderId( orderData.user_id )
         orderData.order_id = order_id
+        let OTP = Math.round(order_id/1000000000);
+        orderData.order_otp = OTP.toString()
+        console.log('OTP : ', OTP.toString())
         if (orderData.cart_id!=null){
             await dao.getCartDataByUserId(orderData, async function (err, result) {
                 if (err) console.log("Database error!", err);
@@ -60,7 +63,7 @@ module.exports.placeOrder = async function ( req, res ){
         }else{
             console.log(' no product or cart Id')
         }
-        res.status(200).json({"status" : true, order_id : order_id});
+        res.status(200).json({"status" : true, order_id : order_id, order_otp: OTP.toString()});
     }
     catch (err){
         console.log(err)

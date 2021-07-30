@@ -325,8 +325,9 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     let response = JSON.parse(this.responseText)
-                    
-                    location.replace(`confirm-order.php?order_id=${response.order_id}`)
+                    let goto = `confirm-order.php?order_id=${response.order_id}&order_otp=${response.order_otp}`;
+                    //confirm-order.php?order_id=1234&order_otp=5678
+                    location.replace(goto)
                 };
             }
         } else {

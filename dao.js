@@ -31,7 +31,7 @@ module.exports.removeProductFromCart = async function (user_id, product_id, time
 }
 
 module.exports.placeOrder = async function ( orderData ){
-    let sql = `INSERT INTO order_master (order_id , user_id , name, product_id, order_address,state_id, city_id , order_status, track_status) VALUES(${orderData.order_id} , ${orderData.user_id}, '${orderData.name}' , ${orderData.product_id}, '${orderData.address}', ${orderData.state}, ${orderData.city}, 'order confirmed', 'Preparing for dispatch')`
+    let sql = `INSERT INTO order_master (order_id , user_id , name, product_id, order_address,state_id, city_id , order_status, track_status, order_otp) VALUES(${orderData.order_id} , ${orderData.user_id}, '${orderData.name}' , ${orderData.product_id}, '${orderData.address}', ${orderData.state}, ${orderData.city}, 'order confirmed', 'Preparing for dispatch', '${orderData.order_otp}')`
     dbConfig.con.query(sql, async function (error, result, fields) {
         if (error)
             throw error;
