@@ -439,7 +439,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText)
-                    alert(this.responseText)
+                    alert("Product Added To Cart")
                     location.reload()
                 }
             };

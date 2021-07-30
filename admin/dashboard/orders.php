@@ -72,6 +72,7 @@
    
                             $res = mysqli_query($conn, $query);
 
+
                             while ($row = mysqli_fetch_object($res)) {
 
                                 echo "
@@ -86,11 +87,35 @@
                                         <td>$row->order_status</td>
                                         <td>$row->track_status</td>
                                         <td class='align-middle'>
-                                            <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#manageOrder'>Manage</button>
+                                            <button onclick='document.getElementById(`order_id`).value=$row->order_id' type='button' class='btn btn-primary' data-toggle='modal' data-target='#manageOrder'>Manage</button>
                                         </td>
                                     </tr>
                                 
                                 ";
+                            }
+
+                            //to check if updated
+                            if (isset($_GET['updateStatus'])){
+                                echo "<h1>Upadating status</h1>";
+
+                                $server = 'localhost';
+                                $username = 'root';
+                                $password = '';
+                                $db = 'mobcom';
+                                $con = mysqli_connect($server, $username, $password, $db);
+
+                                $order_id = $_GET['order_id'];
+                                $order_status = $_GET['order-status'];
+                                $track_status = $GET['track-status'];
+                                $deli_id = $GET['assign-deli'];
+
+                                if ($con) {
+                                    //to get total item in the DB
+                                    $query = "UPDATE TABLE `delivery_master` SET `deli_id`=$deli_id WHERE `order_id`=$order_id";
+                                    $con->query($query);
+                                }
+
+                                echo "<script>location.replace('orders.php')</script>";
                             }
 
                             ?>
@@ -103,6 +128,7 @@
                     <!-- Table End -->
 
                     <!-- Modal -->
+                    
 
                     <div class="modal fade" id="manageOrder" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="manageOrderLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -116,7 +142,12 @@
                                 <div class="modal-body">
 
                                     <form action="">
+                                        <div class="form-group" hidden>
+                                            
+                                            <label for="order_id">Order Id</label>
+                                            <input class="custom-select d-block w-100" id="order_id" name="order_id">
 
+                                        </div>
                                         <div class="form-group">
 
                                             <label for="order-status">Change Order Status</label>
@@ -147,14 +178,37 @@
                                         <div class="form-group">
 
                                             <label for="assign-deli">Assign Delivery Associate</label>
+
+
                                             <select class="custom-select d-block w-100" id="assign-deli" name="assign-deli" required>
                                                 <option value selected disabled>Select Delivery Associate</option>
+                                                    
+                                                <?php
+                                                   $server = 'localhost';
+                                                    $username = 'root';
+                                                    $password = '';
+                                                    $db = 'mobcom';
+                                                    $con = mysqli_connect($server, $username, $password, $db);
+
+
+                                                    if ($con) {
+                                                        //to get total item in the DB
+                                                        $query = "SELECT * FROM `delivery_master`";
+                                                        if ($result = $con->query($query)) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                echo "<option value=$row[deli_id]>
+                                                                    $row[deli_name]
+                                                                </option>";
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
                                             </select>
 
                                         </div>
 
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn btn-primary" name="updateStatus">Update</button>
 
                                     </form>
 

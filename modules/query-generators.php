@@ -124,4 +124,16 @@ function GQ_getLastFiveProducts() {
 function GQ_getRandomFiveProducts(){
     return "SELECT * FROM `product_master` ORDER BY RAND() LIMIT 5";
 }
+
+function GQ_getRegisteredUsers(){
+    return "SELECT * FROM `user_master`;";
+}
+
+function GQ_getAllProducts(){
+    return "SELECT * FROM `product_master`;";
+}
+
+function GQ_getAllOrders(){
+    return "SELECT count(product_id), order_id FROM `order_master` GROUP BY `order_id`";
+}
 ?>

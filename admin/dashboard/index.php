@@ -26,7 +26,20 @@
       <?php
 
       require('../admin-modules/sidebar.php');
+      require('../../modules/query-generators.php');    //for getting query
 
+      //DTABASE CONNECTION
+      $server = 'localhost';
+      $username = 'root';
+      $password = '';
+      $db = 'mobcom';
+      $con = mysqli_connect($server, $username, $password, $db);
+      $registeredUsers = $con -> query ( GQ_getRegisteredUsers() );
+      $registeredUsersCount = $registeredUsers->num_rows;
+      $productsList = $con -> query ( GQ_getAllProducts() );
+      $productsCount = $productsList->num_rows;
+      $orderList = $con -> query ( GQ_getAllOrders() );
+      $ordersCount = $orderList->num_rows;
       ?>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
@@ -48,7 +61,11 @@
                     <i class="fa fa-user" aria-hidden="true"></i>
                     Total Customer Registered
                   </h5>
-                  <h4 class="card-text">25</h4>
+                  <h4 class="card-text">
+                    <?php
+                      echo "$registeredUsersCount";
+                    ?>
+                  </h4>
                 </div>
               </div>
             </div>
@@ -60,7 +77,11 @@
                     <i class="fa fa-mobile" aria-hidden="true"></i>
                     Total Products
                   </h5>
-                  <h4 class="card-text">1250</h4>
+                  <h4 class="card-text">
+                    <?php
+                      echo "$productsCount";
+                    ?>
+                  </h4>
                 </div>
               </div>
             </div>
@@ -72,34 +93,15 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     Total Orders
                   </h5>
-                  <h4 class="card-text">256</h4>
+                  <h4 class="card-text">
+                    <?php
+                      echo "$ordersCount";
+                    ?>
+                </h4>
                 </div>
               </div>
             </div>
 
-            <div class="col mb-4">
-              <div class="card text-left shadow">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    Total Orders In 30 Days
-                  </h5>
-                  <h4 class="card-text">128</h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="col mb-4">
-              <div class="card text-left shadow">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                    Recent Transaction
-                  </h5>
-                  <h4 class="card-text">transaction id</h4>
-                </div>
-              </div>
-            </div>
 
           </div>
 
