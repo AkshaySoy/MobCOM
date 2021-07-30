@@ -31,7 +31,7 @@ module.exports.removeProductFromCart = async function (user_id, product_id, time
 }
 
 module.exports.placeOrder = async function ( orderData ){
-    let sql = `INSERT INTO order_master (order_id , user_id , name, product_id, order_address, order_status, track_status) VALUES(${orderData.order_id} , ${orderData.user_id}, '${orderData.name}' , ${orderData.product_id}, '${orderData.address}', 'order_placed', 'order_placed')`
+    let sql = `INSERT INTO order_master (order_id , user_id , name, product_id, order_address,state_id, city_id , order_status, track_status) VALUES(${orderData.order_id} , ${orderData.user_id}, '${orderData.name}' , ${orderData.product_id}, '${orderData.address}', ${orderData.state}, ${orderData.city}, 'order confirmed', 'Preparing for dispatch')`
     dbConfig.con.query(sql, async function (error, result, fields) {
         if (error)
             throw error;
@@ -49,5 +49,19 @@ module.exports.getCartDataByUserId = async function ( orderData, callback ){
             }
         }
         callback(null, result);
+    });
+}
+
+
+module.exports.getProductById = async function ( product_id , callback ){
+    let product_data = []
+    dbConfig.con.query(`SELECT * FROM product_master WHERE product_id=${product_id}`, function(err, res, fields) {
+        if (err)  return callback(err);
+        if(res.length){
+            for(var i = 0; i<res.length; i++ ){
+                product_data.push(res[i]);
+            }
+        }
+        callback(null, product_data);
     });
 }

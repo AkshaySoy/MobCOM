@@ -87,7 +87,7 @@
                                                     <div class='d-flex justify-content-between'>
                                                         <div>
                                                             <a class='card-link text-dark' href='#'>
-                                                                <h5>$row[brand_name] $row[model_name] ( $row[model_colour], $row[internal_storage] GB)</h5>
+                                                                <h5 onclick='location.href=(`product-detail.php?product_id=$row[product_id]`)'>$row[brand_name] $row[model_name] ( $row[model_colour], $row[internal_storage] GB)</h5>
                                                             </a>
                                                             <p class='text-success'>
                                                                 <i class='fa fa-check' aria-hidden='true'></i>
@@ -120,7 +120,12 @@
                                     ";
                                 }
                                 } else { 
-                                    echo "<br>no products<br>"; 
+                                    echo "
+                                    <div class='alert alert-danger' role='alert'>
+                                        <i class='fa fa-info-circle' aria-hidden='true'></i>
+                                        Your cart is empty. Continue Shopping.
+                                    </div>
+                                    "; 
                                 }
                             }
                             else{  

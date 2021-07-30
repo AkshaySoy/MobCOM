@@ -5,6 +5,7 @@
 
     <?php
 
+    $title = "MobCOM | Checkout";
     require('modules/header.php');
 
     ?>
@@ -20,16 +21,15 @@
     require('modules/navbar.php');
     $total_price = 0;
     $items_in_cart = 0;
-    echo "user_id : " . $_SESSION['user_id'] ;
+    echo "user_id : " . $_SESSION['user_id'];
     echo "glob cart : " . $GLOBALS['products_in_cart'];
-    if ($_SESSION['login_status'] == true){
+    if ($_SESSION['login_status'] == true) {
         echo "
         <script>
             var user_id = $_SESSION[user_id]
         </script>
         ";
-    }
-    else{
+    } else {
         echo "
         <script>
             var user_id = null;
@@ -44,19 +44,37 @@
     <!-- Main Content Start -->
 
     <?php
+
+
+    if ( isset($_GET['product_id'])){
+        $product_id = $_GET['product_id'];
+        $sql = "SELECT * FROM product_master WHERE product_id=" . $product_id;
+        if ($GLOBALS['con']) {
+            if ($result = $GLOBALS['con']->query($sql)) {
+                if ($result->num_rows > 0) {
+                    $product = $result->fetch_assoc();
+                }
+            }
+        }
+        $total_price = $product['mobile_price'];
+        
+    }else{
         $sql = "SELECT * FROM shopping_cart_master sc, product_master pm WHERE sc.product_id = pm.product_id";
         if ($GLOBALS['con']) {
-            if ( $result = $GLOBALS['con'] -> query($sql) ){
+            if ($result = $GLOBALS['con']->query($sql)) {
                 if ($result->num_rows > 0) {
                     $total_products = mysqli_num_rows($result);
                     $total_price = 0;
-                    while($row = $result->fetch_assoc()){
+                    while ($row = $result->fetch_assoc()) {
                         $total_price += $row['mobile_price'];
                     }
                     $items_in_cart = mysqli_num_rows($result);
                 }
             }
         }
+    }
+
+
     ?>
 
 
@@ -115,9 +133,15 @@
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="state">State</label>
-                                    <select class="custom-select d-block w-100" id="state" required>
-                                        <option value="">Choose...</option>
-                                        <option>Jharkhand</option>
+                                    <select class="custom-select d-block w-100" name="state" id="state-select" required>
+                                        <option value selected disabled>Select State</option>
+                                        <?php
+                                        $query = "SELECT * FROM `state_master` ORDER BY `state_name` ASC";
+                                        $res = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_object(($res))) {
+                                            echo "<option value='$row->state_id'>$row->state_name</option>";
+                                        }
+                                        ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select a valid state.
@@ -125,9 +149,8 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="city">City</label>
-                                    <select class="custom-select d-block w-100" id="city" required>
-                                        <option value="">Choose...</option>
-                                        <option>Jamshedpur</option>
+                                    <select class="custom-select d-block w-100" id="city-select" name="city" required>
+                                        <option value selected disabled>Select City</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please provide a valid city.
@@ -171,24 +194,22 @@
 
                     <div class="card-body">
 
-                        <h5 class="font-weight-bold mb-3" id="cartElement">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <?php
-                                echo "My Cart (". $items_in_cart . ")";
-                            ?>
-                        </h5>
-                        <h5 class="font-weight-bold mb-3" id="productElement">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <?php
-                                echo "Product Name";
-                            ?>
-                        </h5>
+                        <?php
+                            echo "<h5 class='font-weight-bold mb-3'>";
+                            echo "<i class='fa fa-shopping-cart' aria-hidden='true'></i>";
+                            if (isset($_GET['product_id'])){
+                                echo $product['brand_name'] . " ". $product['model_name'];
+                            }else{
+                                echo "My Cart (" . $items_in_cart . ")";
+                            }
+                            echo "</h1>";
+                        ?>
 
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" id="subTotalText">
                                 Subtotal
                                 <?php
-                                    echo "<span>₹ ". number_format($total_price,0,'.',',') . "</span>";
+                                echo "<span>₹ " . number_format($total_price, 0, '.', ',') . "</span>";
                                 ?>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
@@ -202,7 +223,7 @@
                                     <strong>Total Amount (Including GST)</strong>
                                 </div>
                                 <?php
-                                    echo "<span><strong id='totalPriceText'>₹ ". number_format($total_price,0,'.',',') . "</strong</span>";
+                                echo "<span><strong id='totalPriceText'>₹ " . number_format($total_price, 0, '.', ',') . "</strong</span>";
                                 ?>
                             </li>
                         </ul>
@@ -223,17 +244,31 @@
 
     <!-- Footer Start -->
 
-    <footer class="container-fluid text-center text-muted  mt-5 p-2" id="footer">
+    <?php
 
-        <div class="mt-2 mb-5">
-            <hr>
-            <p class="m-0">Copyright <span class="fa fa-copyright"></span> Project RAPS</p>
-            <a href="#" class="m-0 card-link text-muted"><small> Privacy Policy | </small></a>
-            <a href="#" class="m-0 card-link text-muted"><small> Terms & Conditions </small></a>
-            <p class="m-2"><span class="fa fa-mobile"></span></p>
-        </div>
+    require('modules/footer.php');
 
-    </footer>
+    ?>
+
+    <script>
+        $(document).on('change', '#state-select', function() {
+            var stateID = $("#state-select").val();
+
+            $.ajax({
+                url: 'modules/get-cities.php',
+                type: 'POST',
+                data: {
+                    POST_TYPE: 'GET_VIA_ID',
+                    STATE_ID: stateID
+                },
+                success: function(res) {
+                    console.log(res)
+                    $("#city-select").html(res);
+                }
+            })
+        })
+    </script>
+
 
     <!-- Footer End -->
 
@@ -246,40 +281,42 @@
     var checkoutType = "cart"
     var cart_id = user_id
     var product_id = null
-        //can be 'cart' or 'product'
-    if (location.href.split('?').length >1){
+    //can be 'cart' or 'product'
+    if (location.href.split('?').length > 1) {
         checkoutType = "product"
         console.log('ProductId : ', location.href.split('?')[1].split('=')[1])
         product_id = location.href.split('?')[1].split('=')[1]
         cart_id = null
-    }else{
+    } else {
         console.log('CartId : ', user_id)
         cart_id = user_id
     }
-    
 
-    function placeOrder(){
+
+
+
+    function placeOrder() {
         let firstName = document.getElementById('firstName').value
         let lastName = document.getElementById('lastName').value
         let address = document.getElementById('address').value
         let address2 = document.getElementById('address2').value
-        let state = document.getElementById('state').value
-        let city = document.getElementById('city').value
+        let state = document.getElementById('state-select').value
+        let city = document.getElementById('city-select').value
         let pincode = document.getElementById('pincode').value
-        
-        if (user_id!=null && firstName && lastName && (address || address2) && state && city && pincode){
+
+        if (user_id != null && firstName && lastName && (address || address2) && state && city && pincode) {
             var xhttp = new XMLHttpRequest();
             let data = {
-                user_id : user_id,
-                firstName : firstName,
-                lastName : lastName,
-                address : address,
-                address2 : address2,
-                state : state,
-                city : city,
-                pincode : pincode,
-                cart_id : cart_id,
-                product_id : product_id
+                user_id: user_id,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                address2: address2,
+                state: state,
+                city: city,
+                pincode: pincode,
+                cart_id: cart_id,
+                product_id: product_id
             }
             let stringgedData = JSON.stringify(data)
             let url = `http://localhost:3000/placeOrder?data=${stringgedData}`;
@@ -287,19 +324,19 @@
             xhttp.send();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
-                    alert(this.responseText)
-                    location.replace('confirm-order.php')
+                    let response = JSON.parse(this.responseText)
+                    
+                    location.replace(`confirm-order.php?order_id=${response.order_id}`)
                 };
             }
-        }
-        else{
-            if (user_id==null){
+        } else {
+            if (user_id == null) {
                 alert('not logged in')
-            }else{
+            } else {
                 alert('fill the form')
             }
         }
     }
 </script>
+
 </html>

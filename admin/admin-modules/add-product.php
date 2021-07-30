@@ -36,50 +36,71 @@
                 stock
                 select-image -->
 
-                <form method="">
+                <form action="../admin-modules/upload-multiple.php" method="POST" enctype="multipart/form-data">
 
                     <div class="form-row">
 
                         <div class="form-group col-md-3">
                             <label for="brand">Brand</label>
-                            <select class="custom-select d-block w-100" id="brand" name="brand" required>
-                                <option value="">Choose...</option>
+                            <select class="custom-select d-block w-100" name="brand_name" required>
+                                <option value="" disabled selected>Choose...</option>
                                 <option>Apple</option>
                                 <option>Samsung</option>
+                                <option>Nokia</option>
+                                <option>Realme</option>
+                                <option>Redmi</option>
+                                <option>Xiomi</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="model-name">Model Name</label>
-                            <input type="text" class="form-control" id="model-name" name="model-name" required>
+                            <input type="text" class="form-control" name="model_name" required>
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="model-number">Model Number</label>
-                            <input type="text" class="form-control" id="model-number" name="model-number" required>
+                            <input type="text" class="form-control" name="model_number" required>
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="model-colour">Model Colour</label>
-                            <input type="text" class="form-control" id="model-colour" name="model-colour" required>
+                            <input type="text" class="form-control" name="model_colour" required>
+                        </div>
+                    
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            <label for="model-colour">Description</label>
+                            <input type="text" class="form-control" name="product_desc" required>
                         </div>
 
                     </div>
 
                     <div class="form-row">
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="display-size">Display Size</label>
-                            <input type="number" class="form-control" name="display-size" required>
+                            <input type="number" class="form-control" name="display_size" required>
+                            <small class="text-muted">*In centimeters</small>
 
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
+                            <label for="display-size">Display Resolution</label>
+                            <input type="text" class="form-control" name="display_resolution" required>
+                            <small class="text-muted">*number x number</small>
+
+                        </div>
+
+                        <div class="form-group col-md-3">
                             <label for="os">Operating System</label>
-                            <input type="text" class="form-control" id="os" name="os" required>
+                            <input type="text" class="form-control" name="operating_system" required>
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="processor">Processor</label>
                             <input type="text" class="form-control" id="processor" name="processor" required>
                         </div>
@@ -90,34 +111,39 @@
 
                         <div class="form-group col-md-4">
                             <label for="internal-storage">Internal Storage</label>
-                            <input type="number" class="form-control" name="internal-storage" required>
+                            <input type="number" class="form-control" name="internal_storage" required>
                             <small class="text-muted">*In GB</small>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="RAM">RAM</label>
-                            <input type="number" class="form-control" name="RAM" required>
+                            <input type="number" class="form-control" name="ram" required>
                             <small class="text-muted">*In GB</small>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="memory-card">Memory Card Availabe ?</label>
-                            <input type="text" class="form-control" id="memory-card" name="memory-card" required>
-                            <small class="text-muted">Yes or No</small>
+                            <input type="text" class="form-control" name="memory_card_available" required>
+                            <small class="text-muted">*In GB if yes</small>
                         </div>
 
                     </div>
 
                     <div class="form-row">
 
-                        <div class="form-group col-md-6">
-                            <label for="primary-camera">Primary Camera</label>
-                            <input type="text" class="form-control" name="primary-camera" required>
+                        <div class="form-group col-md-4">
+                            <label for="primary-camera">Primary Camera Setup</label>
+                            <input type="text" class="form-control" name="primary_camera" required>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="secondary-camera">Secondary Camera</label>
-                            <input type="text" class="form-control" name="secondary-camera" required>
+                        <div class="form-group col-md-4">
+                            <label for="secondary-camera">Secondary Camera Setup</label>
+                            <input type="text" class="form-control" name="secondary_camera" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="secondary-camera">Network Type</label>
+                            <input type="text" class="form-control" name="network_type" required>
                         </div>
 
                     </div>
@@ -127,22 +153,26 @@
 
                         <div class="form-group col-md-3">
                             <label for="battery-capacity">Battery Capacity</label>
-                            <input type="number" class="form-control" name="battery-capacity" required>
+                            <input type="number" class="form-control" name="battery_capacity" required>
+                            <small class="text-muted">*In mAh</small>
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="width">Width</label>
-                            <input type="number" class="form-control" name="width" required>
+                            <label for="mobile_width">Width</label>
+                            <input type="number" class="form-control" name="mobile_width" required>
+                            <small class="text-muted">*In cms</small>
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="depth">Depth</label>
-                            <input type="number" class="form-control" name="depth" required>
+                            <label for="mobile_depth">Depth</label>
+                            <input type="number" class="form-control" name="mobile_depth" required>
+                            <small class="text-muted">*In cms</small>
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label for="height">Height</label>
-                            <input type="number" class="form-control" name="height" required>
+                            <label for="mobile_weight">Weight</label>
+                            <input type="number" class="form-control" name="mobile_weight" required>
+                            <small class="text-muted">*In gms</small>
                         </div>
 
                     </div>
@@ -150,13 +180,13 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="price">Price</label>
-                            <input type="number" class="form-control" name="price" required>
+                            <label for="mobile_price">Price</label>
+                            <input type="number" class="form-control" name="mobile_price" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="stock">Stock</label>
-                            <input type="number" class="form-control" name="stock" required>
+                            <label for="mobile_availability">Stock</label>
+                            <input type="number" class="form-control" name="mobile_availability" required>
                         </div>
 
                     </div>
@@ -166,7 +196,7 @@
                         <label for="select-image">Select Images</label>
 
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" multiple>
+                            <input type="file" name="files[]" class="custom-file-input" multiple>
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
 
@@ -178,7 +208,6 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" name="addProduct" class="btn btn-primary">Add</button>
                     </div>
-
 
                 </form>
 

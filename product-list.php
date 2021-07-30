@@ -17,7 +17,7 @@
     if (isset($_GET['filter_submit'])) {
 
         $filter_search = $_GET['searching']; //get string
-        $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
+        $query = $query . " WHERE " . GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
 
         //price filter checking
         if (isset($_GET['price'])) {
@@ -27,29 +27,29 @@
         //brand filter checking
         if (isset($_GET['brand'])) {
             $filter_brand = $_GET['brand'];
-            $query = $query . " AND " . GQ_brandArray( $filter_brand );
+            $query = $query . " AND " . GQ_brandArray($filter_brand);
         }
         //ram filter checking
         if (isset($_GET['ram'])) {
             $filter_ram = $_GET['ram'];
-            $query = $query . " AND " . GQ_ramArray( $filter_ram );
+            $query = $query . " AND " . GQ_ramArray($filter_ram);
         }
         //storage filter checking
         if (isset($_GET['storage'])) {
             $filter_storage = $_GET['storage'];
-            $query = $query . " AND " . GQ_storageArray ( $filter_storage );
+            $query = $query . " AND " . GQ_storageArray($filter_storage);
         }
         //battery filter checking
         if (isset($_GET['battery'])) {
             $filter_battery = $_GET['battery'];
-            $query = $query . " AND " . GQ_batteryArray ( $filter_battery );
+            $query = $query . " AND " . GQ_batteryArray($filter_battery);
         }
-        if (isset($_GET['pageNumber'])){
+        if (isset($_GET['pageNumber'])) {
             $pageNumber = $_GET['pageNumber'];
         }
     } else {
         $filter_search = $_GET['search_text'];
-        $query = $query . " WHERE " .GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
+        $query = $query . " WHERE " . GQ_searchArray(generateArrayFromWords($filter_search)); //generating and attaching query
     }
 
     //this is query generation from whatever data is given
@@ -59,34 +59,34 @@
     $db = 'mobcom';
     $con = mysqli_connect($server, $username, $password, $db);
 
-    
-    if ($con){
+
+    if ($con) {
         //to get total item in the DB
-        if ( $result = $con -> query($query) ){
+        $query .= " ORDER BY RAND() ";
+        if ($result = $con->query($query)) {
             if ($result->num_rows > 0) {
                 $total_products = mysqli_num_rows($result);
-            } else { 
+            } else {
                 //echo "<br>no products<br>"; 
                 echo "";
             }
-        }
-        else{ 
+        } else {
             //echo "<h2>QUERY PROBLEM</h2>"; 
             echo '';
         }
         //to get ppaginated data
-        if ( $result = $con -> query($query ) ){
+        if ($result = $con->query($query)) {
             //. GQ_pageNumber($pageNumber, $itemsPerPage)
             //echo "<br>This page: " . mysqli_num_rows($result) . "<br>";
             echo '';
-        }
-        else{ 
+        } else {
             //echo "<h2>QUERY PROBLEM</h2>";
             echo '';
         }
+    } else {
+        die('Connection Failed ' . mysqli_connect_error());
     }
-    else{ die('Connection Failed '. mysqli_connect_error()); }
-    
+
     //close the connection
     $con->close()
     ?>
@@ -96,7 +96,7 @@
 <body class="bg-light">
     <input type='text' name='searching' id='searching' form='filters_form' placeholder='nothing' hidden>
     <input type='number' name='pageNumber' id='pageNumber' form='filters_form' placeholder='page' value=1 hidden>
-    <input  type='submit' id="filter_submit" name='filter_submit' form='filters_form' hidden>
+    <input type='submit' id="filter_submit" name='filter_submit' form='filters_form' hidden>
     <!-- Navbar Start -->
 
     <?php
@@ -209,56 +209,55 @@
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Apple' value="Apple">
                                     <div class="custom-control-label">Apple
-                                        <b class="badge badge-pill badge-light float-right">120</b>
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Asus' value="Asus">
                                     <div class="custom-control-label">Asus
-                                        <b class="badge badge-pill badge-light float-right">100</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Nokia' value="Nokia">
                                     <div class="custom-control-label">Nokia
-                                        <b class="badge badge-pill badge-light float-right">140</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Oneplus' value="Oneplus">
                                     <div class="custom-control-label">One Plus
-                                        <b class="badge badge-pill badge-light float-right">120</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Oppo' value="Oppo">
                                     <div class="custom-control-label">Oppo
-                                        <b class="badge badge-pill badge-light float-right">120</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Mi' value="Mi">
                                     <div class="custom-control-label">Mi
-                                        <b class="badge badge-pill badge-light float-right">120</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Realme' value="Realme">
                                     <div class="custom-control-label">Realme
-                                        <b class="badge badge-pill badge-light float-right">120</b>
+
                                     </div>
                                 </label>
 
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="brand[]" id='brand_Honor' value="Honor">
                                     <div class="custom-control-label">Honor
-                                        <b class="badge badge-pill badge-light float-right">120</b>
+
                                     </div>
                                 </label>
 
@@ -532,8 +531,8 @@
                 -->
                 <!-- Product Card End -->
                 <?php
-                    cardRenderer($result);  //to display the cards
-                    paginationRenderer($total_products, $itemsPerPage, $pageNumber);    //for pagination
+                cardRenderer($result);  //to display the cards
+                paginationRenderer($total_products, $itemsPerPage, $pageNumber);    //for pagination
                 ?>
                 <!-- Pagination Start -->
 
@@ -577,16 +576,14 @@
 </body>
 
 <?php
-include ('modules/retrieval.php');
+include('modules/retrieval.php');
 ?>
 
 <script>
-
-function paginationFilter(value){
-    document.getElementById('pageNumber').value = value;
-    document.getElementById('filter_submit').click();
-}
-
+    function paginationFilter(value) {
+        document.getElementById('pageNumber').value = value;
+        document.getElementById('filter_submit').click();
+    }
 </script>
 
 </html>

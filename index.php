@@ -19,7 +19,33 @@
     <?php
 
     require('modules/navbar.php');
+    require('modules/query-generators.php');
+    require('modules/db-connection.php');
 
+    $response = $con->query(GQ_getRandomFiveProducts());
+
+    $j = 0;
+    //not newly but random
+    $newly_added_product_list = [];
+    if ($response->num_rows > 0) {
+        while ($row = $response->fetch_assoc()) {
+            $newly_added_product_list[$j] = $row;
+            $j += 1;
+        }
+    }
+
+    //not top deals but random
+    $top_deals_product_list = [];
+    $response = $con->query(GQ_getRandomFiveProducts());
+    $j = 0;
+    //not newly but random
+    $top_deals_product_list = [];
+    if ($response->num_rows > 0) {
+        while ($row = $response->fetch_assoc()) {
+            $top_deals_product_list[$j] = $row;
+            $j += 1;
+        }
+    }
     ?>
 
     <!-- Navbar End -->
@@ -36,13 +62,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="First slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/Top-mobile-deals-1200x450.png" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="Second slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/iphone-11-banner.png" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://via.placeholder.com/1400x450" alt="Third slide">
+                    <img class="d-block w-100" style="height:450px;position:relative" src="images/BANNER-2.png" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -73,279 +99,46 @@
             <div class="row">
 
                 <!-- Product Card Start -->
+                <?php
+                foreach ($newly_added_product_list as $product) {
+                    echo "
+                            <div class='col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3'>
 
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                                <div class='card card-product h-100 p-1 d-flex' style='max-width: 500px;'>
 
-                    <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
+                                    <img class='card-img-top p-2' src='images/$product[brand_name]/$product[model_name]/1.jpg' alt='$product[brand_name] $product[model_name]'>
 
-                        <img class="card-img-top p-2" src="images/samsung/A21s/1.jpg" alt="samsung_galaxy_a31_front">
+                                    <div class='card-body d-flex flex-column'>
+                                        <a href='#' style='text-decoration: none;'>
+                                            <h5 class='card-title' onclick='location.href=(`product-detail.php?product_id=$product[product_id]`)'>$product[brand_name] $product[model_name]</h5>
+                                        </a>
 
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
+                                        <div class='mb-1'>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star'></span>
+                                            <span class='fa fa-star'></span>
+                                        </div>
 
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                        <p class='card-text font-weight-bold mb-0'>₹ " . number_format($product['mobile_price'], 0, '.', ',') . "</p>
+
+                                        <a href='#' class='btn btn-danger mt-3' onclick='location.href=(`checkout.php?product_id=$product[product_id]`)'>Buy Now</a>
+
+                                    </div>
+
+                                </div>
+
                             </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/71Sinqbw35L._SL1500_.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
+                        ";
+                }
+                ?>
+
+                <!-- Prodicut card end -->
 
             </div>
 
-            <a class="card-link float-right" href="#">
+            <a class="card-link float-right" href="#" onclick="location.href='product-list.php?search_text=&search_submit='">
                 View More
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -362,76 +155,48 @@
 
             <div class="row">
 
-                <!-- Product Card Start -->
 
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
+                <!-- Product Cards Start -->
+                <?php
+                foreach ($top_deals_product_list as $product) {
+                    echo "
+                            <div class='col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3'>
 
-                    <div class="card card-product h-100 p-1 d-flex" style="max-width: 500px;">
+                                <div class='card h-100 p-1 d-flex' style='max-width: 500px;'>
 
-                        <img class="card-img-top p-2" src="images/phone_images/7.jpg" alt="samsung_galaxy_a31_front">
+                                    <img class='card-img-top p-2' src='images/$product[brand_name]/$product[model_name]/1.jpg' alt='$product[brand_name] $product[model_name]'>
 
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Apple Watch (Gen3)</h5>
-                            </a>
+                                    <div class='card-body d-flex flex-column'>
+                                        <a href='#' style='text-decoration: none;'>
+                                            <h5 class='card-title' onclick='location.href=(`product-detail.php?product_id=$product[product_id]`)'>$product[brand_name] $product[model_name]</h5>
+                                        </a>
 
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                        <div class='mb-1'>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star checked'></span>
+                                            <span class='fa fa-star'></span>
+                                            <span class='fa fa-star'></span>
+                                        </div>
+
+                                        <p class='card-text font-weight-bold mb-0'>₹ 15,999</p>
+
+                                        <a href='#' class='btn btn-danger mt-3' onclick='location.href=(`checkout.php?product_id=$product[product_id]`)'>Buy Now</a>
+
+                                    </div>
+
+                                </div>
+
                             </div>
+                        ";
+                }
+                ?>
 
-                            <p class="card-text font-weight-bold mb-0">₹ 14,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
-
-
-                <!-- Product Card Start -->
-
-                <div class="col-xl-3 col-lg-3 col-md-4 col-6 mt-3 mb-3">
-
-                    <div class="card h-100 p-1 d-flex" style="max-width: 500px;">
-
-                        <img class="card-img-top p-2" src="images/phone_images/10.jpg" alt="samsung_galaxy_a31_front">
-
-                        <div class="card-body d-flex flex-column">
-                            <a href="#" style="text-decoration: none;">
-                                <h5 class="card-title">Samsung Galaxy M31</h5>
-                            </a>
-
-                            <div class="mb-1">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-
-                            <p class="card-text font-weight-bold mb-0">₹ 15,999</p>
-
-                            <a href="#" class="btn btn-danger mt-3">Buy Now</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Product Card End -->
+                <!-- Product Cards End -->
 
             </div>
 
-            <a class="card-link float-right" href="#">
+            <a class="card-link float-right" href="#" onclick="location.href='product-list.php?search_text=&search_submit='">
                 View More
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -448,69 +213,42 @@
 
             <div class="row">
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-                    <a href="#">
-                        <img src="images/brand_images/apple.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
+                <?php
+                echo "
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Apple`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/apple.svg' alt='Apple' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                </div>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Asus`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/asus.svg' alt='Asus' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Nokia`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/nokia.svg' alt='Nokia' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                    <a href="#">
-                        <img src="images/brand_images/asus.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=OnePlus`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/one-plus.svg' alt='OnePlus' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                </div>
+                        <div class='logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2'  onclick='location.href=(`product-list.php?searching=&pageNumber=1&filter_submit=Submit&brand%5B%5D=Honor`)'>
+                            <a href='#'>
+                                <img src='images/brand_images/honor.svg' alt='Honor' height='100px' width='100px'>
+                            </a>
+                        </div>
 
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
 
-                    <a href="#">
-                        <img src="images/brand_images/nokia.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/one-plus.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/oppo.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/xiaomi.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/realme.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
-
-                <div class="logo col-xl-3 col-lg-3 col-md-4 col-6 mt-2 mb-2">
-
-                    <a href="#">
-                        <img src="images/brand_images/honor.svg" alt="one_plus" height="100px" width="100px">
-                    </a>
-
-                </div>
+                    ";
+                ?>
 
             </div>
 
@@ -529,6 +267,12 @@
     require('modules/footer.php');
 
     ?>
+
+    <script>
+        $('.carousel').carousel({
+            interval: 3300
+        })
+    </script>
 
     <!-- Footer End -->
 

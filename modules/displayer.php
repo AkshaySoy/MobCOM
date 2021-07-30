@@ -18,7 +18,7 @@ function cardRenderer ($result){
                 <div class='col-md-6'>
 
                     <div class='info-main'>
-                        <a class='card-link' href='#'>
+                        <a class='card-link' href='#' onclick='product_id.value=$row[product_id]; submit()'>
                             <h5 class='font-weight-bold'>$row[brand_name] $row[model_name] ( $row[model_colour] , $row[ram] GB ) </h5>
                         </a>
 

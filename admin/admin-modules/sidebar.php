@@ -26,15 +26,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="transaction.php">
-                    <span data-feather="layers"></span>
-                    Transactions
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="transaction.php">
+                <a class="nav-link" href="delivery.php">
                     <span data-feather="user-plus"></span>
-                    Add Delivery Personel
+                    Add Delivery Associate
                 </a>
             </li>
             <li class="nav-item">
