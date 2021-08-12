@@ -38,7 +38,7 @@
 
                         <div class="step active" data-target="#test-nl-1">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger1" disabled="disabled" aria-controls="test-nl-1" aria-selected="true">
-                                <span class="bs-stepper-circle <?php if ($orderStatus == "Order confirmed") echo 'bg-success';
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "order confirmed") echo 'bg-success';
                                                                 else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </span>
@@ -52,7 +52,7 @@
 
                         <div class="step" data-target="#test-nl-2">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger2" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle <?php if ($orderStatus == "Picked by courier") echo 'bg-success';
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "picked by courier") echo 'bg-success';
                                                                 else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </span>
@@ -66,7 +66,7 @@
 
                         <div class="step" data-target="#test-nl-3">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger3" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle <?php if ($orderStatus == "On the way") echo 'bg-success';
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "on the way") echo 'bg-success';
                                                                 else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-truck" aria-hidden="true"></i>
                                 </span>
@@ -80,7 +80,7 @@
 
                         <div class="step" data-target="#test-nl-3">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger3" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle <?php if ($orderStatus == "Delivered") echo 'bg-success';
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "delivered") echo 'bg-success';
                                                                 else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-archive" aria-hidden="true"></i>
                                 </span>
