@@ -53,7 +53,7 @@
                     <br>
                     Please check your email for OTP. This will be used for verifying your order at delivery.
                     <br>
-                    Estimated date of arrival : <b> 2 August 2021 </b>
+                    Estimated date of arrival : <b> 22 September 2021 </b>
                 </p>
 
                 <div class="alert alert-success" role="alert">

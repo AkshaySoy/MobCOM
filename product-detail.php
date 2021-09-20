@@ -191,18 +191,34 @@
 
                         <div class="group col-md">
 
-                            <!--    ADDING CONDITION FOR AVailablity    -->
-                            <a class="btn btn-primary" onclick="buyProduct()">
-                                <i class="fa fa-play" aria-hidden="true"></i>
-                                Buy Now
-                            </a>
+                            <?php
+                            if ($row['mobile_availabilty'] > 0){
+                                echo '
+                                <a class="btn btn-primary" onclick="buyProduct()">
+                                    <i class="fa fa-play" aria-hidden="true"></i>
+                                    Buy Now
+                                </a>
 
-                            <a class="btn btn-success" onclick="addToCart()">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Add To Cart
-                            </a>
+                                <a class="btn btn-success" onclick="addToCart()">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Add To Cart
+                                </a>
+                            ';
+                            }
+                            else{
+                                echo "
+                                <div class='alert alert-warning' role='alert'>
+                                    <i class='fa fa-info-circle' aria-hidden='true'></i>
+                                    Product will be added soon. Please check again later.
+                                </div>;
+                                ";
+                  
+                            }
+                            ?>
 
                         </div>
+
+
 
                     </div>
 

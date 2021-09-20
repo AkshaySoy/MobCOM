@@ -80,7 +80,7 @@
 
                         <div class="step" data-target="#test-nl-3">
                             <button type="button" class="step-trigger" role="tab" id="stepper2trigger3" disabled="disabled" aria-selected="false">
-                                <span class="bs-stepper-circle <?php if ($orderStatus == "delivered") echo 'bg-success';
+                                <span class="bs-stepper-circle <?php if ($orderStatus == "Delivered") echo 'bg-success';
                                                                 else  echo 'bg-secondary'; ?>">
                                     <i class="fa fa-archive" aria-hidden="true"></i>
                                 </span>

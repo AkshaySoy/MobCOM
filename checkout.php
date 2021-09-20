@@ -21,8 +21,6 @@
     require('modules/navbar.php');
     $total_price = 0;
     $items_in_cart = 0;
-    echo "user_id : " . $_SESSION['user_id'];
-    echo "glob cart : " . $GLOBALS['products_in_cart'];
     if ($_SESSION['login_status'] == true) {
         echo "
         <script>
